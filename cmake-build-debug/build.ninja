@@ -61,6 +61,24 @@ build CMakeFiles/Roquelite_em_C.dir/mapa.c.o: C_COMPILER__Roquelite_em_C_Debug /
   OBJECT_DIR = CMakeFiles/Roquelite_em_C.dir
   OBJECT_FILE_DIR = CMakeFiles/Roquelite_em_C.dir
 
+build CMakeFiles/Roquelite_em_C.dir/jogador.c.o: C_COMPILER__Roquelite_em_C_Debug /home/liandrapereira/Roquelite_em_C/jogador.c || cmake_object_order_depends_target_Roquelite_em_C
+  DEP_FILE = CMakeFiles/Roquelite_em_C.dir/jogador.c.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles/Roquelite_em_C.dir
+  OBJECT_FILE_DIR = CMakeFiles/Roquelite_em_C.dir
+
+build CMakeFiles/Roquelite_em_C.dir/monstro.c.o: C_COMPILER__Roquelite_em_C_Debug /home/liandrapereira/Roquelite_em_C/monstro.c || cmake_object_order_depends_target_Roquelite_em_C
+  DEP_FILE = CMakeFiles/Roquelite_em_C.dir/monstro.c.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles/Roquelite_em_C.dir
+  OBJECT_FILE_DIR = CMakeFiles/Roquelite_em_C.dir
+
+build CMakeFiles/Roquelite_em_C.dir/combate.c.o: C_COMPILER__Roquelite_em_C_Debug /home/liandrapereira/Roquelite_em_C/combate.c || cmake_object_order_depends_target_Roquelite_em_C
+  DEP_FILE = CMakeFiles/Roquelite_em_C.dir/combate.c.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles/Roquelite_em_C.dir
+  OBJECT_FILE_DIR = CMakeFiles/Roquelite_em_C.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Roquelite_em_C
@@ -69,7 +87,7 @@ build CMakeFiles/Roquelite_em_C.dir/mapa.c.o: C_COMPILER__Roquelite_em_C_Debug /
 #############################################
 # Link the executable Roquelite_em_C
 
-build Roquelite_em_C: C_EXECUTABLE_LINKER__Roquelite_em_C_Debug CMakeFiles/Roquelite_em_C.dir/main.c.o CMakeFiles/Roquelite_em_C.dir/mapa.c.o
+build Roquelite_em_C: C_EXECUTABLE_LINKER__Roquelite_em_C_Debug CMakeFiles/Roquelite_em_C.dir/main.c.o CMakeFiles/Roquelite_em_C.dir/mapa.c.o CMakeFiles/Roquelite_em_C.dir/jogador.c.o CMakeFiles/Roquelite_em_C.dir/monstro.c.o CMakeFiles/Roquelite_em_C.dir/combate.c.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/Roquelite_em_C.dir
   POST_BUILD = :
