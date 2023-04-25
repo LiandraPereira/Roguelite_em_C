@@ -1,3 +1,0 @@
-/home/liandrapereira/Roquelite_em_C/cmake-build-debug/CMakeFiles/Roquelite_em_C.dir
-/home/liandrapereira/Roquelite_em_C/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/liandrapereira/Roquelite_em_C/cmake-build-debug/CMakeFiles/rebuild_cache.dir
