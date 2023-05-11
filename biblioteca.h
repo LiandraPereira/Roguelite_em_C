@@ -12,26 +12,39 @@
 #include <stdbool.h>
 
 /* CORES */
-#define COR_VISIVEL 1
-#define COR_VISTA 2
+#define COR_VISIVEL 7
+#define COR_VISTA 3
+#define COR_MONSTRO 1
+#define COR_COMIDA 2 
+
+/* Velocidades */
+#define V_MONSTRO 1 // velocidade do monstro
+#define V_JOGADOR 2
 
 /* Estrutura das coordenadas do jogador */
-typedef struct{
+typedef struct Coordenadas
+{
     int y;
     int x;
 } Posicao;
 
 /* Estrutura do Jogador */
-typedef struct{
+typedef struct 
+{
     Posicao pos;
     char imagem;
     int cor;
-} Jogador;
+    int vida;
+    //int combate;
+    int defende;
+} Entidade;
 
 /*Estrutura das peças do mapa. */
-typedef struct{
+typedef struct Célula 
+{
     char imagem;
-    int  cor;
+    int  cor;    
+    // Estado de cada peça
     bool podeAndar;
     bool transparente;
     bool visivel;
@@ -57,15 +70,15 @@ void closeGame ();
 
 /* Funcionalidades do Jogador */
 
-Jogador* criaJogador (Posicao pos_inicial);
+Entidade* criaJogador (Posicao pos_inicial);
 
 void direcao (int tecla);
 
 void movimentaJogador (Posicao novaPos);
 
-void modificaEstadoPeca (Jogador* jogador);
+void modificaEstadoPeca (Entidade* jogador);
 
-void estadoNormalPeca (Jogador* jogador);
+void estadoNormalPeca (Entidade* jogador);
 
 bool dentroMapa (int y, int x);
 
@@ -82,7 +95,9 @@ Peca** criaMapaPecas();
 
 void desenhaMapa();
 
-void desenhaJogador (Jogador* jogador);
+void desenhaJogador (Entidade* jogador);
+
+void desenhaMonstro (Entidade* monst);
 
 void desenhaAmbos();
 
@@ -96,15 +111,30 @@ void connectaCentroSalas (Posicao centro1, Posicao centro2);
 
 void freeMap();
 
+/* Funcionalidades do Monstro */
+
+Entidade* criaMonstro (Posicao pos_inicial);
+
+Posicao posiciona_aleatorio (Posicao posicao);
+
+Posicao movimenta_frente (Posicao origem, Posicao destino);
+
+void movimentaMonstro();
+
+bool consegue_ver (Entidade* monstro, Entidade* jogador);
+
 
 /*Variáveis globais e constantes*/
 extern const int MAP_HEIGHT;
+
 extern const int MAP_WIDTH;
 
 /*Variável global*/
 extern Peca** mapa;
 
 /* Declarei esta varável usando o 'extern' porque é uma variável global e e vai ser usada em diversos ficheiros.*/
-extern Jogador* jogador;
+extern Entidade* jogador;
+
+extern Entidade* monstro;
 
 #endif //DEBUG_BIBLIOTECA_H
