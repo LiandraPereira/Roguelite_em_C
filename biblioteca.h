@@ -81,6 +81,8 @@ Entidade* criaJogador (Posicao pos_inicial);
 
 void direcao (int tecla);
 
+void adicionaVida(Posicao nova_pos, int valor);
+
 void movimentaJogador (Posicao novaPos);
 
 void modificaEstadoPeca (Entidade* jogador);

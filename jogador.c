@@ -12,6 +12,7 @@ Entidade* criaJogador (Posicao start_pos)
     novoJogador->pos.x = start_pos.x;
     novoJogador->imagem = '@';
     novoJogador->cor = COLOR_PAIR(COR_VISTA);
+    novoJogador->vida = 100;
 
     return novoJogador;
 }
@@ -58,6 +59,11 @@ void movimentaJogador(Posicao nova_pos)
 {
     if (mapa[nova_pos.y][nova_pos.x].podeAndar)
     {
+        if (mapa[nova_pos.y][nova_pos.x].imagem == 'o')
+        {
+            adicionaVida(nova_pos,5);
+        } 
+        
         estadoNormalPeca(jogador);
 
         jogador->pos.y = nova_pos.y;
@@ -65,4 +71,17 @@ void movimentaJogador(Posicao nova_pos)
         
         modificaEstadoPeca(jogador);
     }
+}
+
+/**
+ * \brief Adiciona um certo valor a vida do jogador e retira a comida do mapa
+ * \param nova_pos, valor
+*/
+void adicionaVida(Posicao nova_pos, int valor){
+    if (jogador->vida == 100) return;
+
+    mapa[nova_pos.y][nova_pos.x].imagem = '.';
+    
+    if (jogador->vida + valor > 100) jogador->vida = 100;
+    else jogador->vida += valor;
 }

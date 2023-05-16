@@ -32,11 +32,19 @@ void desenhaMonstro (Entidade* monstro)
     mvaddch(monstro->pos.y, monstro->pos.x, monstro->imagem | monstro->cor);
 }
 
+void desenhaVida(Entidade* player)
+{
+    attron(A_BOLD);
+    mvprintw(0, 0, "Vida: %d", player->vida);
+    attroff(A_BOLD);
+}
+
 void desenhaAmbos()
 {   
     clear();
     desenhaMapa();
     desenhaJogador(jogador);
+    desenhaVida(jogador);
 }
 
 void desenhaMenu() {

@@ -18,6 +18,8 @@ Sala criaSala (int y, int x, int altura, int largura)
     novaSala.largura = largura;
     novaSala.centro.y = y + (int)(altura / 2);
     novaSala.centro.x = x + (int)(largura / 2);
+    novaSala.comida.y = rand() % (altura - 2) + y + 1;
+    novaSala.comida.x = rand() % (largura - 2) + x + 1;
 
     return novaSala;
 }
@@ -37,6 +39,7 @@ void adicionaSalaMapa (Sala novaSala)
             mapa[y][x].transparente = true;
         }
     }
+    mapa[novaSala.comida.y][novaSala.comida.x].imagem = 'o';
 }
 
 /**
