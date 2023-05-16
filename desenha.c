@@ -38,3 +38,25 @@ void desenhaAmbos()
     desenhaMapa();
     desenhaJogador(jogador);
 }
+
+void desenhaMenu() {
+    clear(); 
+    refresh(); 
+    int altura = 15;
+    int larg = 80;
+    int inicioY = (LINES - altura) / 2;
+    int inicioX = (COLS - larg) / 2;
+    
+    WINDOW *menuwin = newwin(altura, larg, inicioY, inicioX );
+    box(menuwin, 0, 0);
+    
+    mvwprintw(menuwin, 1, larg/2 -10, "Bem-vindo ao jogo!"); 
+    mvwprintw(menuwin, 4, 2, "-O objetivo do jogo é...");
+    mvwprintw(menuwin, 6, 2, "-Os caracteres 'M' são os Monstros...");
+    mvwprintw(menuwin, 8, 2, "-Os caracteres 'o' espalhados nas salas recuperam 5 de vida ao jogador...");
+    mvwprintw(menuwin, altura-2, larg/2 - 15, "Pressione Enter para iniciar.");
+    
+    wrefresh(menuwin); 
+    while (getch() != '\n'){}
+    delwin(menuwin); 
+}

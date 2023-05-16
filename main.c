@@ -18,6 +18,8 @@ int main()
     {   
         srand(time(NULL)); // Retorna uma semente diferente sempre que inicia-se o jogo.
 
+        desenhaMenu();
+
         mapa = criaMapaPecas(); // Cria o mapa
 
         pos_inicial = constroiSalasMapa(); // Posiciona o jogador na primeira sala criada

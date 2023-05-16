@@ -40,7 +40,7 @@ typedef struct
 } Entidade;
 
 /*Estrutura das peças do mapa. */
-typedef struct Célula 
+typedef struct Celula 
 {
     char imagem;
     int  cor;    
@@ -61,7 +61,7 @@ typedef struct
     
     Posicao pos;
     Posicao centro;
-
+    Posicao comida;
 } Sala;
 
 
@@ -72,6 +72,8 @@ bool cursesSetup();
 void gameLoop();
 
 void closeGame ();
+
+void desenhaMenu();
 
 /* Funcionalidades do Jogador */
 
