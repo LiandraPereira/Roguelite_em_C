@@ -1,26 +1,30 @@
 #include <math.h>
 #include "biblioteca.h"
 
-void modificaEstadoPeca (Jogador* jogador)
+/**
+ * \brief  DE VISAO
+*/
+
+void modificaEstadoPeca (Entidade* jogador)
 {
     int y, x, distance;
-    int RADIUS = 15;
-    Posicao target;
+    int RAIO = 15;
+    Posicao destino;
 
     mapa[jogador->pos.y][jogador->pos.x].visivel = true;
     mapa[jogador->pos.y][jogador->pos.x].vista = true;
 
-    for (y = jogador->pos.y - RADIUS; y < jogador->pos.y + RADIUS; y++)
+    for (y = jogador->pos.y - RAIO; y < jogador->pos.y + RAIO; y++)
     {
-        for (x = jogador->pos.x - RADIUS; x < jogador->pos.x + RADIUS; x++)
+        for (x = jogador->pos.x - RAIO; x < jogador->pos.x + RAIO; x++)
         {
-            target.y = y;
-            target.x = x;
-            distance = levaDistancia(jogador->pos, target);
+            destino.y = y;
+            destino.x = x;
+            distance = levaDistancia(jogador->pos, destino);
 
-            if (distance < RADIUS)
+            if (distance < RAIO)
             {
-                if (dentroMapa(y, x) && linhaVisao(jogador->pos, target))
+                if (posicaoDentroMapa(y, x) && linhaVisao(jogador->pos, destino))
                 {
                     mapa[y][x].visivel = true;
                     mapa[y][x].vista = true;
@@ -30,48 +34,67 @@ void modificaEstadoPeca (Jogador* jogador)
     }
 }
 
-void estadoNormalPeca(Jogador* jogador)
+/**
+ * \brief 
+*/
+void estadoNormalPeca(Entidade* jogador)
 {
     int y, x;
-    int RADIUS = 15;
+    int RAIO = 15;
 
-    for (y = jogador->pos.y - RADIUS; y < jogador->pos.y + RADIUS; y++)
+    for (y = jogador->pos.y - RAIO; y < jogador->pos.y + RAIO; y++)
     {
-        for (x = jogador->pos.x - RADIUS; x < jogador->pos.x + RADIUS; x++)
+        for (x = jogador->pos.x - RAIO; x < jogador->pos.x + RAIO; x++)
         {
-            if (dentroMapa(y, x))
+            if (posicaoDentroMapa(y, x))
                 mapa[y][x].visivel = false;
         }
     }
 }
 
-int levaDistancia(Posicao origin, Posicao target)
+/**
+ * \brief Calcula a distãncia euclidiana entre dois pontos, nomeadamente, posições no mapa.
+ * \param origem
+ * \param destino
+ * \return Distãncia entre dois pontos cartesianos.
+*/
+int levaDistancia(Posicao origem, Posicao destino)
 {
     double dy, dx;
     int distance;
-    dx = target.x - origin.x;
-    dy = target.y - origin.y;
+
+    dx = destino.x - origem.x;
+    dy = destino.y - origem.y;
+
     distance = floor(sqrt((dx * dx) + (dy * dy)));
 
     return distance;
 }
 
-bool dentroMapa(int y, int x)
+/**
+ * \brief Verifica se as coordenadas estão dentro do mapa.
+ * \param y
+ * \param x
+ * \return True ou False
+*/
+bool posicaoDentroMapa(int y, int x)
 {
     if ((0 < y && y < MAP_HEIGHT - 1) && (0 < x && x < MAP_WIDTH - 1))
     {
         return true;
     }
-
     return false;
 }
 
-bool linhaVisao(Posicao origin, Posicao target)
+/**
+ * ESTUDAR ALGORITMO DE BRESENHAM
+*/
+bool linhaVisao(Posicao origem, Posicao destino)
 {
     int t, x, y, abs_delta_x, abs_delta_y, sign_x, sign_y, delta_x, delta_y;
 
-    delta_x = origin.x - target.x;
-    delta_y = origin.y - target.y;
+    delta_x = origem.x - destino.x;
+    delta_y = origem.y - destino.y;
 
     abs_delta_x = abs(delta_x);
     abs_delta_y = abs(delta_y);
@@ -79,8 +102,8 @@ bool linhaVisao(Posicao origin, Posicao target)
     sign_x = conheceSinal(delta_x);
     sign_y = conheceSinal(delta_y);
 
-    x = target.x;
-    y = target.y;
+    x = destino.x;
+    y = destino.y;
 
     if (abs_delta_x > abs_delta_y)
     {
@@ -97,7 +120,7 @@ bool linhaVisao(Posicao origin, Posicao target)
             x += sign_x;
             t += abs_delta_y * 2;
 
-            if (x == origin.x && y == origin.y)
+            if (x == origem.x && y == origem.y)
             {
                 return true;
             }
@@ -121,7 +144,7 @@ bool linhaVisao(Posicao origin, Posicao target)
             y += sign_y;
             t += abs_delta_x * 2;
 
-            if (x == origin.x && y == origin.y)
+            if (x == origem.x && y == origem.y)
             {
                 return true;
             }
@@ -132,7 +155,13 @@ bool linhaVisao(Posicao origin, Posicao target)
     }
 }
 
-int conheceSinal(int a)
+/**
+ * \brief Verifica o sinal de um número.
+ * \param numero
+ * \return True ou False 
+*/
+int conheceSinal(int numero)
 {
-    return (a < 0) ? -1 : 1;
+    if (numero < 0)return -1;
+    else return 1;
 }
