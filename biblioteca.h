@@ -35,7 +35,7 @@ typedef struct
     char imagem;
     int cor;
     int vida;
-    //int combate;
+    int combate;
     int defende;
 } Entidade;
 
@@ -44,19 +44,24 @@ typedef struct Célula
 {
     char imagem;
     int  cor;    
+
     // Estado de cada peça
     bool podeAndar;
     bool transparente;
     bool visivel;
     bool vista;
+
 } Peca;
 
 /* Estrutura das salas do mapa */
-typedef struct {
+typedef struct 
+{
     int altura;
     int largura;
+    
     Posicao pos;
     Posicao centro;
+
 } Sala;
 
 
@@ -80,7 +85,7 @@ void modificaEstadoPeca (Entidade* jogador);
 
 void estadoNormalPeca (Entidade* jogador);
 
-bool dentroMapa (int y, int x);
+bool posicaoDentroMapa (int y, int x);
 
 int levaDistancia (Posicao posicao1, Posicao posicao2);
 
@@ -97,11 +102,11 @@ void desenhaMapa();
 
 void desenhaJogador (Entidade* jogador);
 
-void desenhaMonstro (Entidade* monst);
+void desenhaMonstro (Entidade* monstro);
 
 void desenhaAmbos();
 
-Posicao setupMap();
+Posicao constroiSalasMapa();
 
 Sala criaSala (int y, int x, int altura, int largura);
 
@@ -115,13 +120,19 @@ void freeMap();
 
 Entidade* criaMonstro (Posicao pos_inicial);
 
-Posicao posiciona_aleatorio (Posicao posicao);
+Entidade* adicionaMonstros();
 
-Posicao movimenta_frente (Posicao origem, Posicao destino);
+void adicionaMonstroSala (Sala sala);
 
-void movimentaMonstro();
+bool posicaoDentroSala (Posicao posicao, Sala sala);
 
-bool consegue_ver (Entidade* monstro, Entidade* jogador);
+Posicao posicao_aleatoria ();
+
+//Posicao movimenta_frente (Posicao origem, Posicao destino);
+
+//void movimentaMonstro(Posicao nova_pos, Entidade* monstro);
+
+//bool consegue_ver (Entidade* monstro, Entidade* jogador);
 
 
 /*Variáveis globais e constantes*/
@@ -134,7 +145,5 @@ extern Peca** mapa;
 
 /* Declarei esta varável usando o 'extern' porque é uma variável global e e vai ser usada em diversos ficheiros.*/
 extern Entidade* jogador;
-
-extern Entidade* monstro;
 
 #endif //DEBUG_BIBLIOTECA_H
