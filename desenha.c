@@ -1,6 +1,6 @@
 #include "biblioteca.h"
 
-void desenhaMapa(void)
+void desenhaMapa()
 {
     for (int y = 0; y < MAP_HEIGHT; y++)
     {
@@ -22,13 +22,18 @@ void desenhaMapa(void)
     }
 }
 
-void desenhaJogador(Jogador* jog)
+void desenhaJogador(Entidade* jog)
 {
     mvaddch(jog->pos.y, jog->pos.x, jog->imagem | jog->cor);
 }
 
-void desenhaAmbos(void)
-{
+void desenhaMonstro (Entidade* monstro)
+{   
+    mvaddch(monstro->pos.y, monstro->pos.x, monstro->imagem | monstro->cor);
+}
+
+void desenhaAmbos()
+{   
     clear();
     desenhaMapa();
     desenhaJogador(jogador);
