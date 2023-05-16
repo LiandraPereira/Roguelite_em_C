@@ -1,6 +1,6 @@
 #include "biblioteca.h"
 
-bool cursesSetup(void)
+bool cursesSetup()
 {
     initscr();
     noecho();
@@ -10,8 +10,9 @@ bool cursesSetup(void)
     {
         start_color();
 
-        init_pair(COR_VISIVEL, COLOR_WHITE, COLOR_BLACK);
-        init_pair(COR_VISTA, COLOR_GREEN, COLOR_BLACK);
+        init_pair(COR_VISIVEL,COLOR_WHITE, COLOR_BLACK);
+        init_pair(COR_VISTA, COLOR_YELLOW, COLOR_BLACK);
+        init_pair(COR_MONSTRO,COLOR_RED, COLOR_BLACK);
 
         return true;
     }
@@ -23,26 +24,28 @@ bool cursesSetup(void)
     }
 }
 
-void gameLoop(void)
+void gameLoop()
 {
-    int ch;
+    int tecla;
 
     modificaEstadoPeca(jogador);
     desenhaAmbos();
 
-    while((ch = getch()))
-    {
-        if (ch == 'q')
+    while((tecla = getch()))
+    {   
+        
+        if (tecla == 'q')
         {
             break;
         }
-
-        direcao(ch);
+        
+        direcao(tecla);
         desenhaAmbos();
+        
     }
 }
 
-void closeGame(void)
+void closeGame()
 {
     endwin();
     free(jogador);
