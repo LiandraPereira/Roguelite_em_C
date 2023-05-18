@@ -59,7 +59,7 @@ void desenhaJogo()
 void desenhaMenu() {
     clear(); 
     refresh(); 
-    int altura = 15;
+    int altura = 18;
     int larg = 80;
     int inicioY = (LINES - altura) / 2;
     int inicioX = (COLS - larg) / 2;
@@ -67,15 +67,20 @@ void desenhaMenu() {
     WINDOW *menuwin = newwin(altura, larg, inicioY, inicioX );
     box(menuwin, 0, 0);
     
-    mvwprintw(menuwin, 1, larg/2 -10, "Bem-vindo ao jogo!"); 
-    mvwprintw(menuwin, 4, 2, "-O objetivo do jogo é...");
-    mvwprintw(menuwin, 6, 2, "-Os caracteres 'M' são os Monstros...");
-    mvwprintw(menuwin, 8, 2, "-Os caracteres 'o' espalhados nas salas recuperam 5 de vida ao jogador...");
+    mvwprintw(menuwin, 1, larg/2 -6, "Roguelite"); 
+    mvwprintw(menuwin, 4, 2, "-O objetivo do jogo é matar todos os monstros sem morrer primeiro.");
+    mvwprintw(menuwin, 6, 2, "Controles:");
+    mvwprintw(menuwin, 7, 4, "8426/'wasd' - Move e ataca.");
+    mvwprintw(menuwin, 8, 4, "'q' - Sai do jogo.");
+    mvwprintw(menuwin, 10, 2, "Instruções:");
+    mvwprintw(menuwin, 11, 4, "@ - Jogador");
+    mvwprintw(menuwin, 12, 4, "M - Monstros");
+    mvwprintw(menuwin, 13, 4, "O - Comidas (Vida)");
     mvwprintw(menuwin, altura-2, larg/2 - 15, "Pressione Enter para iniciar.");
     
     wrefresh(menuwin); 
     while (getch() != '\n'){}
-    delwin(menuwin); 
+    delwin(menuwin);
 }
 
 void desenhaPainelInformacoes(){
