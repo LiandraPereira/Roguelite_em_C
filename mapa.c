@@ -2,10 +2,10 @@
 
 /**
  * \brief Cria todas as peças do mapa alocando memória para cada peça.
- * @return Apontador para vetor de apontadores de cada peça do mapa.  // Ainda por verificar
+ * @return Apontador para array de apontadores de cada peça do mapa.
 */
-Peca** criaMapaPecas() {
-
+Peca** criaMapaPecas()
+{
     Peca** pecas = calloc(MAP_HEIGHT, sizeof(Peca*));
 
     for (int y = 0; y < MAP_HEIGHT; y++) // y - comprimento do mapa
@@ -33,7 +33,7 @@ Peca** criaMapaPecas() {
 Posicao constroiSalasMapa(){
 
     int y, x, altura, largura;
-    int numero_salas = (rand() % 11) + 5; //O número máximo de salas é 15 --> Adicionar -- Entre 5 e 15
+    int numero_salas = (rand() % 16) + 5; //O número máximo de salas é 20 --> Adicionar -- Entre 5 e 15 11 -- 5 
     int numero_monstros = (rand() % 4) + 5; // Entre 3 á 8 monstros;
 
     Entidade *monstro = calloc(numero_monstros,sizeof(Entidade));
@@ -43,8 +43,8 @@ Posicao constroiSalasMapa(){
 
     for (int i = 0; i < numero_salas; i++)
     {
-        y = (rand() % (MAP_HEIGHT - 15)) + 1; // 10 -- Tem de estar dentro do mapa
-        x = (rand() % (MAP_WIDTH - 25)) + 1;  // 20 -- Também 
+        y = (rand() % (MAP_HEIGHT - 15)) + 5; // 10 -- Tem de estar dentro do mapa
+        x = (rand() % (MAP_WIDTH - 25)) + 5;  // 20 -- Também 
 
         altura = (rand() % 7) + 3; // Altura máxima é 9 - Entre 3 e 9
         largura = (rand() % 15) + 5; // Largura máxima é 19 - Entre 5 e 19
