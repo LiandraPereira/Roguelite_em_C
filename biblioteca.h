@@ -61,9 +61,11 @@ typedef struct
 {
     int altura;
     int largura;
+    
     Posicao pos;
     Posicao centro;
     Posicao comida;
+
     Entidade *monstro;
 
 } Sala;
@@ -135,6 +137,13 @@ void adicionaMonstroSala (Sala sala);
 bool posicaoDentroSala (Posicao posicao, Sala sala);
 
 Posicao posicao_aleatoria ();
+
+//Posicao movimenta_frente (Posicao origem, Posicao destino);
+
+//void movimentaMonstro(Posicao nova_pos, Entidade* monstro);
+
+//bool consegue_ver (Entidade* monstro, Entidade* jogador);
+
 
 /*Variáveis globais e constantes*/
 extern const int MAP_HEIGHT;
