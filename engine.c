@@ -47,7 +47,6 @@ void cicloJogo ()
         
         direcao(tecla);
         desenhaJogo();
-        
     }
 }
 

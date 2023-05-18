@@ -1,7 +1,7 @@
 #include "biblioteca.h"
 
-const int MAP_HEIGHT = 25; //50
-const int MAP_WIDTH = 100; // 150
+const int MAP_HEIGHT = 45; //50
+const int MAP_WIDTH = 120; // 150
 
 Entidade* jogador;
 Peca** mapa;
@@ -20,7 +20,7 @@ int main()
 
         desenhaMenu();
 
-        mapa = criaMapaPecas(); // Cria o mapa
+        mapa = criaMapaPecas(0,0); // Cria o mapa
 
         pos_inicial = constroiSalasMapa(); // Posiciona o jogador na primeira sala criada
 
