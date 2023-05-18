@@ -110,6 +110,8 @@ Peca** criaMapaPecas();
 
 void desenhaMapa();
 
+void desenhaPainelInformacoes();
+
 void desenhaJogador (Entidade* jogador);
 
 void desenhaMonstro (Entidade* monstro);

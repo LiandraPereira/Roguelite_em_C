@@ -43,24 +43,14 @@ void desenhaMonstro (Entidade* monstro)
 }
 
 /**
- * \brief Desenha o mapa no ecrã com auxílio da biblioteca ncurses.
-*/
-void desenhaVida(Entidade* player)
-{
-    attron(A_BOLD);
-    mvprintw(0, 0, "Vida: %d", player->vida);
-    attroff(A_BOLD);
-}
-
-/**
  * \brief Desenha o jogo.
 */
 void desenhaJogo()
 {   
     clear();
     desenhaMapa();
+    desenhaPainelInformacoes();
     desenhaJogador(jogador);
-    desenhaVida(jogador);
 }
 
 /**
@@ -86,4 +76,18 @@ void desenhaMenu() {
     wrefresh(menuwin); 
     while (getch() != '\n'){}
     delwin(menuwin); 
+}
+
+void desenhaPainelInformacoes(){
+    for (int y = 0; y < LINES; y++)
+    {
+        mvaddch(y, COLS - 32, '|');
+    }
+
+    attron(A_BOLD);
+    mvprintw(LINES/2 - 2, COLS - 26, "Vida do Jogador: %d", jogador->vida);
+    mvprintw(LINES/2, COLS - 26, "Inimigos Restantes: ");
+    mvprintw(LINES/2 + 2, COLS - 26, "Dano: %d", jogador->combate);
+    attroff(A_BOLD);  
+    refresh();  
 }
