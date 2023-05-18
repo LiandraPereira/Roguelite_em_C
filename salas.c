@@ -8,8 +8,9 @@
  * \param largura 
  * \return Sala 
 */
-Sala criaSala (int y, int x, int altura, int largura)
+Sala criaSala (int y, int x, int altura, int largura, Entidade *monstro)
 {
+
     Sala novaSala;
 
     novaSala.pos.y = y;
@@ -20,6 +21,7 @@ Sala criaSala (int y, int x, int altura, int largura)
     novaSala.centro.x = x + (int)(largura / 2);
     novaSala.comida.y = rand() % (altura - 2) + y + 1;
     novaSala.comida.x = rand() % (largura - 2) + x + 1;
+    novaSala.monstro = monstro;
 
     return novaSala;
 }
@@ -28,8 +30,9 @@ Sala criaSala (int y, int x, int altura, int largura)
  * \brief Adiciona uma sala no mapa com auxílio da posição da sala. 
  * \param novaSala 
 */
-void adicionaSalaMapa (Sala novaSala)
-{
+void adicionaSalaMapa (Sala novaSala, Entidade *monstro, int numero_mostros)
+{   
+    
     for (int y = novaSala.pos.y; y < novaSala.pos.y + novaSala.altura; y++)
     {
         for (int x = novaSala.pos.x; x < novaSala.pos.x + novaSala.largura; x++)
@@ -39,7 +42,29 @@ void adicionaSalaMapa (Sala novaSala)
             mapa[y][x].transparente = true;
         }
     }
+    
     mapa[novaSala.comida.y][novaSala.comida.x].imagem = 'o';
+
+    //mapa[novaSala.comida.y][novaSala.comida.x].cor = COLOR_PAIR(COR_COMIDA); --> Não funciona 
+    
+    monstro = calloc (numero_mostros, sizeof(Entidade)); //Array de n monstros 
+
+    novaSala.monstro = monstro;
+
+    for (int i = 0; i < numero_mostros; i++)
+    {   
+        int y = rand() % (novaSala.altura - 2) + novaSala.pos.y + 1;
+        int x = rand() % (novaSala.largura - 2) + novaSala.pos.x + 1;
+
+        novaSala.monstro[i].pos.y = y;
+        novaSala.monstro[i].pos.x = x;
+        novaSala.monstro[i].imagem = 'M';
+        //novaSala.monstro[i].cor = COLOR_PAIR(COR_MONSTRO); --> Não funciona 
+
+        /* Quando o mostro morrer ou mover-se a peça passa a ser '.' */
+        mapa[novaSala.monstro->pos.y][novaSala.monstro->pos.x].imagem = 'M';
+        
+    }
 }
 
 /**
