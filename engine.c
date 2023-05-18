@@ -1,6 +1,9 @@
 #include "biblioteca.h"
 
-bool cursesSetup()
+/**
+ * \brief 
+*/
+bool cursorSetup ()
 {
     initscr();
     noecho();
@@ -24,12 +27,15 @@ bool cursesSetup()
     }
 }
 
-void gameLoop()
+/**
+ * \brief
+*/
+void cicloJogo ()
 {
     int tecla;
 
     modificaEstadoPeca(jogador);
-    desenhaAmbos();
+    desenhaJogo();
 
     while((tecla = getch()))
     {   
@@ -40,12 +46,15 @@ void gameLoop()
         }
         
         direcao(tecla);
-        desenhaAmbos();
+        desenhaJogo();
         
     }
 }
 
-void closeGame()
+/**
+ * \brief 
+*/
+void fimJogo ()
 {
     endwin();
     free(jogador);

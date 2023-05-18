@@ -26,6 +26,7 @@ typedef struct Coordenadas
 {
     int y;
     int x;
+
 } Posicao;
 
 /* Estrutura do Jogador */
@@ -37,6 +38,7 @@ typedef struct
     int vida;
     int combate;
     int defende;
+
 } Entidade;
 
 /*Estrutura das peças do mapa. */
@@ -46,6 +48,7 @@ typedef struct Celula
     int  cor;    
 
     // Estado de cada peça
+
     bool podeAndar;
     bool transparente;
     bool visivel;
@@ -58,20 +61,21 @@ typedef struct
 {
     int altura;
     int largura;
-    
     Posicao pos;
     Posicao centro;
     Posicao comida;
+    Entidade *monstro;
+
 } Sala;
 
 
 /* Funcionalidades da biblioteca ncurses */
 
-bool cursesSetup();
+bool cursorSetup();
 
-void gameLoop();
+void cicloJogo();
 
-void closeGame ();
+void fimJogo ();
 
 void desenhaMenu();
 
@@ -108,13 +112,13 @@ void desenhaJogador (Entidade* jogador);
 
 void desenhaMonstro (Entidade* monstro);
 
-void desenhaAmbos();
+void desenhaJogo();
 
 Posicao constroiSalasMapa();
 
-Sala criaSala (int y, int x, int altura, int largura);
+Sala criaSala (int y, int x, int altura, int largura, Entidade *monstro);
 
-void adicionaSalaMapa (Sala sala);
+void adicionaSalaMapa (Sala sala, Entidade *monstro, int numero_monstros);
 
 void connectaCentroSalas (Posicao centro1, Posicao centro2);
 
@@ -131,13 +135,6 @@ void adicionaMonstroSala (Sala sala);
 bool posicaoDentroSala (Posicao posicao, Sala sala);
 
 Posicao posicao_aleatoria ();
-
-//Posicao movimenta_frente (Posicao origem, Posicao destino);
-
-//void movimentaMonstro(Posicao nova_pos, Entidade* monstro);
-
-//bool consegue_ver (Entidade* monstro, Entidade* jogador);
-
 
 /*Variáveis globais e constantes*/
 extern const int MAP_HEIGHT;

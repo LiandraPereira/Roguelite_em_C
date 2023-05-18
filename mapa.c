@@ -34,8 +34,11 @@ Posicao constroiSalasMapa(){
 
     int y, x, altura, largura;
     int numero_salas = (rand() % 11) + 5; //O número máximo de salas é 15 --> Adicionar -- Entre 5 e 15
+    int numero_monstros = (rand() % 4) + 5; // Entre 3 á 8 monstros;
 
-    Sala* salas = calloc(numero_salas, sizeof(Sala));
+    Entidade *monstro = calloc(numero_monstros,sizeof(Entidade));
+    Sala *salas = calloc(numero_salas, sizeof(Sala));
+
     Posicao pos_SalaInicial;
 
     for (int i = 0; i < numero_salas; i++)
@@ -46,8 +49,8 @@ Posicao constroiSalasMapa(){
         altura = (rand() % 7) + 3; // Altura máxima é 9 - Entre 3 e 9
         largura = (rand() % 15) + 5; // Largura máxima é 19 - Entre 5 e 19
 
-        salas[i] = criaSala(y, x, altura, largura);
-        adicionaSalaMapa(salas[i]);
+        salas[i] = criaSala(y, x, altura, largura, monstro);
+        adicionaSalaMapa(salas[i], monstro, numero_monstros);
         
         if (i > 0)
         {

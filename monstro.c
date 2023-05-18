@@ -3,18 +3,19 @@
 /**
  * \brief Cria a entidade Monstro numa determinada posição.
  * \return Apontador para a entidade Monstro. 
-*/
+*
 Entidade* criaMonstro (Posicao pos_inicial)
 {
     Entidade* novoMonstro = calloc(1, sizeof(Entidade));
-    novoMonstro->pos.y = pos_inicial.y;
+    novoMonstro->pos.y = pos_inicial.y;\
     novoMonstro->pos.x = pos_inicial.x;
     novoMonstro->imagem = 'M';
     novoMonstro->cor = COLOR_PAIR(COR_MONSTRO);
     return novoMonstro;
-}
+}*/ // --> Ainda por decidir a utilidade desta função
 
- //int numero_monstros = (rand() % 4) + 5; // Entre 3 á 8 monstros
+//int numero_monstros = (rand() % 4) + 5; // Entre 3 á 8 monstros
+
 
 Entidade* adicionaMonstros ()
 {

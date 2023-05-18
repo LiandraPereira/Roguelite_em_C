@@ -74,11 +74,13 @@ void movimentaJogador(Posicao nova_pos)
 }
 
 /**
- * \brief Adiciona um certo valor a vida do jogador e retira a comida do mapa
- * \param nova_pos, valor
+ * \brief Adiciona um certo valor a vida do jogador e retira a comida do mapa.
+ * \param nova_pos
+ * \param valor 
 */
-void adicionaVida(Posicao nova_pos, int valor){
-    if (jogador->vida == 100) return;
+void adicionaVida(Posicao nova_pos, int valor)
+{
+    if (jogador->vida == 100) return; // Não faz nada 
 
     mapa[nova_pos.y][nova_pos.x].imagem = '.';
     

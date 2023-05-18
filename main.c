@@ -12,7 +12,7 @@ int main()
     Posicao pos_inicial;
     bool compatibleTerminal;
 
-    compatibleTerminal = cursesSetup();
+    compatibleTerminal = cursorSetup();
 
     if (compatibleTerminal)
     {   
@@ -26,9 +26,9 @@ int main()
 
         jogador = criaJogador(pos_inicial); //Desenha o jogador no mapa
 
-        gameLoop();
+        cicloJogo();
 
-        closeGame();
+        fimJogo();
     }
     else
     {

@@ -1,5 +1,9 @@
 #include "biblioteca.h"
 
+
+/**
+ * \brief Desenha o mapa.
+*/
 void desenhaMapa()
 {
     for (int y = 0; y < MAP_HEIGHT; y++)
@@ -22,16 +26,25 @@ void desenhaMapa()
     }
 }
 
+/**
+ * \brief Desenha o jogador.
+*/
 void desenhaJogador(Entidade* jog)
 {
     mvaddch(jog->pos.y, jog->pos.x, jog->imagem | jog->cor);
 }
 
+/**
+ * \brief Desenha o monstro. 
+*/
 void desenhaMonstro (Entidade* monstro)
 {   
     mvaddch(monstro->pos.y, monstro->pos.x, monstro->imagem | monstro->cor);
 }
 
+/**
+ * \brief Desenha o mapa no ecrã com auxílio da biblioteca ncurses.
+*/
 void desenhaVida(Entidade* player)
 {
     attron(A_BOLD);
@@ -39,7 +52,10 @@ void desenhaVida(Entidade* player)
     attroff(A_BOLD);
 }
 
-void desenhaAmbos()
+/**
+ * \brief Desenha o jogo.
+*/
+void desenhaJogo()
 {   
     clear();
     desenhaMapa();
@@ -47,6 +63,9 @@ void desenhaAmbos()
     desenhaVida(jogador);
 }
 
+/**
+ * \brief 
+*/
 void desenhaMenu() {
     clear(); 
     refresh(); 
