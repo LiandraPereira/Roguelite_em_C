@@ -6,4 +6,4 @@ jogo: main.c engine.c desenha.c salas.c mapa.c visao.c jogador.c
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
 
 clean:
-	rm jogo *.o
+	rm -f jogo *.o
