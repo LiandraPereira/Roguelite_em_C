@@ -1,6 +1,3 @@
-//
-// Created by liandrapereira on 27-04-2023.
-//
 
 #ifndef DEBUG_BIBLIOTECA_H
 #define DEBUG_BIBLIOTECA_H
@@ -22,53 +19,50 @@
 #define V_JOGADOR 2
 
 /* Estrutura das coordenadas do jogador */
-typedef struct Coordenadas
+typedef struct Posição
 {
     int y;
     int x;
-
-} Posicao;
+} POSICAO;
 
 /* Estrutura do Jogador */
-typedef struct 
+typedef struct Entidade 
 {
-    Posicao pos;
+    POSICAO pos;
     char imagem;
     int cor;
     int vida;
     int combate;
     int defende;
 
-} Entidade;
+} ENTIDADE;
 
 /*Estrutura das peças do mapa. */
-typedef struct Celula 
+typedef struct Peça
 {
     char imagem;
     int  cor;    
 
-    // Estado de cada peça
-
     bool podeAndar;
     bool transparente;
     bool visivel;
-    bool vista;
+    bool visto;
 
-} Peca;
+} PECA;
 
-/* Estrutura das salas do mapa */
-typedef struct 
+/* Estrutura das SALAs do mapa */
+typedef struct Sala
 {
     int altura;
     int largura;
     
-    Posicao pos;
-    Posicao centro;
-    Posicao comida;
+    POSICAO pos;
+    POSICAO centro;
+    POSICAO comida;
 
-    Entidade *monstro;
+    ENTIDADE *monstro;
 
-} Sala;
+} SALA;
 
 
 /* Funcionalidades da biblioteca ncurses */
@@ -83,68 +77,68 @@ void desenhaMenu();
 
 /* Funcionalidades do Jogador */
 
-Entidade* criaJogador (Posicao pos_inicial);
+ENTIDADE* criaJogador (POSICAO pos_inicial);
 
 void direcao (int tecla);
 
-void adicionaVida(Posicao nova_pos, int valor);
+void adicionaVida(POSICAO nova_pos, int valor);
 
-void movimentaJogador (Posicao novaPos);
+void movimentaJogador (POSICAO novaPos);
 
-void modificaEstadoPeca (Entidade* jogador);
+void modificaEstadoPeca (ENTIDADE* jogador);
 
-void estadoNormalPeca (Entidade* jogador);
+void estadoNormalPeca (ENTIDADE* jogador);
 
 bool posicaoDentroMapa (int y, int x);
 
-int levaDistancia (Posicao posicao1, Posicao posicao2);
+int levaDistancia (POSICAO POSICAO1, POSICAO POSICAO2);
 
-bool linhaVisao (Posicao origin, Posicao target);
+bool linhaVisao (POSICAO origin, POSICAO target);
 
 int conheceSinal (int a);
 
 
 /* Funcionalidades do Mapa */
 
-Peca** criaMapaPecas();
+PECA** criaMapaPecas();
 
 void desenhaMapa();
 
 void desenhaPainelInformacoes();
 
-void desenhaJogador (Entidade* jogador);
+void desenhaJogador (ENTIDADE* jogador);
 
-void desenhaMonstro (Entidade* monstro);
+void desenhaMonstro (ENTIDADE* monstro);
 
 void desenhaJogo();
 
-Posicao constroiSalasMapa();
+POSICAO constroiSalasMapa();
 
-Sala criaSala (int y, int x, int altura, int largura, Entidade *monstro);
+SALA criaSala (int y, int x, int altura, int largura, ENTIDADE *monstro);
 
-void adicionaSalaMapa (Sala sala, Entidade *monstro, int numero_monstros);
+void adicionaSalaMapa (SALA SALA, ENTIDADE *monstro, int numero_monstros);
 
-void connectaCentroSalas (Posicao centro1, Posicao centro2);
+void connectaCentroSalas (POSICAO centro1, POSICAO centro2);
 
 void freeMap();
 
 /* Funcionalidades do Monstro */
 
-Entidade* criaMonstro (Posicao pos_inicial);
+ENTIDADE* criaMonstro (POSICAO pos_inicial);
 
-Entidade* adicionaMonstros();
+ENTIDADE* adicionaMonstros();
 
-void adicionaMonstroSala (Sala sala);
+void adicionaMonstroSALA (SALA SALA);
 
-bool posicaoDentroSala (Posicao posicao, Sala sala);
+bool POSICAODentroSALA (POSICAO POSICAO, SALA SALA);
 
-Posicao posicao_aleatoria ();
+POSICAO POSICAO_aleatoria ();
 
-//Posicao movimenta_frente (Posicao origem, Posicao destino);
+//POSICAO movimenta_frente (POSICAO origem, POSICAO destino);
 
-//void movimentaMonstro(Posicao nova_pos, Entidade* monstro);
+//void movimentaMonstro(POSICAO nova_pos, ENTIDADE* monstro);
 
-//bool consegue_ver (Entidade* monstro, Entidade* jogador);
+//bool consegue_ver (ENTIDADE* monstro, ENTIDADE* jogador);
 
 
 /*Variáveis globais e constantes*/
@@ -153,9 +147,9 @@ extern const int MAP_HEIGHT;
 extern const int MAP_WIDTH;
 
 /*Variável global*/
-extern Peca** mapa;
+extern PECA** mapa;
 
 /* Declarei esta varável usando o 'extern' porque é uma variável global e e vai ser usada em diversos ficheiros.*/
-extern Entidade* jogador;
+extern ENTIDADE* jogador;
 
 #endif //DEBUG_BIBLIOTECA_H

@@ -14,7 +14,7 @@ void desenhaMapa()
             {
                 mvaddch(y, x, mapa[y][x].imagem | mapa[y][x].imagem);
             }
-            else if (mapa[y][x].vista)
+            else if (mapa[y][x].visto)
             {
                 mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_VISTA));
             }
@@ -29,7 +29,7 @@ void desenhaMapa()
 /**
  * \brief Desenha o jogador.
 */
-void desenhaJogador(Entidade* jog)
+void desenhaJogador(ENTIDADE* jog)
 {
     mvaddch(jog->pos.y, jog->pos.x, jog->imagem | jog->cor);
 }
@@ -37,7 +37,7 @@ void desenhaJogador(Entidade* jog)
 /**
  * \brief Desenha o monstro. 
 */
-void desenhaMonstro (Entidade* monstro)
+void desenhaMonstro (ENTIDADE* monstro)
 {   
     mvaddch(monstro->pos.y, monstro->pos.x, monstro->imagem | monstro->cor);
 }

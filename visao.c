@@ -5,14 +5,14 @@
  * \brief  DE VISAO
 */
 
-void modificaEstadoPeca (Entidade* jogador)
+void modificaEstadoPeca (ENTIDADE * jogador)
 {
     int y, x, distance;
-    int RAIO = 15;
-    Posicao destino;
+    int RAIO = 8;
+    POSICAO destino;
 
     mapa[jogador->pos.y][jogador->pos.x].visivel = true;
-    mapa[jogador->pos.y][jogador->pos.x].vista = true;
+    mapa[jogador->pos.y][jogador->pos.x].visto = true;
 
     for (y = jogador->pos.y - RAIO; y < jogador->pos.y + RAIO; y++)
     {
@@ -27,7 +27,7 @@ void modificaEstadoPeca (Entidade* jogador)
                 if (posicaoDentroMapa(y, x) && linhaVisao(jogador->pos, destino))
                 {
                     mapa[y][x].visivel = true;
-                    mapa[y][x].vista = true;
+                    mapa[y][x].visto = true;
                 }
             }
         }
@@ -37,10 +37,10 @@ void modificaEstadoPeca (Entidade* jogador)
 /**
  * \brief 
 */
-void estadoNormalPeca(Entidade* jogador)
+void estadoNormalPeca(ENTIDADE * jogador)
 {
     int y, x;
-    int RAIO = 15;
+    int RAIO = 8;
 
     for (y = jogador->pos.y - RAIO; y < jogador->pos.y + RAIO; y++)
     {
@@ -58,7 +58,7 @@ void estadoNormalPeca(Entidade* jogador)
  * \param destino
  * \return Distãncia entre dois pontos cartesianos.
 */
-int levaDistancia(Posicao origem, Posicao destino)
+int levaDistancia(POSICAO origem, POSICAO destino)
 {
     double dy, dx;
     int distance;
@@ -89,7 +89,7 @@ bool posicaoDentroMapa(int y, int x)
 /**
  * ESTUDAR ALGORITMO DE BRESENHAM
 */
-bool linhaVisao(Posicao origem, Posicao destino)
+bool linhaVisao(POSICAO origem, POSICAO destino)
 {
     int t, x, y, abs_delta_x, abs_delta_y, sign_x, sign_y, delta_x, delta_y;
 

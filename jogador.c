@@ -1,12 +1,29 @@
 #include "biblioteca.h"
 
 /**
- * \brief Cria a entidade Jogador numa determinada posição.
- * \return Apontador para a entidade Jogador. 
+ * @file Jogador.c 
+ * 
+ * Jogador 
 */
-Entidade* criaJogador (Posicao start_pos)
+/**
+ * Cria a ENTIDADE Jogador numa determinada posição.
+ * Apontador para a ENTIDADE Jogador. 
+*/
+
+/**
+ * Breve descrição da função.
+ *
+ * Descrição mais detalhada da função, explicando o que ela faz, quais são os
+ * parâmetros de entrada, o valor de retorno e possíveis exceções.
+ *
+ * @param parametro1 Descrição do parâmetro 1.
+ * @param parametro2 Descrição do parâmetro 2.
+ * @return Descrição do valor de retorno.
+*/
+
+ENTIDADE* criaJogador (POSICAO start_pos)
 {
-    Entidade* novoJogador = calloc(1, sizeof(Entidade));
+    ENTIDADE* novoJogador = calloc(1, sizeof(ENTIDADE));
 
     novoJogador->pos.y = start_pos.y;
     novoJogador->pos.x = start_pos.x;
@@ -24,7 +41,7 @@ Entidade* criaJogador (Posicao start_pos)
 */
 void direcao (int tecla)
 {
-    Posicao nova_pos = { jogador->pos.y, jogador->pos.x };
+    POSICAO nova_pos = { jogador->pos.y, jogador->pos.x };
 
     switch(tecla)
     {
@@ -53,9 +70,9 @@ void direcao (int tecla)
 
 /**
  * \brief Movimenta o Jogador para uma determinada posição. 
- * \param nova_pos
+ * @param nova_pos
 */
-void movimentaJogador(Posicao nova_pos)
+void movimentaJogador(POSICAO nova_pos)
 {
     if (mapa[nova_pos.y][nova_pos.x].podeAndar)
     {
@@ -78,7 +95,7 @@ void movimentaJogador(Posicao nova_pos)
  * \param nova_pos
  * \param valor 
 */
-void adicionaVida(Posicao nova_pos, int valor)
+void adicionaVida(POSICAO nova_pos, int valor)
 {
     if (jogador->vida == 100) return; // Não faz nada 
 

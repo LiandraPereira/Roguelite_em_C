@@ -8,10 +8,9 @@
  * \param largura 
  * \return Sala 
 */
-Sala criaSala (int y, int x, int altura, int largura, Entidade *monstro)
+SALA criaSala (int y, int x, int altura, int largura, ENTIDADE *monstro)
 {
-
-    Sala novaSala;
+    SALA novaSala;
 
     novaSala.pos.y = y;
     novaSala.pos.x = x;
@@ -30,7 +29,7 @@ Sala criaSala (int y, int x, int altura, int largura, Entidade *monstro)
  * \brief Adiciona uma sala no mapa com auxílio da posição da sala. 
  * \param novaSala 
 */
-void adicionaSalaMapa (Sala novaSala, Entidade *monstro, int numero_mostros)
+void adicionaSalaMapa (SALA novaSala, ENTIDADE *monstro, int numero_mostros)
 {   
     
     for (int y = novaSala.pos.y; y < novaSala.pos.y + novaSala.altura; y++)
@@ -47,7 +46,7 @@ void adicionaSalaMapa (Sala novaSala, Entidade *monstro, int numero_mostros)
 
     //mapa[novaSala.comida.y][novaSala.comida.x].cor = COLOR_PAIR(COR_COMIDA); --> Não funciona 
     
-    monstro = calloc (numero_mostros, sizeof(Entidade)); //Array de n monstros 
+    monstro = calloc (numero_mostros, sizeof(ENTIDADE)); //Array de n monstros
 
     novaSala.monstro = monstro;
 
@@ -72,9 +71,9 @@ void adicionaSalaMapa (Sala novaSala, Entidade *monstro, int numero_mostros)
  * \param centro1
  * \param centro2 
 */
-void connectaCentroSalas (Posicao centro1, Posicao centro2)
+void connectaCentroSalas (POSICAO centro1, POSICAO centro2)
 {
-    Posicao novaPos;
+    POSICAO novaPos;
     novaPos.x = centro1.x;
     novaPos.y = centro1.y;
 
