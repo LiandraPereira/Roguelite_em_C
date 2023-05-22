@@ -30,6 +30,7 @@ ENTIDADE* criaJogador (POSICAO start_pos)
     novoJogador->imagem = '@';
     novoJogador->cor = COLOR_PAIR(COR_VISTA);
     novoJogador->vida = 100;
+    novoJogador->movimentos = 0;
 
     return novoJogador;
 }
@@ -48,18 +49,22 @@ void direcao (int tecla)
         //move up
         case 'w':
             nova_pos.y--;
+            jogador->movimentos++;
             break;
             //move down
         case 's':
             nova_pos.y++;
+            jogador->movimentos++;
             break;
             //move left
         case 'a':
             nova_pos.x--;
+            jogador->movimentos++;
             break;
             //move right
         case 'd':
             nova_pos.x++;
+            jogador->movimentos++;
             break;
         default:
             break;

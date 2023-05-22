@@ -32,6 +32,8 @@ bool cursorSetup ()
 */
 void cicloJogo ()
 {
+    
+    
     int tecla;
 
     modificaEstadoPeca(jogador);
@@ -47,14 +49,29 @@ void cicloJogo ()
         
         direcao(tecla);
         desenhaJogo();
+        
     }
+    desenhaMenuFinal();    
+}
+
+
+void reiniciaJogo()
+{
+    free(mapa);
+    free(jogador);
+    mapa = criaMapaPecas(); //Cria novo Mapa
+    POSICAO pos_inicial = constroiSalasMapa(); 
+    jogador = criaJogador(pos_inicial); //Cria novo Jogador
+    cicloJogo();
 }
 
 /**
  * \brief 
 */
 void fimJogo ()
-{
+{ 
     endwin();
+    free(mapa);
     free(jogador);
+    exit(0);
 }

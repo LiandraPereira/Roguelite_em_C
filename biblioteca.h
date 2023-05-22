@@ -19,7 +19,7 @@
 #define V_JOGADOR 2
 
 /* Estrutura das coordenadas do jogador */
-typedef struct Posição
+typedef struct Posicao
 {
     int y;
     int x;
@@ -34,11 +34,11 @@ typedef struct Entidade
     int vida;
     int combate;
     int defende;
-
+    int movimentos;
 } ENTIDADE;
 
 /*Estrutura das peças do mapa. */
-typedef struct Peça
+typedef struct Peca
 {
     char imagem;
     int  cor;    
@@ -70,6 +70,8 @@ typedef struct Sala
 bool cursorSetup();
 
 void cicloJogo();
+
+void reiniciaJogo();
 
 void fimJogo ();
 
@@ -105,6 +107,8 @@ PECA** criaMapaPecas();
 void desenhaMapa();
 
 void desenhaPainelInformacoes();
+
+void desenhaMenuFinal();
 
 void desenhaJogador (ENTIDADE* jogador);
 
