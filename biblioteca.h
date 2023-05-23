@@ -128,21 +128,9 @@ void freeMap();
 
 /* Funcionalidades do Monstro */
 
-ENTIDADE* criaMonstro (POSICAO pos_inicial);
+ENTIDADE criaMonstro (int y, int x, ENTIDADE monstro);
 
-ENTIDADE* adicionaMonstros();
-
-void adicionaMonstroSALA (SALA SALA);
-
-bool POSICAODentroSALA (POSICAO POSICAO, SALA SALA);
-
-POSICAO POSICAO_aleatoria ();
-
-//POSICAO movimenta_frente (POSICAO origem, POSICAO destino);
-
-//void movimentaMonstro(POSICAO nova_pos, ENTIDADE* monstro);
-
-//bool consegue_ver (ENTIDADE* monstro, ENTIDADE* jogador);
+void adicionaMonstroSala (SALA novaSala);
 
 
 /*Variáveis globais e constantes*/
