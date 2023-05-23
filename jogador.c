@@ -44,30 +44,27 @@ void direcao (int tecla)
 {
     POSICAO nova_pos = { jogador->pos.y, jogador->pos.x };
 
-    switch(tecla)
-    {
-        //move up
-        case 'w':
-            nova_pos.y--;
-            jogador->movimentos++;
-            break;
-            //move down
-        case 's':
-            nova_pos.y++;
-            jogador->movimentos++;
-            break;
-            //move left
-        case 'a':
-            nova_pos.x--;
-            jogador->movimentos++;
-            break;
-            //move right
-        case 'd':
-            nova_pos.x++;
-            jogador->movimentos++;
-            break;
-        default:
-            break;
+     // Move up 
+    if (tecla == 'w' || tecla == '8'){
+        nova_pos.y--;
+        jogador->movimentos++;
+    }    
+    // Move down 
+    else if (tecla == 's' ||tecla == '2'){
+        nova_pos.y++;
+        jogador->movimentos++;
+    }
+    // Move left 
+    else if (tecla == 'a' || tecla =='4'){
+        nova_pos.x--;
+        jogador->movimentos++;
+    }
+    else if (tecla == 'd' || tecla == '6'){
+        nova_pos.x++;
+        jogador->movimentos++;
+    }
+    // Move right 
+    else if (tecla == 'q' || tecla == '\n'){
     }
 
     movimentaJogador(nova_pos);
