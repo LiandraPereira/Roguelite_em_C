@@ -55,7 +55,8 @@ typedef struct Sala
 {
     int altura;
     int largura;
-    
+    int monstros;
+
     POSICAO pos;
     POSICAO centro;
     POSICAO comida;
