@@ -23,7 +23,7 @@ void adicionaMonstroSala (SALA novaSala)
 {   
     int y, x;
 
-    for (int i = 0; i < novaSala.monstro; i++)
+    for (int i = 0; i < novaSala.monstros; i++)
     {   
         y = rand() % (novaSala.altura - 2) + novaSala.pos.y + 1;
         x = rand() % (novaSala.largura - 2) + novaSala.pos.x + 1;
