@@ -119,9 +119,9 @@ void desenhaJogo();
 
 POSICAO constroiSalasMapa();
 
-SALA criaSala (int y, int x, int altura, int largura, ENTIDADE *monstro);
+SALA criaSala (int y, int x, int altura, int largura, int numero_monstros);
 
-void adicionaSalaMapa (SALA SALA, ENTIDADE *monstro, int numero_monstros);
+void adicionaSalaMapa (SALA novaSala);
 
 void connectaCentroSalas (POSICAO centro1, POSICAO centro2);
 

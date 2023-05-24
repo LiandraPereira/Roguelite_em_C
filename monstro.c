@@ -20,13 +20,11 @@ ENTIDADE criaMonstro (int y, int x, ENTIDADE monstro)
  * @return novaSala 
 */
 void adicionaMonstroSala (SALA novaSala)
-{   
-    int y, x;
-
+{  
     for (int i = 0; i < novaSala.monstros; i++)
     {   
-        y = rand() % (novaSala.altura - 2) + novaSala.pos.y + 1;
-        x = rand() % (novaSala.largura - 2) + novaSala.pos.x + 1;
+        int y = rand() % (novaSala.altura - 2) + novaSala.pos.y + 1;
+        int x = rand() % (novaSala.largura - 2) + novaSala.pos.x + 1;
 
         novaSala.monstro[i] = criaMonstro(y,x,novaSala.monstro[i]);
         mapa[novaSala.monstro->pos.y][novaSala.monstro->pos.x].imagem = 'M';
