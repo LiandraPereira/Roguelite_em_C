@@ -29,7 +29,7 @@ ENTIDADE* criaJogador (POSICAO start_pos)
     novoJogador->pos.x = start_pos.x;
     novoJogador->imagem = '@';
     novoJogador->cor = COLOR_PAIR(COR_VISTA);
-    novoJogador->vida = 100;
+    novoJogador->vida = 40;
     novoJogador->movimentos = 0;
 
     return novoJogador;
@@ -81,7 +81,13 @@ void movimentaJogador(POSICAO nova_pos)
         if (mapa[nova_pos.y][nova_pos.x].imagem == 'o')
         {
             adicionaVida(nova_pos,5);
-        } 
+            //desenhaMensagemTemporaria("Ganhou 5 de Vida", 2000);
+        }
+        if (mapa[nova_pos.y][nova_pos.x].imagem == '^')
+        {
+            pisouArmadilha(nova_pos,10);
+            //desenhaMensagemTemporaria("Perdeu 10 de Vida", 2000);
+        }  
         
         estadoNormalPeca(jogador);
 
@@ -105,4 +111,20 @@ void adicionaVida(POSICAO nova_pos, int valor)
     
     if (jogador->vida + valor > 100) jogador->vida = 100;
     else jogador->vida += valor;
+}
+
+/**
+ * \brief Diminui a vida do jogador e verifica se morreu, caso pise numa armadilha
+ * \param nova_pos
+ * \param valor 
+*/
+void pisouArmadilha(POSICAO nova_pos, int valor){
+    jogador->vida = jogador->vida - valor;
+    mapa[nova_pos.y][nova_pos.x].imagem = '.';
+    if(jogador->vida <= 0) //MORREU ?
+    {
+        desenhaMenuFinal();
+        return;
+    }
+    
 }

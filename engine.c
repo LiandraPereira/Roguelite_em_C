@@ -16,6 +16,8 @@ bool cursorSetup ()
         init_pair(COR_VISIVEL,COLOR_WHITE, COLOR_BLACK);
         init_pair(COR_VISTA, COLOR_YELLOW, COLOR_BLACK);
         init_pair(COR_MONSTRO,COLOR_RED, COLOR_BLACK);
+        init_pair(COR_COMIDA,COLOR_GREEN, COLOR_BLACK);
+        init_pair(COR_ARMADILHA,COLOR_RED, COLOR_BLACK);
 
         return true;
     }

@@ -12,7 +12,23 @@ void desenhaMapa()
         {
             if (mapa[y][x].visivel)
             {
-                mvaddch(y, x, mapa[y][x].imagem | mapa[y][x].imagem);
+                if (mapa[y][x].imagem == 'o') //Comida
+                {
+                    mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_COMIDA));
+                }
+                else if (mapa[y][x].imagem == '^') //Armadilha
+                {
+                    mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_ARMADILHA));
+                }
+                /*
+                else if (mapa[y][x].imagem == 'M') //Monstro
+                {
+                    mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_MONSTRO));
+                } */
+                else
+                {
+                    mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_VISIVEL));
+                }
             }
             else if (mapa[y][x].visto)
             {
@@ -54,7 +70,7 @@ void desenhaJogo()
 }
 
 /**
- * \brief 
+ * \brief Desenha o Menu Inicial quando o jogo é iniciado
 */
 void desenhaMenu() {
     clear(); 
@@ -137,3 +153,21 @@ void desenhaMenuFinal()
         
     }
 }
+
+//TODO usar funcao usleep para apagar msg
+/*
+void desenhaMensagemTemporaria(char *mensagem, int duracao)
+{
+    int altura = 3;
+    int largura = strlen(mensagem) + 2;
+    int inicioY = 1;
+    int inicioX = COLS - 26;
+    WINDOW *win = newwin(altura, largura, inicioY, inicioX);
+    attron(A_BOLD);
+    mvwprintw(win, 1, 1, mensagem);
+    attroff(A_BOLD);
+    wrefresh(win);
+    napms(duracao); //use usleep instead
+    delwin(win);
+}
+*/

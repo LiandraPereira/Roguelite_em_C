@@ -7,12 +7,14 @@
 #include <time.h>
 #include <math.h>
 #include <stdbool.h>
+#include <string.h>
 
 /* CORES */
 #define COR_VISIVEL 7
 #define COR_VISTA 3
 #define COR_MONSTRO 1
 #define COR_COMIDA 2 
+#define COR_ARMADILHA 4
 
 /* Velocidades */
 #define V_MONSTRO 1 // velocidade do monstro
@@ -24,6 +26,19 @@ typedef struct Posicao
     int y;
     int x;
 } POSICAO;
+
+/*Estrutura para as comidas*/
+typedef struct comida{
+    POSICAO posicao;
+    char imagem;
+    int cor;
+} COMIDA;
+
+typedef struct armadilha{
+    POSICAO posicao;
+    char imagem;
+    int cor;
+} ARMADILHA;
 
 /* Estrutura do Jogador */
 typedef struct Entidade 
@@ -42,7 +57,6 @@ typedef struct Peca
 {
     char imagem;
     int  cor;    
-
     bool podeAndar;
     bool transparente;
     bool visivel;
@@ -78,6 +92,8 @@ void fimJogo ();
 
 void desenhaMenu();
 
+void desenhaMensagemTemporaria(char *mensagem, int duracao);
+
 /* Funcionalidades do Jogador */
 
 ENTIDADE* criaJogador (POSICAO pos_inicial);
@@ -85,6 +101,8 @@ ENTIDADE* criaJogador (POSICAO pos_inicial);
 void direcao (int tecla);
 
 void adicionaVida(POSICAO nova_pos, int valor);
+
+void pisouArmadilha(POSICAO nova_pos, int dano);
 
 void movimentaJogador (POSICAO novaPos);
 
@@ -126,6 +144,10 @@ void adicionaSalaMapa (SALA novaSala);
 void connectaCentroSalas (POSICAO centro1, POSICAO centro2);
 
 void freeMap();
+
+COMIDA* criaComida(SALA novaSala);
+
+ARMADILHA* criaArmadilha (SALA novaSala);
 
 /* Funcionalidades do Monstro */
 

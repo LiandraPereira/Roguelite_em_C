@@ -20,8 +20,6 @@ SALA criaSala (int y, int x, int altura, int largura, int numero_monstros)
     novaSala.largura = largura;
     novaSala.centro.y = y + (int)(altura / 2);
     novaSala.centro.x = x + (int)(largura / 2);
-    novaSala.comida.y = rand() % (altura - 2) + y + 1;
-    novaSala.comida.x = rand() % (largura - 2) + x + 1;
     novaSala.monstros = numero_monstros;
     novaSala.monstro = monstro; 
 
@@ -45,7 +43,17 @@ void adicionaSalaMapa (SALA novaSala)
         }
     }
     
-    mapa[novaSala.comida.y][novaSala.comida.x].imagem = 'o';
+    COMIDA *novaComida = criaComida(novaSala);
+    int y = novaComida->posicao.y, x = novaComida->posicao.x; 
+    mapa[y][x].imagem = novaComida->imagem;
+
+    ARMADILHA* novaArmadilha = criaArmadilha(novaSala); 
+    if (novaArmadilha != NULL)
+    {
+        int y = novaArmadilha->posicao.y, x = novaArmadilha->posicao.x; 
+        mapa[y][x].imagem = novaArmadilha->imagem;
+        mapa[y][x].cor = novaArmadilha->cor;  
+    }
 
 }
 
@@ -77,4 +85,40 @@ void connectaCentroSalas (POSICAO centro1, POSICAO centro2)
         mapa[novaPos.y][novaPos.x].podeAndar = true;
         mapa[novaPos.y][novaPos.x].transparente = true;
     }
+}
+
+/**
+ * \brief Função que cria comidas espalhadas pelo mapa
+ * \param novaSala 
+*/
+COMIDA* criaComida(SALA novaSala){
+    COMIDA* comida = malloc(sizeof(comida));
+    comida->imagem = 'o';
+    int posY, posX;
+    do {
+        posY = (rand() % (novaSala.altura)) + novaSala.pos.y;
+        posX = (rand() % (novaSala.largura)) + novaSala.pos.x;
+    } while (!mapa[posY][posX].podeAndar);
+    comida->posicao.x = posX;
+    comida->posicao.y = posY;
+    return comida;
+}
+
+ARMADILHA* criaArmadilha (SALA novaSala)
+{
+    ARMADILHA* armadilha = malloc(sizeof(armadilha));
+    armadilha->imagem = '^';
+    int chance = rand() % 10; //60% de chance de nascer de spawn
+    if (chance <= 5)
+    {
+        int posY, posX;
+        do {
+            posY = (rand() % (novaSala.altura)) + novaSala.pos.y;
+            posX = (rand() % (novaSala.largura)) + novaSala.pos.x;
+        } while (!mapa[posY][posX].podeAndar);
+        armadilha->posicao.x = posX;
+        armadilha->posicao.y = posY;
+        return armadilha;
+    }
+    else return NULL;  
 }
