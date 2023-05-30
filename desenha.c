@@ -1,6 +1,5 @@
 #include "biblioteca.h"
 
-
 /**
  * \brief Desenha o mapa.
 */
@@ -20,11 +19,10 @@ void desenhaMapa()
                 {
                     mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_ARMADILHA));
                 }
-                /*
                 else if (mapa[y][x].imagem == 'M') //Monstro
                 {
                     mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_MONSTRO));
-                } */
+                } 
                 else
                 {
                     mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_VISIVEL));
@@ -48,14 +46,6 @@ void desenhaMapa()
 void desenhaJogador(ENTIDADE* jog)
 {
     mvaddch(jog->pos.y, jog->pos.x, jog->imagem | jog->cor);
-}
-
-/**
- * \brief Desenha o monstro. 
-*/
-void desenhaMonstro (ENTIDADE* monstro)
-{   
-    mvaddch(monstro->pos.y, monstro->pos.x, monstro->imagem | monstro->cor);
 }
 
 /**
