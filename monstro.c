@@ -1,53 +1,76 @@
 #include "biblioteca.h" 
 
 /**
- * \brief Cria a entidade Monstro numa determinada posição.
- * \return Apontador para a entidade Monstro. 
+ * @brief Cria a entidade Monstro numa determinada posição.
+ * @return Apontador para a entidade Monstro. 
 */
-ENTIDADE criaMonstro (int y, int x, ENTIDADE monstro)
+ENTIDADE criaMonstro (int y, int x,)
 {   
     monstro.pos.y = y;
     monstro.pos.x = x;
     monstro.imagem = 'M';
     monstro.cor = COLOR_PAIR(COR_MONSTRO);
-
+    monstro.vida = 20;
+    
     return monstro;
-
 }
 
 /**
  * @brief Adiciona monstros numa sala. 
  * @return novaSala 
-*/
+ *
 void adicionaMonstroSala (SALA novaSala)
 {  
-    for (int i = 0; i < novaSala.monstros; i++)
+    for (int i = 0; i < novaSala.monstros; i++) 
     {   
-        int y = rand() % (novaSala.altura - 2) + novaSala.pos.y + 1;
-        int x = rand() % (novaSala.largura - 2) + novaSala.pos.x + 1;
+        int y = rand() % (novaSala.altura)  + novaSala.pos.y  + 1; // Verificar a posição dos monstros
+        int x = rand() % (novaSala.largura) + novaSala.pos.x  + 1;
 
-        novaSala.monstro[i] = criaMonstro(y,x,novaSala.monstro[i]);
-        mapa[novaSala.monstro->pos.y][novaSala.monstro->pos.x].imagem = 'M';
+        if (mapa[y][x].podeAndar)
+        {
+            novaSala.monstro[i] = criaMonstro(y,x,novaSala.monstro[i]);
+            mapa[novaSala.monstro[i].pos.y][novaSala.monstro[i].pos.x].imagem = 'M';
+        }
+    }
+}*/
 
+
+/**
+ * @brief Adiciona monstros numa sala. 
+ * @return novaSala 
+ */
+void adicionaMonstroSala (SALA novaSala)
+{  
+    for (int i = 0; i < novaSala.monstros; i++) 
+    {   
+        int y = rand() % (novaSala.altura)  + novaSala.pos.y  + 1; // Verificar a posição dos monstros
+        int x = rand() % (novaSala.largura) + novaSala.pos.x  + 1;
+
+        if (mapa[y][x].podeAndar)
+        {
+            novaSala.monstro[i] = criaMonstro(y,x,novaSala.monstro[i]);
+            mapa[novaSala.monstro[i].pos.y][novaSala.monstro[i].pos.x].imagem = 'M';
+        }
     }
 }
 
-/**
- * \brief Gera uma posição aleatória. 
- * @param nova_posicao
- * @return Posição 
- *
-Posicao posicao_aleatoria (Posicao posicao)
+
+
+void combate (SALA sala, POSICAO posicao)
 {
-    Posicao nova_posicao;
-
-    int y = (rand() % (MAP_HEIGHT - 15)) + 1; // 10 -- Tem de estar dentro do mapa
-    int x = (rand() % (MAP_WIDTH - 25)) + 1;  // 20 -- Também 
-
-    nova_posicao.y = y;
-    nova_posicao.x = x;
-
-    posicao = nova_posicao;
-
-    return posicao;
-}*/
+    for (int m = 0; m < sala.monstros; m++){
+        if (sala.monstro[m].pos.y == posicao.y &&
+            sala.monstro[m].pos.x == posicao.x)
+        {
+            if (sala.monstro[m].vida <= 0)
+            {
+                mapa[sala.monstro[m].pos.y][sala.monstro[m].pos.x].imagem = '.';
+                movimentaJogador(posicao);
+            } 
+            else 
+            {
+                sala.monstro[m].vida -= 10;
+            }
+        } 
+    }
+}

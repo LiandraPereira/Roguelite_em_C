@@ -36,7 +36,6 @@ POSICAO constroiSalasMapa(){
     int numero_salas = (rand() % 16) + 5; //O número máximo de salas é 20 --> Adicionar -- Entre 5 e 15 11 -- 5
 
     SALA *salas = calloc(numero_salas, sizeof(SALA));
-
     POSICAO pos_SalaInicial;
 
     for (int i = 0; i < numero_salas; i++)
@@ -47,11 +46,10 @@ POSICAO constroiSalasMapa(){
         altura = (rand() % 7) + 3; // Altura máxima é 9 - Entre 3 e 9
         largura = (rand() % 15) + 5; // Largura máxima é 19 - Entre 5 e 19
 
-        //numero_monstros = (rand() % 4) + 5; // Entre 3 á 8 monstros;
-
-        numero_monstros = 1; // Na verdade quero criar um número aleatório para cada sala
+        numero_monstros = 2; // Na verdade quero criar um número aleatório para cada sala
 
         salas[i] = criaSala(y, x, altura, largura, numero_monstros);
+        
         adicionaSalaMapa(salas[i]);
         adicionaMonstroSala (salas[i]);
 

@@ -1,5 +1,6 @@
 #include "biblioteca.h"
 
+
 /**
  * \brief Desenha o mapa.
 */
@@ -47,6 +48,14 @@ void desenhaJogador(ENTIDADE* jog)
 {
     mvaddch(jog->pos.y, jog->pos.x, jog->imagem | jog->cor);
 }
+
+/**
+ * \brief Desenha o monstro. 
+*
+void desenhaMonstro (ENTIDADE* monstro)
+{   
+    mvaddch(monstro->pos.y, monstro->pos.x, monstro->imagem | monstro->cor);
+}*/
 
 /**
  * \brief Desenha o jogo.

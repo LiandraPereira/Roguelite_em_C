@@ -25,38 +25,58 @@ typedef struct Posicao
 {
     int y;
     int x;
+
 } POSICAO;
 
 /*Estrutura para as comidas*/
-typedef struct comida{
-    POSICAO posicao;
+typedef struct comida
+{
     char imagem;
     int cor;
+    
+    POSICAO posicao;
+
 } COMIDA;
 
-typedef struct armadilha{
-    POSICAO posicao;
+typedef struct armadilha
+{
     char imagem;
     int cor;
+    
+    POSICAO posicao;
+
 } ARMADILHA;
 
 /* Estrutura do Jogador */
 typedef struct Entidade 
 {
-    POSICAO pos;
     char imagem;
     int cor;
     int vida;
     int combate;
     int defende;
     int movimentos;
+
+    POSICAO pos;
+    ENTIDADE *monstro;
+
+
 } ENTIDADE;
+
+ttytype struct Monstro
+{  
+    ENTIDADE *lista;
+
+};
+
+
 
 /*Estrutura das peças do mapa. */
 typedef struct Peca
 {
     char imagem;
-    int  cor;    
+    int  cor;
+
     bool podeAndar;
     bool transparente;
     bool visivel;
@@ -64,7 +84,7 @@ typedef struct Peca
 
 } PECA;
 
-/* Estrutura das SALAs do mapa */
+/* Estrutura das salas do mapa */
 typedef struct Sala
 {
     int altura;
@@ -75,7 +95,7 @@ typedef struct Sala
     POSICAO centro;
     POSICAO comida;
 
-    ENTIDADE *monstro;
+    //ENTIDADE *monstro; // Apontador para a lista de monstros da sala 
 
 } SALA;
 
@@ -155,6 +175,7 @@ ENTIDADE criaMonstro (int y, int x, ENTIDADE monstro);
 
 void adicionaMonstroSala (SALA novaSala);
 
+void combate (SALA sala, POSICAO posicao);
 
 /*Variáveis globais e constantes*/
 extern const int MAP_HEIGHT;
@@ -165,6 +186,6 @@ extern const int MAP_WIDTH;
 extern PECA** mapa;
 
 /* Declarei esta varável usando o 'extern' porque é uma variável global e e vai ser usada em diversos ficheiros.*/
-extern ENTIDADE* jogador;
+extern ENTIDADE *jogador;
 
 #endif //DEBUG_BIBLIOTECA_H

@@ -58,9 +58,10 @@ void cicloJogo ()
 
 
 void reiniciaJogo()
-{
+{   
     free(mapa);
     free(jogador);
+
     mapa = criaMapaPecas(); //Cria novo Mapa
     POSICAO pos_inicial = constroiSalasMapa(); 
     jogador = criaJogador(pos_inicial); //Cria novo Jogador

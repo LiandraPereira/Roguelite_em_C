@@ -3,8 +3,8 @@
 const int MAP_HEIGHT = 45; //50
 const int MAP_WIDTH = 120; // 150
 
-ENTIDADE * jogador;
-PECA ** mapa;
+ENTIDADE *jogador;
+PECA **mapa;
 
 
 int main()
