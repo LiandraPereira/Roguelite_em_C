@@ -58,16 +58,19 @@ typedef struct Entidade
     int movimentos;
 
     POSICAO pos;
-    ENTIDADE *monstro;
+
+    //ENTIDADE *monstro;
 
 
 } ENTIDADE;
 
-ttytype struct Monstro
-{  
+typedef struct Monstro
+{   
+    int numero_monstros;
+
     ENTIDADE *lista;
 
-};
+} MONSTRO;
 
 
 
@@ -95,7 +98,7 @@ typedef struct Sala
     POSICAO centro;
     POSICAO comida;
 
-    //ENTIDADE *monstro; // Apontador para a lista de monstros da sala 
+    ENTIDADE *monstro; // Apontador para a lista de monstros da sala 
 
 } SALA;
 
