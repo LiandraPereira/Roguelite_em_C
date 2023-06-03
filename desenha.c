@@ -12,9 +12,24 @@ void desenhaMapa()
         {
             if (mapa[y][x].visivel)
             {
-                mvaddch(y, x, mapa[y][x].imagem | mapa[y][x].imagem);
+                if (mapa[y][x].imagem == 'o') //Comida
+                {
+                    mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_COMIDA));
+                }
+                else if (mapa[y][x].imagem == '^') //Armadilha
+                {
+                    mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_ARMADILHA));
+                }
+                else if (mapa[y][x].imagem == 'M') //Monstro
+                {
+                    mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_MONSTRO));
+                } 
+                else
+                {
+                    mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_VISIVEL));
+                }
             }
-            else if (mapa[y][x].vista)
+            else if (mapa[y][x].visto)
             {
                 mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_VISTA));
             }
@@ -29,18 +44,18 @@ void desenhaMapa()
 /**
  * \brief Desenha o jogador.
 */
-void desenhaJogador(Entidade* jog)
+void desenhaJogador(ENTIDADE* jog)
 {
     mvaddch(jog->pos.y, jog->pos.x, jog->imagem | jog->cor);
 }
 
 /**
  * \brief Desenha o monstro. 
-*/
-void desenhaMonstro (Entidade* monstro)
+*
+void desenhaMonstro (ENTIDADE* monstro)
 {   
     mvaddch(monstro->pos.y, monstro->pos.x, monstro->imagem | monstro->cor);
-}
+}*/
 
 /**
  * \brief Desenha o jogo.
@@ -54,7 +69,7 @@ void desenhaJogo()
 }
 
 /**
- * \brief 
+ * \brief Desenha o Menu Inicial quando o jogo é iniciado
 */
 void desenhaMenu() {
     clear(); 
@@ -96,3 +111,62 @@ void desenhaPainelInformacoes(){
     attroff(A_BOLD);  
     refresh();  
 }
+
+/**
+ * \brief Desenha o Menu Final com as informações sobre o jogo e com a opção de reiniciar
+*/
+void desenhaMenuFinal()
+{
+    clear();
+    refresh();
+    
+    int altura = 15;
+    int largura = 60;
+    int inicioY = (LINES - altura) / 2;
+    int inicioX = (COLS - largura) / 2;
+
+    WINDOW *menuwin = newwin(altura, largura, inicioY, inicioX);
+    box(menuwin, 0, 0);
+
+    mvwprintw(menuwin, 1, largura / 2 - 6, "Fim do Jogo!");
+    mvwprintw(menuwin, 3, 2, "-Terminou o jogo com %d de Vida.", jogador->vida);
+    mvwprintw(menuwin, 5, 2, "-Matou x Monstros.");
+    mvwprintw(menuwin, 7, 2, "-Fez %d Movimentos.", jogador->movimentos);
+    mvwprintw(menuwin, altura - 6, largura / 2 - 15, "Pressione Enter para reiniciar");
+    mvwprintw(menuwin, altura - 4, largura / 2 - 1, "Ou");
+    mvwprintw(menuwin, altura - 2, largura / 2 - 11, "Pressione Q para sair");
+
+    wrefresh(menuwin);
+    
+    int tecla;
+    while ((tecla = getch())) 
+    {
+        if (tecla == '\n') // Reiniciar o jogo
+        {  
+            reiniciaJogo();
+        } 
+        if(tecla == 'q' || tecla == 'Q')  // Sair do jogo
+        {
+            fimJogo();
+        }   
+        
+    }
+}
+
+//TODO usar funcao usleep para apagar msg
+/*
+void desenhaMensagemTemporaria(char *mensagem, int duracao)
+{
+    int altura = 3;
+    int largura = strlen(mensagem) + 2;
+    int inicioY = 1;
+    int inicioX = COLS - 26;
+    WINDOW *win = newwin(altura, largura, inicioY, inicioX);
+    attron(A_BOLD);
+    mvwprintw(win, 1, 1, mensagem);
+    attroff(A_BOLD);
+    wrefresh(win);
+    napms(duracao); //use usleep instead
+    delwin(win);
+}
+*/

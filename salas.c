@@ -8,10 +8,11 @@
  * \param largura 
  * \return Sala 
 */
-Sala criaSala (int y, int x, int altura, int largura, Entidade *monstro)
+SALA criaSala (int y, int x, int altura, int largura, int numero_monstros)
 {
-
-    Sala novaSala;
+    SALA novaSala;
+    
+    ENTIDADE *monstro = calloc(numero_monstros,sizeof(ENTIDADE));
 
     novaSala.pos.y = y;
     novaSala.pos.x = x;
@@ -19,10 +20,9 @@ Sala criaSala (int y, int x, int altura, int largura, Entidade *monstro)
     novaSala.largura = largura;
     novaSala.centro.y = y + (int)(altura / 2);
     novaSala.centro.x = x + (int)(largura / 2);
-    novaSala.comida.y = rand() % (altura - 2) + y + 1;
-    novaSala.comida.x = rand() % (largura - 2) + x + 1;
-    novaSala.monstro = monstro;
-
+    novaSala.monstros = numero_monstros;
+    novaSala.monstro = monstro; 
+    
     return novaSala;
 }
 
@@ -30,7 +30,7 @@ Sala criaSala (int y, int x, int altura, int largura, Entidade *monstro)
  * \brief Adiciona uma sala no mapa com auxílio da posição da sala. 
  * \param novaSala 
 */
-void adicionaSalaMapa (Sala novaSala, Entidade *monstro, int numero_mostros)
+void adicionaSalaMapa (SALA novaSala)
 {   
     
     for (int y = novaSala.pos.y; y < novaSala.pos.y + novaSala.altura; y++)
@@ -43,27 +43,18 @@ void adicionaSalaMapa (Sala novaSala, Entidade *monstro, int numero_mostros)
         }
     }
     
-    mapa[novaSala.comida.y][novaSala.comida.x].imagem = 'o';
+    COMIDA *novaComida = criaComida(novaSala);
+    int y = novaComida->posicao.y, x = novaComida->posicao.x; 
 
-    //mapa[novaSala.comida.y][novaSala.comida.x].cor = COLOR_PAIR(COR_COMIDA); --> Não funciona 
-    
-    monstro = calloc (numero_mostros, sizeof(Entidade)); //Array de n monstros 
+    mapa[y][x].imagem = novaComida->imagem;
 
-    novaSala.monstro = monstro;
+    ARMADILHA *novaArmadilha = criaArmadilha(novaSala); 
 
-    for (int i = 0; i < numero_mostros; i++)
-    {   
-        int y = rand() % (novaSala.altura - 2) + novaSala.pos.y + 1;
-        int x = rand() % (novaSala.largura - 2) + novaSala.pos.x + 1;
-
-        novaSala.monstro[i].pos.y = y;
-        novaSala.monstro[i].pos.x = x;
-        novaSala.monstro[i].imagem = 'M';
-        //novaSala.monstro[i].cor = COLOR_PAIR(COR_MONSTRO); --> Não funciona 
-
-        /* Quando o mostro morrer ou mover-se a peça passa a ser '.' */
-        mapa[novaSala.monstro->pos.y][novaSala.monstro->pos.x].imagem = 'M';
-        
+    if (novaArmadilha != NULL) // (??) Não percebi porqueê NULL
+    {
+        int y = novaArmadilha->posicao.y, x = novaArmadilha->posicao.x; 
+        mapa[y][x].imagem = novaArmadilha->imagem;
+        mapa[y][x].cor = novaArmadilha->cor;  
     }
 }
 
@@ -72,9 +63,9 @@ void adicionaSalaMapa (Sala novaSala, Entidade *monstro, int numero_mostros)
  * \param centro1
  * \param centro2 
 */
-void connectaCentroSalas (Posicao centro1, Posicao centro2)
+void connectaCentroSalas (POSICAO centro1, POSICAO centro2)
 {
-    Posicao novaPos;
+    POSICAO novaPos;
     novaPos.x = centro1.x;
     novaPos.y = centro1.y;
 
@@ -95,4 +86,54 @@ void connectaCentroSalas (Posicao centro1, Posicao centro2)
         mapa[novaPos.y][novaPos.x].podeAndar = true;
         mapa[novaPos.y][novaPos.x].transparente = true;
     }
+}
+
+/**
+ * \brief Função que cria comidas espalhadas pelo mapa
+ * \param novaSala 
+*/
+COMIDA *criaComida(SALA novaSala) //Muda o nome para adicionaComida 
+{
+    int posY, posX;
+    COMIDA* comida = calloc (1,sizeof(COMIDA));
+
+    comida->imagem = 'o';
+
+    do {
+        posY = (rand() % (novaSala.altura)) + novaSala.pos.y;
+        posX = (rand() % (novaSala.largura)) + novaSala.pos.x;
+    } 
+    while (!mapa[posY][posX].podeAndar);
+
+    comida->posicao.x = posX;
+    comida->posicao.y = posY;
+
+    return comida;
+}
+
+ARMADILHA *criaArmadilha (SALA novaSala) //Aqui também 
+{
+    int chance = rand() % 10; //60% de chance de nascer de spawn
+    ARMADILHA* armadilha = calloc(1,sizeof(ARMADILHA));
+
+    armadilha->imagem = '^';
+
+    if (chance <= 5)
+    {
+        int posY, posX;
+
+        do {
+            posY = (rand() % (novaSala.altura)) + novaSala.pos.y;
+            posX = (rand() % (novaSala.largura)) + novaSala.pos.x;
+        } 
+
+        while (!mapa[posY][posX].podeAndar);
+        
+        armadilha->posicao.x = posX;
+        armadilha->posicao.y = posY;
+        
+        return armadilha;
+    }
+    
+    else return NULL;  
 }

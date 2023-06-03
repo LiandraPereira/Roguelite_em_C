@@ -2,8 +2,11 @@ CC = gcc
 CFLAGS = -Wall -Wextra -pedantic -O2
 LIBS = -lm -lncurses
 
-jogo: main.c engine.c desenha.c salas.c mapa.c visao.c jogador.c
+jogo: main.c engine.c desenha.c salas.c mapa.c visao.c jogador.c monstro.c
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
 
 clean:
-	rm jogo *.o
+	rm -f jogo *.o
+
+run: jogo 
+	./jogo

@@ -16,6 +16,8 @@ bool cursorSetup ()
         init_pair(COR_VISIVEL,COLOR_WHITE, COLOR_BLACK);
         init_pair(COR_VISTA, COLOR_YELLOW, COLOR_BLACK);
         init_pair(COR_MONSTRO,COLOR_RED, COLOR_BLACK);
+        init_pair(COR_COMIDA,COLOR_GREEN, COLOR_BLACK);
+        init_pair(COR_ARMADILHA,COLOR_RED, COLOR_BLACK);
 
         return true;
     }
@@ -32,6 +34,8 @@ bool cursorSetup ()
 */
 void cicloJogo ()
 {
+    
+    
     int tecla;
 
     modificaEstadoPeca(jogador);
@@ -47,14 +51,30 @@ void cicloJogo ()
         
         direcao(tecla);
         desenhaJogo();
+        
     }
+    desenhaMenuFinal();    
+}
+
+
+void reiniciaJogo()
+{   
+    free(mapa);
+    free(jogador);
+
+    mapa = criaMapaPecas(); //Cria novo Mapa
+    POSICAO pos_inicial = constroiSalasMapa(); 
+    jogador = criaJogador(pos_inicial); //Cria novo Jogador
+    cicloJogo();
 }
 
 /**
  * \brief 
 */
 void fimJogo ()
-{
+{ 
     endwin();
+    free(mapa);
     free(jogador);
+    exit(0);
 }

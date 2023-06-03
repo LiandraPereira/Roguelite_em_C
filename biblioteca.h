@@ -1,6 +1,3 @@
-//
-// Created by liandrapereira on 27-04-2023.
-//
 
 #ifndef DEBUG_BIBLIOTECA_H
 #define DEBUG_BIBLIOTECA_H
@@ -10,65 +7,100 @@
 #include <time.h>
 #include <math.h>
 #include <stdbool.h>
+#include <string.h>
 
 /* CORES */
 #define COR_VISIVEL 7
 #define COR_VISTA 3
 #define COR_MONSTRO 1
 #define COR_COMIDA 2 
+#define COR_ARMADILHA 4
 
 /* Velocidades */
 #define V_MONSTRO 1 // velocidade do monstro
 #define V_JOGADOR 2
 
 /* Estrutura das coordenadas do jogador */
-typedef struct Coordenadas
+typedef struct Posicao
 {
     int y;
     int x;
 
-} Posicao;
+} POSICAO;
+
+/*Estrutura para as comidas*/
+typedef struct comida
+{
+    char imagem;
+    int cor;
+    
+    POSICAO posicao;
+
+} COMIDA;
+
+typedef struct armadilha
+{
+    char imagem;
+    int cor;
+    
+    POSICAO posicao;
+
+} ARMADILHA;
 
 /* Estrutura do Jogador */
-typedef struct 
+typedef struct Entidade 
 {
-    Posicao pos;
     char imagem;
     int cor;
     int vida;
     int combate;
     int defende;
+    int movimentos;
 
-} Entidade;
+    POSICAO pos;
+
+    //ENTIDADE *monstro;
+
+
+} ENTIDADE;
+
+typedef struct Monstro
+{   
+    int numero_monstros;
+
+    ENTIDADE *lista;
+
+} MONSTRO;
+
+
 
 /*Estrutura das peças do mapa. */
-typedef struct Celula 
+typedef struct Peca
 {
     char imagem;
-    int  cor;    
-
-    // Estado de cada peça
+    int  cor;
 
     bool podeAndar;
     bool transparente;
     bool visivel;
-    bool vista;
+    bool visto;
 
-} Peca;
+} PECA;
 
 /* Estrutura das salas do mapa */
-typedef struct 
+typedef struct Sala
 {
     int altura;
     int largura;
-    
-    Posicao pos;
-    Posicao centro;
-    Posicao comida;
+    int monstros;
 
-    Entidade *monstro;
+    POSICAO pos;
+    POSICAO centro;
+    POSICAO comida;
 
-} Sala;
+    ENTIDADE *monstro; // Apontador para a lista de monstros da sala 
+
+} SALA;
 
 
 /* Funcionalidades da biblioteca ncurses */
@@ -77,75 +109,76 @@ bool cursorSetup();
 
 void cicloJogo();
 
+void reiniciaJogo();
+
 void fimJogo ();
 
 void desenhaMenu();
 
+void desenhaMensagemTemporaria(char *mensagem, int duracao);
+
 /* Funcionalidades do Jogador */
 
-Entidade* criaJogador (Posicao pos_inicial);
+ENTIDADE* criaJogador (POSICAO pos_inicial);
 
 void direcao (int tecla);
 
-void adicionaVida(Posicao nova_pos, int valor);
+void adicionaVida(POSICAO nova_pos, int valor);
 
-void movimentaJogador (Posicao novaPos);
+void pisouArmadilha(POSICAO nova_pos, int dano);
 
-void modificaEstadoPeca (Entidade* jogador);
+void movimentaJogador (POSICAO novaPos);
 
-void estadoNormalPeca (Entidade* jogador);
+void modificaEstadoPeca (ENTIDADE* jogador);
+
+void estadoNormalPeca (ENTIDADE* jogador);
 
 bool posicaoDentroMapa (int y, int x);
 
-int levaDistancia (Posicao posicao1, Posicao posicao2);
+int levaDistancia (POSICAO POSICAO1, POSICAO POSICAO2);
 
-bool linhaVisao (Posicao origin, Posicao target);
+bool linhaVisao (POSICAO origin, POSICAO target);
 
 int conheceSinal (int a);
 
 
 /* Funcionalidades do Mapa */
 
-Peca** criaMapaPecas();
+PECA** criaMapaPecas();
 
 void desenhaMapa();
 
 void desenhaPainelInformacoes();
 
-void desenhaJogador (Entidade* jogador);
+void desenhaMenuFinal();
 
-void desenhaMonstro (Entidade* monstro);
+void desenhaJogador (ENTIDADE* jogador);
+
+void desenhaMonstro (ENTIDADE* monstro);
 
 void desenhaJogo();
 
-Posicao constroiSalasMapa();
+POSICAO constroiSalasMapa();
 
-Sala criaSala (int y, int x, int altura, int largura, Entidade *monstro);
+SALA criaSala (int y, int x, int altura, int largura, int numero_monstros);
 
-void adicionaSalaMapa (Sala sala, Entidade *monstro, int numero_monstros);
+void adicionaSalaMapa (SALA novaSala);
 
-void connectaCentroSalas (Posicao centro1, Posicao centro2);
+void connectaCentroSalas (POSICAO centro1, POSICAO centro2);
 
 void freeMap();
 
+COMIDA* criaComida(SALA novaSala);
+
+ARMADILHA* criaArmadilha (SALA novaSala);
+
 /* Funcionalidades do Monstro */
 
-Entidade* criaMonstro (Posicao pos_inicial);
+ENTIDADE criaMonstro (int y, int x, ENTIDADE monstro);
 
-Entidade* adicionaMonstros();
+void adicionaMonstroSala (SALA novaSala);
 
-void adicionaMonstroSala (Sala sala);
-
-bool posicaoDentroSala (Posicao posicao, Sala sala);
-
-Posicao posicao_aleatoria ();
-
-//Posicao movimenta_frente (Posicao origem, Posicao destino);
-
-//void movimentaMonstro(Posicao nova_pos, Entidade* monstro);
-
-//bool consegue_ver (Entidade* monstro, Entidade* jogador);
-
+void combate (SALA sala, POSICAO posicao);
 
 /*Variáveis globais e constantes*/
 extern const int MAP_HEIGHT;
@@ -153,9 +186,9 @@ extern const int MAP_HEIGHT;
 extern const int MAP_WIDTH;
 
 /*Variável global*/
-extern Peca** mapa;
+extern PECA** mapa;
 
 /* Declarei esta varável usando o 'extern' porque é uma variável global e e vai ser usada em diversos ficheiros.*/
-extern Entidade* jogador;
+extern ENTIDADE *jogador;
 
 #endif //DEBUG_BIBLIOTECA_H
