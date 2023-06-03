@@ -21,6 +21,7 @@ typedef struct {
     char monstro_tipo[20];
     int x;
     int y;
+    bool derrotado;
 } Monstro;
 
 //implementação da faca
@@ -108,8 +109,8 @@ int main() {// gerador de número
 
             int dano_faca = faca_jogador.potencia_do_ataque; //dano da faca
             goblin.hp_atual -= dano_faca;
-            if (goblin.hp_atual < 0) {
-                goblin.hp_atual = 0;
+            if (goblin.hp_atual <= 0) {
+                goblin.derrotado = true;
             }
             mvprintw(8, 0, "%s's HP: %d", jogador.nome, jogador.vida);
             refresh();
@@ -120,8 +121,12 @@ int main() {// gerador de número
 
             int dano_espada = espada_jogador.potencia_do_ataque; //dano da espada
             goblin.hp_atual -= dano_espada;
-            if (goblin.hp_atual < 0){
-                goblin.hp_atual = 0;
+            if (goblin.hp_atual <= 0){
+                goblin.derrotado = true;
+
+                mwprintw(goblin.x, goblin.y, " ");
+                refresh();
+                getch();
             }
             mvprintw(10, 0, "%s's HP: %d", goblin.nome, goblin.hp_atual);
             refresh();
@@ -135,15 +140,15 @@ int main() {// gerador de número
         refresh();
         ch = getch();
 
-        if (ch == 'W' || ch == 'w'){
+        if (ch == 'W' || ch == 'w') {
             jogador.y--;
-        } else if (ch == 'S' ||ch == 's'){
+        } else if (ch == 'S' ||ch == 's') {
             jogador.y++;
-        } else if (ch == 'A' || ch =='a'){
+        } else if (ch == 'A' || ch =='a') {
             jogador.x--;
-        } else if (ch == 'D' || ch == 'd'){
+        } else if (ch == 'D' || ch == 'd') {
             jogador.x++;
-        } else if (ch == 'q' || ch == 'Q'){
+        } else if (ch == 'q' || ch == 'Q') {
             break;
         }
         perseguicao(&goblin, jogador.x, jogador.y);
