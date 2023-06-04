@@ -69,12 +69,10 @@ void movimentaJogador(POSICAO nova_pos)
         if (mapa[nova_pos.y][nova_pos.x].imagem == 'o')
         {
             adicionaVida(nova_pos,5);
-            //desenhaMensagemTemporaria("Ganhou 5 de Vida", 2000);
         }
         else if (mapa[nova_pos.y][nova_pos.x].imagem == '^')
         {
-            pisouArmadilha(nova_pos,10); // (??) Será preciso receber o 10 como argumento?
-            //desenhaMensagemTemporaria("Perdeu 10 de Vida", 2000);
+            pisouArmadilha(nova_pos,10); 
         }
         
         estadoNormalPeca(jogador);
@@ -97,7 +95,7 @@ void adicionaVida(POSICAO nova_pos, int valor)
 
     mapa[nova_pos.y][nova_pos.x].imagem = '.';
     
-    if (jogador->vida + valor > 100) jogador->vida = 100;
+    if (jogador->vida + valor > 40) jogador->vida = 40;
     else jogador->vida += valor;
 }
 
@@ -111,7 +109,7 @@ void pisouArmadilha(POSICAO nova_pos, int valor){
     jogador->vida = jogador->vida - valor;
     mapa[nova_pos.y][nova_pos.x].imagem = '.';
     
-    if(jogador->vida == 0) //MORREU ?
+    if(jogador->vida <= 0)
     {
         desenhaMenuFinal();
         return;

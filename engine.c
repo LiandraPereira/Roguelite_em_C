@@ -59,7 +59,7 @@ void cicloJogo ()
 
 void reiniciaJogo()
 {   
-    free(mapa);
+    freeMap();
     free(jogador);
 
     mapa = criaMapaPecas(); //Cria novo Mapa
@@ -74,7 +74,7 @@ void reiniciaJogo()
 void fimJogo ()
 { 
     endwin();
-    free(mapa);
+    freeMap();
     free(jogador);
     exit(0);
 }

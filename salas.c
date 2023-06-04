@@ -50,7 +50,7 @@ void adicionaSalaMapa (SALA novaSala)
 
     ARMADILHA *novaArmadilha = criaArmadilha(novaSala); 
 
-    if (novaArmadilha != NULL) // (??) Não percebi porqueê NULL
+    if (novaArmadilha != NULL) 
     {
         int y = novaArmadilha->posicao.y, x = novaArmadilha->posicao.x; 
         mapa[y][x].imagem = novaArmadilha->imagem;
