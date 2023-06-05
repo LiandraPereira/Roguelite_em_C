@@ -78,6 +78,13 @@ typedef struct Sala
 
 } SALA;
 
+typedef struct GameInfo{
+    int nComidas;
+    int nArmadilhas;
+    int nMonstros;
+    int tempoInicial;
+} GAMEINFO;
+
 
 /* Funcionalidades da biblioteca ncurses */
 
@@ -110,5 +117,8 @@ extern const int MAP_WIDTH;
 extern PECA** mapa;
 
 extern ENTIDADE *jogador;
+
+/*Variavel global que mantem informacoes sobre o jogo atual*/
+extern GAMEINFO game_info;
 
 #endif //DEBUG_BIBLIOTECA_H

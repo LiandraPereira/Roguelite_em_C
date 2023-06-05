@@ -9,12 +9,15 @@ const int MAP_WIDTH = 120; // 150
 
 ENTIDADE *jogador;
 PECA **mapa;
-
+GAMEINFO game_info;
 
 int main()
 {   
     POSICAO pos_inicial;
     bool compatibleTerminal;
+
+    time_t tempoInicial = time(NULL);
+    game_info.tempoInicial = tempoInicial;
 
     compatibleTerminal = cursorSetup();
 

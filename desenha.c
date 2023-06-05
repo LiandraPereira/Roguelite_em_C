@@ -96,8 +96,12 @@ void desenhaPainelInformacoes(){
         mvaddch(y, COLS - 32, '|');
     }
 
+    time_t tempo_atual = time(NULL);
+    double tempo_passado = difftime(tempo_atual, game_info.tempoInicial);
+
     attron(A_BOLD);
-    mvprintw(LINES/2 - 2, COLS - 26, "Vida do Jogador: %d", jogador->vida);
+    mvprintw(LINES/2 - 1, COLS - 26, "Vida do Jogador: %d", jogador->vida);
+    mvprintw(LINES/2 + 1, COLS - 26, "Tempo de Jogo: %.f s", tempo_passado);
     attroff(A_BOLD);  
     refresh();  
 }

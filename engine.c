@@ -67,6 +67,9 @@ void reiniciaJogo()
     freeMap();
     free(jogador);
 
+
+    time_t tempoInicial = time(NULL);
+    game_info.tempoInicial = tempoInicial;
     mapa = criaMapaPecas(); //Cria novo Mapa
     POSICAO pos_inicial = constroiSalasMapa(); 
     jogador = criaJogador(pos_inicial); //Cria novo Jogador
