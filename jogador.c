@@ -1,10 +1,16 @@
+/**
+ * @file jogador.c
+ *
+ * Neste ficheiro estão as funções que tratam das funcionalidades do jogador.
+ */
+
 #include "biblioteca.h"
 #include "jogador.h" 
 #include "monstro.h"
 
 /**
  * \brief Cria a ENTIDADE Jogador numa determinada posição.
- * @return Apontador para a ENTIDADE Jogador. 
+ * @returns Apontador para a ENTIDADE Jogador. 
 */
 
 ENTIDADE* criaJogador (POSICAO start_pos)
@@ -24,30 +30,29 @@ ENTIDADE* criaJogador (POSICAO start_pos)
 }
 
 /**
- * \brief Altera as direção do Jogador usando as teclas numpad.
- * \param tecla 
- * 
+ * \brief Altera a direção do Jogador usando as teclas numpad.
+ * @param tecla 
 */
 void direcao (int tecla)
 {
     POSICAO nova_pos = { jogador->pos.y, jogador->pos.x };
 
-     // Move up 
+     // Move para cima 
     if (tecla == 'w' || tecla == 'W' || tecla == '8'){
         nova_pos.y--;
         jogador->movimentos++;
     }    
-    // Move down 
+    // Move para baixo
     else if (tecla == 's' || tecla == 'S' ||tecla == '2'){
         nova_pos.y++;
         jogador->movimentos++;
     }
-    // Move left 
+    // Move para esquerda 
     else if (tecla == 'a' || tecla == 'A' || tecla =='4'){
         nova_pos.x--;
         jogador->movimentos++;
     }
-    // Move right 
+    // Move para direita
     else if (tecla == 'd' || tecla == 'D' || tecla == '6'){
         nova_pos.x++;
         jogador->movimentos++;
@@ -88,8 +93,8 @@ void movimentaJogador(POSICAO nova_pos)
 
 /**
  * \brief Adiciona um certo valor a vida do jogador e retira a comida do mapa.
- * \param nova_pos
- * \param valor 
+ * @param nova_pos
+ * @param valor 
 */
 void adicionaVida(POSICAO nova_pos, int valor)
 {
@@ -102,9 +107,9 @@ void adicionaVida(POSICAO nova_pos, int valor)
 }
 
 /**
- * \brief Diminui a vida do jogador e verifica se morreu, caso pise numa armadilha
- * \param nova_pos
- * \param valor 
+ * \brief Verifica a vida do jogador quando o mesmo pisa numa armadilha.
+ * @param nova_pos
+ * @param valor 
 */
 void pisouArmadilha(POSICAO nova_pos, int valor){
     
