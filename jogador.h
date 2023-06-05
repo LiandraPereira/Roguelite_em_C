@@ -1,3 +1,8 @@
+/**
+ * @file jogador.h
+ *
+ * Neste ficheiro estão contidos os protótipos do módulo jogador.c
+ */
 
 #ifndef ROQUELITE_EM_C_JOGADOR_H
 #define ROQUELITE_EM_C_JOGADOR_H

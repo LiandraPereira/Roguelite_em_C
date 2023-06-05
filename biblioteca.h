@@ -1,6 +1,8 @@
-
-#ifndef DEBUG_BIBLIOTECA_H
-#define DEBUG_BIBLIOTECA_H
+/**
+ * @file biblioteca.h
+ *
+ * Neste ficheiro estão contidos os protótipos do módulo biblioteca.c
+ */
 
 #include <ncurses.h>
 #include <stdlib.h>
@@ -9,16 +11,21 @@
 #include <stdbool.h>
 #include <string.h>
 
+#ifndef DEBUG_BIBLIOTECA_H
+#define DEBUG_BIBLIOTECA_H
+
 /* CORES */
-#define COR_VISIVEL 7    // Branco
-#define COR_VISTA 3      // Amarelo
-#define COR_MONSTRO 5    // Vermelho
-#define COR_COMIDA 2     // Verde
+#define COR_VISIVEL 7    
+#define COR_VISTA 3      
+#define COR_MONSTRO 5    
+#define COR_COMIDA 2     
 #define COR_ARMADILHA 1 
-#define COR_JOGADOR 6    // Azul 
+#define COR_JOGADOR 6     
 #define COR_MORTO 1 
 
-/* Estrutura das coordenadas do jogador */
+/**
+ * @brief Definição da estrutura da Posição.
+ */
 typedef struct Posicao
 {
     int y;
@@ -26,8 +33,10 @@ typedef struct Posicao
 
 } POSICAO;
 
-/* Estrutura do objeto */
-typedef struct objeto
+/**
+ * @brief Definição da estrutura do objeto.
+ */
+typedef struct Objeto
 {
     char imagem;
     int cor;
@@ -35,7 +44,9 @@ typedef struct objeto
     POSICAO posicao;
 } OBJETO;
 
-/* Estrutura do Jogador */
+/**
+ * @brief Definição da estrutura da Entidade.
+ */
 typedef struct Entidade 
 {
     char imagem;
@@ -49,7 +60,9 @@ typedef struct Entidade
 
 } ENTIDADE;
 
-/*Estrutura das peças do mapa. */
+/**
+ * @brief Definiçãoda da estrutura da Peça.
+ */
 typedef struct Peca
 {
     char imagem;
@@ -65,7 +78,9 @@ typedef struct Peca
 
 } PECA;
 
-/* Estrutura das salas do mapa */
+/**
+ * @brief Definição da estrutura da Sala.
+ */
 typedef struct Sala
 {
     int altura;
@@ -76,19 +91,25 @@ typedef struct Sala
     POSICAO centro;
     POSICAO comida;
 
-    ENTIDADE *monstro; // Apontador para a lista de monstros da sala 
+    ENTIDADE *monstro; 
 
 } SALA;
 
-typedef struct GameInfo{
+/**
+ * @brief Definição da estrutura da GameInfo.
+ */
+typedef struct GameInfo
+{
     int nComidas;
     int nArmadilhas;
     int nMonstros;
     int tempoInicial;
+
 } GAMEINFO;
 
-
-/* Funcionalidades da biblioteca ncurses */
+/**
+ * @brief Definição dos protótipos do módulo engine.c
+*/
 
 bool cursorSetup();
 
@@ -97,6 +118,10 @@ void cicloJogo();
 void reiniciaJogo();
 
 void fimJogo ();
+
+/**
+ * @brief Definição dos protótipos do módulo desenha.c
+*/
 
 void desenhaMenu();
 
@@ -110,17 +135,21 @@ void desenhaJogador (ENTIDADE* jogador);
 
 void desenhaJogo();
 
-/* Variáveis globais e constantes*/
+/**
+ * @brief Declaração das variáveis globais e constantes.
+*/
+
 extern const int MAP_HEIGHT;
 
 extern const int MAP_WIDTH;
 
-/*Variáveis globais*/
+/**
+ * @brief Declaração das variáveis globais.
+*/
 extern PECA** mapa;
 
 extern ENTIDADE *jogador;
 
-/*Variavel global que mantem informacoes sobre o jogo atual*/
 extern GAMEINFO game_info;
 
 #endif //DEBUG_BIBLIOTECA_H

@@ -111,7 +111,8 @@ void adicionaVida(POSICAO nova_pos, int valor)
  * @param nova_pos
  * @param valor 
 */
-void pisouArmadilha(POSICAO nova_pos, int valor){
+void pisouArmadilha(POSICAO nova_pos, int valor)
+{
     
     jogador->vida = jogador->vida - valor;
     mapa[nova_pos.y][nova_pos.x].imagem = '.';

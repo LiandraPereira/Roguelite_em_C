@@ -94,7 +94,8 @@ void desenhaJogo()
 /**
  * \brief Desenha o Menu Inicial quando o jogo é iniciado
 */
-void desenhaMenu() {
+void desenhaMenu() 
+{
     clear(); 
     refresh(); 
     int altura = 18;
@@ -121,7 +122,8 @@ void desenhaMenu() {
     delwin(menuwin);
 }
 
-void desenhaPainelInformacoes(){
+void desenhaPainelInformacoes()
+{
     for (int y = 0; y < LINES; y++)
     {
         mvaddch(y, COLS - 32, '|');

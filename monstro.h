@@ -1,3 +1,8 @@
+/**
+ * @file monstro.h
+ *
+ * Neste ficheiro estão contidos os protótipos do módulo monstro.c
+ */
 
 #ifndef ROQUELITE_EM_C_MONSTRO_H
 #define ROQUELITE_EM_C_MONSTRO_H

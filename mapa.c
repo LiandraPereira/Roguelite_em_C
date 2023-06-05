@@ -38,8 +38,8 @@ PECA **criaMapaPecas()
  * \brief Constroi as salas do mapa.
  * @returns Posição da primeira sala do mapa.
 */
-POSICAO constroiSalasMapa(){
-
+POSICAO constroiSalasMapa()
+{
     int y, x, altura, largura, numero_monstros;
     int numero_salas = (rand() % 16) + 5;
 

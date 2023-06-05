@@ -1,3 +1,8 @@
+/**
+ * @file mapa.h
+ *
+ * Neste ficheiro estão contidos os protótipos do módulo mapa.c
+ */
 
 #ifndef ROQUELITE_EM_C_MAPA_H
 #define ROQUELITE_EM_C_MAPA_H

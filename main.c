@@ -1,15 +1,27 @@
+/**
+ * @file main.c
+ *
+ * Neste ficheiro está contida a função principal do jogo.
+ */
+
 #include "biblioteca.h"
 #include "mapa.h"
 #include "jogador.h"
 #include "monstro.h"
 
 
-const int MAP_HEIGHT = 45; //50
-const int MAP_WIDTH = 120; // 150
+const int MAP_HEIGHT = 45; 
+const int MAP_WIDTH = 120; 
 
 ENTIDADE *jogador;
 PECA **mapa;
 GAMEINFO game_info;
+
+/**
+ * \brief Esta é a função principal do programa
+ *
+ * @returns O.
+ */
 
 int main()
 {   

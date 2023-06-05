@@ -10,7 +10,7 @@
 
 
 /**
- * \brief Configura o terminal com auxílio da biblioteca ncurses.
+ * @brief Configura o terminal com auxílio da biblioteca ncurses.
 */
 bool cursorSetup ()
 {
@@ -41,12 +41,10 @@ bool cursorSetup ()
 }
 
 /**
- * \brief Ciclo do jogo.
+ * @brief Ciclo do jogo.
 */
 void cicloJogo ()
 {
-    
-    
     int tecla;
 
     modificaEstadoPeca(jogador);
@@ -68,7 +66,7 @@ void cicloJogo ()
 }
 
 /**
- * \brief Reinicia o jogo.
+ * @brief Reinicia o jogo.
 */
 void reiniciaJogo()
 {   
@@ -85,7 +83,7 @@ void reiniciaJogo()
 }
 
 /**
- * \brief Finaliza o jogo com auxílio da biblioteca ncurses.
+ * @brief Finaliza o jogo com auxílio da biblioteca ncurses.
 */
 void fimJogo ()
 { 
