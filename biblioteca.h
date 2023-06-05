@@ -59,9 +59,6 @@ typedef struct Entidade
 
     POSICAO pos;
 
-    //ENTIDADE *monstro;
-
-
 } ENTIDADE;
 
 /*Estrutura das peças do mapa. */
@@ -84,7 +81,7 @@ typedef struct Sala
 {
     int altura;
     int largura;
-    int monstros;
+    int numero_monstros;
 
     POSICAO pos;
     POSICAO centro;
