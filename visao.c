@@ -95,34 +95,34 @@ bool posicaoDentroMapa(int y, int x)
 */
 bool linhaVisao(POSICAO origem, POSICAO destino)
 {
-    int t, x, y, abs_delta_x, abs_delta_y, sign_x, sign_y, delta_x, delta_y;
+    int t, x, y, abs_diferencaX, abs_diferencaY, sinalX, sinalY, diferencaX, diferencaY;
 
-    delta_x = origem.x - destino.x;
-    delta_y = origem.y - destino.y;
+    diferencaX = origem.x - destino.x;
+    diferencaY = origem.y - destino.y;
 
-    abs_delta_x = abs(delta_x);
-    abs_delta_y = abs(delta_y);
+    abs_diferencaX = abs(diferencaX);
+    abs_diferencaY = abs(diferencaY);
 
-    sign_x = conheceSinal(delta_x);
-    sign_y = conheceSinal(delta_y);
+    sinalX = conheceSinal(diferencaX);
+    sinalY = conheceSinal(diferencaY);
 
     x = destino.x;
     y = destino.y;
 
-    if (abs_delta_x > abs_delta_y)
+    if (abs_diferencaX > abs_diferencaY)
     {
-        t = abs_delta_y * 2 - abs_delta_x;
+        t = abs_diferencaY * 2 - abs_diferencaX;
 
         do
         {
             if (t >= 0)
             {
-                y += sign_y;
-                t -= abs_delta_x * 2;
+                y += sinalY;
+                t -= abs_diferencaX * 2;
             }
 
-            x += sign_x;
-            t += abs_delta_y * 2;
+            x += sinalX;
+            t += abs_diferencaY * 2;
 
             if (x == origem.x && y == origem.y)
             {
@@ -135,18 +135,18 @@ bool linhaVisao(POSICAO origem, POSICAO destino)
     }
     else
     {
-        t = abs_delta_x * 2 - abs_delta_y;
+        t = abs_diferencaX * 2 - abs_diferencaY;
 
         do
         {
             if (t >= 0)
             {
-                x += sign_x;
-                t -= abs_delta_y * 2;
+                x += sinalX;
+                t -= abs_diferencaY * 2;
             }
 
-            y += sign_y;
-            t += abs_delta_x * 2;
+            y += sinalY;
+            t += abs_diferencaX * 2;
 
             if (x == origem.x && y == origem.y)
             {
