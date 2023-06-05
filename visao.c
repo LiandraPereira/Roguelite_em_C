@@ -4,7 +4,8 @@
 #include "jogador.h"
 
 /**
- * \brief  DE VISAO
+ * \brief Modifica os estado das peças que estão a volta do jogador formando um pseudo-circular (círculo não perfeito).
+ * @param jogador 
 */
 
 void modificaEstadoPeca (ENTIDADE * jogador)
@@ -37,7 +38,7 @@ void modificaEstadoPeca (ENTIDADE * jogador)
 }
 
 /**
- * \brief 
+ * \brief Altera o estado da peças que estão fora do campo de visão do jogador
 */
 void estadoNormalPeca(ENTIDADE * jogador)
 {
@@ -89,7 +90,8 @@ bool posicaoDentroMapa(int y, int x)
 }
 
 /**
- * ESTUDAR ALGORITMO DE BRESENHAM
+ * \brief Implementa uma variação do algoritmo de Bresenham para determinar se existe uma linha de visão directa entre duas
+ * posições no mapa.
 */
 bool linhaVisao(POSICAO origem, POSICAO destino)
 {

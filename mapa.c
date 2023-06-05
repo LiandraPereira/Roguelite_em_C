@@ -6,9 +6,9 @@
  * \brief Cria todas as peças do mapa alocando memória para cada peça.
  * @return Apontador para array de apontadores de cada peça do mapa.
 */
-PECA** criaMapaPecas()
+PECA **criaMapaPecas()
 {
-    PECA** pecas = calloc(MAP_HEIGHT, sizeof(PECA*));
+    PECA **pecas = calloc(MAP_HEIGHT, sizeof(PECA*));
 
     for (int y = 0; y < MAP_HEIGHT; y++) // y - comprimento do mapa
     {
