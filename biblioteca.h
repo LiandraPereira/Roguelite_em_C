@@ -47,6 +47,14 @@ typedef struct armadilha
 
 } ARMADILHA;
 
+typedef struct objeto
+{
+    char imagem;
+    int cor;
+    
+    POSICAO posicao;
+} OBJETO;
+
 /* Estrutura do Jogador */
 typedef struct Entidade 
 {
@@ -160,9 +168,9 @@ void connectaCentroSalas (POSICAO centro1, POSICAO centro2);
 
 void freeMap();
 
-COMIDA* criaComida(SALA novaSala);
+OBJETO* criaComida(SALA novaSala);
 
-ARMADILHA* criaArmadilha (SALA novaSala);
+OBJETO* criaArmadilha (SALA novaSala);
 
 /* Funcionalidades do Monstro */
 
