@@ -1,0 +1,120 @@
+\hypertarget{mapa_8c}{}\doxysection{mapa.\+c File Reference}
+\label{mapa_8c}\index{mapa.c@{mapa.c}}
+{\ttfamily \#include \char`\"{}biblioteca.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mapa.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}monstro.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{biblioteca_8h_accbe5a3c3232b7a865f2922c8432ff43}{PECA}} $\ast$$\ast$ \mbox{\hyperlink{mapa_8c_ada7e2d35c228039813e353a8836fbccc}{cria\+Mapa\+Pecas}} ()
+\begin{DoxyCompactList}\small\item\em Cria todas as peças do mapa alocando memória para cada peça. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} \mbox{\hyperlink{mapa_8c_ae31187a8c275171d8438ec6264d468ae}{constroi\+Salas\+Mapa}} ()
+\begin{DoxyCompactList}\small\item\em Constroi as salas do mapa. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mapa_8c_af646242b7d900c09663ab33058bdd982}\label{mapa_8c_af646242b7d900c09663ab33058bdd982}} 
+void \mbox{\hyperlink{mapa_8c_af646242b7d900c09663ab33058bdd982}{free\+Map}} ()
+\begin{DoxyCompactList}\small\item\em Liberta o espaço do mapa alocado na memória. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Neste ficheiro estão as funções que tratam da criação do mapa. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mapa_8c_ae31187a8c275171d8438ec6264d468ae}\label{mapa_8c_ae31187a8c275171d8438ec6264d468ae}} 
+\index{mapa.c@{mapa.c}!constroiSalasMapa@{constroiSalasMapa}}
+\index{constroiSalasMapa@{constroiSalasMapa}!mapa.c@{mapa.c}}
+\doxysubsubsection{\texorpdfstring{constroiSalasMapa()}{constroiSalasMapa()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} constroi\+Salas\+Mapa (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constroi as salas do mapa. 
+
+\begin{DoxyReturn}{Returns}
+Posição da primeira sala do mapa. 
+\end{DoxyReturn}
+
+
+Definition at line 41 of file mapa.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{42 \{}
+\DoxyCodeLine{43     \textcolor{keywordtype}{int} y, x, altura, largura, numero\_monstros;}
+\DoxyCodeLine{44     \textcolor{keywordtype}{int} numero\_salas = (rand() \% 16) + 5;}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \mbox{\hyperlink{structSala}{SALA}} *salas = calloc(numero\_salas, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structSala}{SALA}}));}
+\DoxyCodeLine{47     \mbox{\hyperlink{structPosicao}{POSICAO}} pos\_SalaInicial;}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < numero\_salas; i++)}
+\DoxyCodeLine{50     \{}
+\DoxyCodeLine{51         y = (rand() \% (\mbox{\hyperlink{biblioteca_8h_a172ffb38f672960e8390ef70664d967b}{MAP\_HEIGHT}} -\/ 15)) + 5; }
+\DoxyCodeLine{52         x = (rand() \% (MAP\_WIDTH -\/ 25)) + 5;}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54         altura = (rand() \% 7) + 3;}
+\DoxyCodeLine{55         largura = (rand() \% 15) + 5; }
+\DoxyCodeLine{56         }
+\DoxyCodeLine{57         numero\_monstros = (rand() \% 2) + 1; }
+\DoxyCodeLine{58         }
+\DoxyCodeLine{59         salas[i] = \mbox{\hyperlink{mapa_8h_a68bfdc36762186d04b730457d359350e}{criaSala}}(y, x, altura, largura, numero\_monstros);}
+\DoxyCodeLine{60         }
+\DoxyCodeLine{61         \mbox{\hyperlink{mapa_8h_a5c5500789058844dda5ab1d854e7cb01}{adicionaSalaMapa}}(salas[i]);}
+\DoxyCodeLine{62         \mbox{\hyperlink{monstro_8c_a0f12bc5a96f54e5c0e4662ee3546592f}{adicionaMonstroSala}} (salas[i]);}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64         \textcolor{keywordflow}{if} (i > 0)}
+\DoxyCodeLine{65         \{}
+\DoxyCodeLine{66             \mbox{\hyperlink{mapa_8h_af2c72f4d9b640e72fe7201efd7895cfd}{connectaCentroSalas}}(salas[i-\/1].centro, salas[i].centro);}
+\DoxyCodeLine{67         \}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69     \}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71     pos\_SalaInicial.y = salas[0].centro.y;}
+\DoxyCodeLine{72     pos\_SalaInicial.x = salas[0].centro.x;}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     free(salas);}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76     \textcolor{keywordflow}{return} pos\_SalaInicial;}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mapa_8c_ada7e2d35c228039813e353a8836fbccc}\label{mapa_8c_ada7e2d35c228039813e353a8836fbccc}} 
+\index{mapa.c@{mapa.c}!criaMapaPecas@{criaMapaPecas}}
+\index{criaMapaPecas@{criaMapaPecas}!mapa.c@{mapa.c}}
+\doxysubsubsection{\texorpdfstring{criaMapaPecas()}{criaMapaPecas()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{biblioteca_8h_accbe5a3c3232b7a865f2922c8432ff43}{PECA}}$\ast$$\ast$ cria\+Mapa\+Pecas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Cria todas as peças do mapa alocando memória para cada peça. 
+
+\begin{DoxyReturn}{Returns}
+Matriz de peças. 
+\end{DoxyReturn}
+
+
+Definition at line 15 of file mapa.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \mbox{\hyperlink{structPeca}{PECA}} **pecas = calloc(\mbox{\hyperlink{biblioteca_8h_a172ffb38f672960e8390ef70664d967b}{MAP\_HEIGHT}}, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structPeca}{PECA}}*));}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y = 0; y < \mbox{\hyperlink{biblioteca_8h_a172ffb38f672960e8390ef70664d967b}{MAP\_HEIGHT}}; y++) }
+\DoxyCodeLine{20     \{}
+\DoxyCodeLine{21         pecas[y] = calloc(MAP\_WIDTH, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structPeca}{PECA}}));}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = 0; x < MAP\_WIDTH; x++) }
+\DoxyCodeLine{24         \{}
+\DoxyCodeLine{25             pecas[y][x].imagem = \textcolor{charliteral}{'\#'}; }
+\DoxyCodeLine{26             pecas[y][x].cor = COLOR\_PAIR(COR\_VISIVEL);}
+\DoxyCodeLine{27             pecas[y][x].podeAndar = \textcolor{keyword}{false};}
+\DoxyCodeLine{28             pecas[y][x].transparente = \textcolor{keyword}{false};}
+\DoxyCodeLine{29             pecas[y][x].visivel = \textcolor{keyword}{false};}
+\DoxyCodeLine{30             pecas[y][x].vista = \textcolor{keyword}{false};}
+\DoxyCodeLine{31         \}}
+\DoxyCodeLine{32     \}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keywordflow}{return} pecas;}
+\DoxyCodeLine{35 \}}
+
+\end{DoxyCode}

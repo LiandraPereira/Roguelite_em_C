@@ -1,0 +1,88 @@
+\hypertarget{main_8c}{}\doxysection{main.\+c File Reference}
+\label{main_8c}\index{main.c@{main.c}}
+{\ttfamily \#include \char`\"{}biblioteca.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mapa.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}jogador.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}monstro.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Esta é a função principal do programa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8c_a172ffb38f672960e8390ef70664d967b}\label{main_8c_a172ffb38f672960e8390ef70664d967b}} 
+const int \mbox{\hyperlink{main_8c_a172ffb38f672960e8390ef70664d967b}{MAP\+\_\+\+HEIGHT}} = 45
+\begin{DoxyCompactList}\small\item\em Declaração das variáveis globais e constantes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_a6764b1b85983649f116cecddaa62535a}\label{main_8c_a6764b1b85983649f116cecddaa62535a}} 
+const int {\bfseries MAP\+\_\+\+WIDTH} = 120
+\item 
+\mbox{\Hypertarget{main_8c_a4097ad49504e26989996b0f9a8105cc7}\label{main_8c_a4097ad49504e26989996b0f9a8105cc7}} 
+\mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}} $\ast$ {\bfseries jogador}
+\item 
+\mbox{\Hypertarget{main_8c_a9b5e8a64024841be5acf04b10a93234e}\label{main_8c_a9b5e8a64024841be5acf04b10a93234e}} 
+\mbox{\hyperlink{biblioteca_8h_accbe5a3c3232b7a865f2922c8432ff43}{PECA}} $\ast$$\ast$ \mbox{\hyperlink{main_8c_a9b5e8a64024841be5acf04b10a93234e}{mapa}}
+\begin{DoxyCompactList}\small\item\em Declaração das variáveis globais. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_a0cdb117536731013481a62956543967c}\label{main_8c_a0cdb117536731013481a62956543967c}} 
+\mbox{\hyperlink{biblioteca_8h_ac1ba0d955fdee6183c0ae116e829954a}{GAMEINFO}} {\bfseries game\+\_\+info}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Neste ficheiro está contida a função principal do jogo. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Esta é a função principal do programa. 
+
+\begin{DoxyReturn}{Returns}
+O. 
+\end{DoxyReturn}
+
+
+Definition at line 26 of file main.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{27 \{   }
+\DoxyCodeLine{28     \mbox{\hyperlink{structPosicao}{POSICAO}} pos\_inicial;}
+\DoxyCodeLine{29     \textcolor{keywordtype}{bool} compatibleTerminal;}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     time\_t tempoInicial = time(NULL);}
+\DoxyCodeLine{32     game\_info.tempoInicial = tempoInicial;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     compatibleTerminal = \mbox{\hyperlink{biblioteca_8h_a4b0a2762a9a9f047fbc4db7b15bd0fe6}{cursorSetup}}();}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \textcolor{keywordflow}{if} (compatibleTerminal)}
+\DoxyCodeLine{37     \{   }
+\DoxyCodeLine{38         srand(time(NULL)); \textcolor{comment}{// Retorna uma semente diferente sempre que inicia-\/se o jogo.}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40         \mbox{\hyperlink{biblioteca_8h_ad8ebb4f7c79f738a81d2f5881a4aff45}{desenhaMenu}}();}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42         \mbox{\hyperlink{main_8c_a9b5e8a64024841be5acf04b10a93234e}{mapa}} = \mbox{\hyperlink{mapa_8c_ada7e2d35c228039813e353a8836fbccc}{criaMapaPecas}}(); \textcolor{comment}{// Cria o mapa}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44         pos\_inicial = \mbox{\hyperlink{mapa_8c_ae31187a8c275171d8438ec6264d468ae}{constroiSalasMapa}}(); \textcolor{comment}{// Posiciona o jogador na primeira sala criada}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46         jogador = \mbox{\hyperlink{jogador_8c_a556221d834865778591f1c88ed9eb21b}{criaJogador}}(pos\_inicial); \textcolor{comment}{//Desenha o jogador no mapa}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48         \mbox{\hyperlink{biblioteca_8h_ae0bb3401d32c7c88694fc09c5b1f829b}{cicloJogo}}();}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50         \mbox{\hyperlink{biblioteca_8h_a2466f26432f55c9e4d5da389588a3996}{fimJogo}}();}
+\DoxyCodeLine{51     \}}
+\DoxyCodeLine{52     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{53     \{}
+\DoxyCodeLine{54         endwin();}
+\DoxyCodeLine{55     \}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{58 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,225 @@
+\hypertarget{jogador_8c}{}\doxysection{jogador.\+c File Reference}
+\label{jogador_8c}\index{jogador.c@{jogador.c}}
+{\ttfamily \#include \char`\"{}biblioteca.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}jogador.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}monstro.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}} $\ast$ \mbox{\hyperlink{jogador_8c_a556221d834865778591f1c88ed9eb21b}{cria\+Jogador}} (\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} start\+\_\+pos)
+\begin{DoxyCompactList}\small\item\em Cria a ENTIDADE Jogador numa determinada posição. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jogador_8c_ac665ac397529126e49ab625eb52b4850}{direcao}} (int tecla)
+\begin{DoxyCompactList}\small\item\em Altera a direção do Jogador usando as teclas numpad. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jogador_8c_a0d129ceadd3bb8d6523d1f0707888300}{movimenta\+Jogador}} (\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} nova\+\_\+pos)
+\begin{DoxyCompactList}\small\item\em Movimenta o jogador para uma determinada posição. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jogador_8c_ad46d03acd26385aae122eeb8e5b853cd}{adiciona\+Vida}} (\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} nova\+\_\+pos, int valor)
+\begin{DoxyCompactList}\small\item\em Adiciona um certo valor a vida do jogador e retira a comida do mapa. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jogador_8c_ad604892951b57faa03343d7d1a7feefe}{pisou\+Armadilha}} (\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} nova\+\_\+pos, int valor)
+\begin{DoxyCompactList}\small\item\em Verifica a vida do jogador quando o mesmo pisa numa armadilha. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Neste ficheiro estão as funções que tratam das funcionalidades do jogador. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{jogador_8c_ad46d03acd26385aae122eeb8e5b853cd}\label{jogador_8c_ad46d03acd26385aae122eeb8e5b853cd}} 
+\index{jogador.c@{jogador.c}!adicionaVida@{adicionaVida}}
+\index{adicionaVida@{adicionaVida}!jogador.c@{jogador.c}}
+\doxysubsubsection{\texorpdfstring{adicionaVida()}{adicionaVida()}}
+{\footnotesize\ttfamily void adiciona\+Vida (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{nova\+\_\+pos,  }\item[{int}]{valor }\end{DoxyParamCaption})}
+
+
+
+Adiciona um certo valor a vida do jogador e retira a comida do mapa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nova\+\_\+pos} & \\
+\hline
+{\em valor} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 99 of file jogador.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{100 \{}
+\DoxyCodeLine{101     \textcolor{keywordflow}{if} (jogador-\/>vida == 40) \textcolor{keywordflow}{return}; \textcolor{comment}{// Não faz nada }}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103     \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[nova\_pos.y][nova\_pos.x].imagem = \textcolor{charliteral}{'.'};}
+\DoxyCodeLine{104     }
+\DoxyCodeLine{105     \textcolor{keywordflow}{if} (jogador-\/>vida + valor > 40) jogador-\/>vida = 40;}
+\DoxyCodeLine{106     \textcolor{keywordflow}{else} jogador-\/>vida += valor;}
+\DoxyCodeLine{107 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{jogador_8c_a556221d834865778591f1c88ed9eb21b}\label{jogador_8c_a556221d834865778591f1c88ed9eb21b}} 
+\index{jogador.c@{jogador.c}!criaJogador@{criaJogador}}
+\index{criaJogador@{criaJogador}!jogador.c@{jogador.c}}
+\doxysubsubsection{\texorpdfstring{criaJogador()}{criaJogador()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}}$\ast$ cria\+Jogador (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{start\+\_\+pos }\end{DoxyParamCaption})}
+
+
+
+Cria a ENTIDADE Jogador numa determinada posição. 
+
+\begin{DoxyReturn}{Returns}
+Apontador para a ENTIDADE Jogador. 
+\end{DoxyReturn}
+
+
+Definition at line 16 of file jogador.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18     \mbox{\hyperlink{structEntidade}{ENTIDADE}}* novoJogador = calloc(1, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structEntidade}{ENTIDADE}}));}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     novoJogador-\/>pos.y = start\_pos.y;}
+\DoxyCodeLine{21     novoJogador-\/>pos.x = start\_pos.x;}
+\DoxyCodeLine{22     novoJogador-\/>imagem = \textcolor{charliteral}{'@'};}
+\DoxyCodeLine{23     novoJogador-\/>cor = COLOR\_PAIR(COR\_JOGADOR);}
+\DoxyCodeLine{24     novoJogador-\/>vida = 40;}
+\DoxyCodeLine{25     novoJogador-\/>movimentos = 0;}
+\DoxyCodeLine{26     novoJogador-\/>raio = 8;}
+\DoxyCodeLine{27     novoJogador-\/>vitorias = 0;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{keywordflow}{return} novoJogador;}
+\DoxyCodeLine{30 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{jogador_8c_ac665ac397529126e49ab625eb52b4850}\label{jogador_8c_ac665ac397529126e49ab625eb52b4850}} 
+\index{jogador.c@{jogador.c}!direcao@{direcao}}
+\index{direcao@{direcao}!jogador.c@{jogador.c}}
+\doxysubsubsection{\texorpdfstring{direcao()}{direcao()}}
+{\footnotesize\ttfamily void direcao (\begin{DoxyParamCaption}\item[{int}]{tecla }\end{DoxyParamCaption})}
+
+
+
+Altera a direção do Jogador usando as teclas numpad. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tecla} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 36 of file jogador.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{37 \{}
+\DoxyCodeLine{38     \mbox{\hyperlink{structPosicao}{POSICAO}} nova\_pos = \{ jogador-\/>pos.y, jogador-\/>pos.x \};}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40      \textcolor{comment}{// Move para cima }}
+\DoxyCodeLine{41     \textcolor{keywordflow}{if} (tecla == \textcolor{charliteral}{'w'} || tecla == \textcolor{charliteral}{'W'} || tecla == \textcolor{charliteral}{'8'})\{}
+\DoxyCodeLine{42         nova\_pos.y-\/-\/;}
+\DoxyCodeLine{43         jogador-\/>movimentos++;}
+\DoxyCodeLine{44     \}    }
+\DoxyCodeLine{45     \textcolor{comment}{// Move para baixo}}
+\DoxyCodeLine{46     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (tecla == \textcolor{charliteral}{'s'} || tecla == \textcolor{charliteral}{'S'} ||tecla == \textcolor{charliteral}{'2'})\{}
+\DoxyCodeLine{47         nova\_pos.y++;}
+\DoxyCodeLine{48         jogador-\/>movimentos++;}
+\DoxyCodeLine{49     \}}
+\DoxyCodeLine{50     \textcolor{comment}{// Move para esquerda }}
+\DoxyCodeLine{51     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (tecla == \textcolor{charliteral}{'a'} || tecla == \textcolor{charliteral}{'A'} || tecla ==\textcolor{charliteral}{'4'})\{}
+\DoxyCodeLine{52         nova\_pos.x-\/-\/;}
+\DoxyCodeLine{53         jogador-\/>movimentos++;}
+\DoxyCodeLine{54     \}}
+\DoxyCodeLine{55     \textcolor{comment}{// Move para direita}}
+\DoxyCodeLine{56     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (tecla == \textcolor{charliteral}{'d'} || tecla == \textcolor{charliteral}{'D'} || tecla == \textcolor{charliteral}{'6'})\{}
+\DoxyCodeLine{57         nova\_pos.x++;}
+\DoxyCodeLine{58         jogador-\/>movimentos++;}
+\DoxyCodeLine{59     \}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61     \mbox{\hyperlink{jogador_8c_a0d129ceadd3bb8d6523d1f0707888300}{movimentaJogador}}(nova\_pos);}
+\DoxyCodeLine{62 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{jogador_8c_a0d129ceadd3bb8d6523d1f0707888300}\label{jogador_8c_a0d129ceadd3bb8d6523d1f0707888300}} 
+\index{jogador.c@{jogador.c}!movimentaJogador@{movimentaJogador}}
+\index{movimentaJogador@{movimentaJogador}!jogador.c@{jogador.c}}
+\doxysubsubsection{\texorpdfstring{movimentaJogador()}{movimentaJogador()}}
+{\footnotesize\ttfamily void movimenta\+Jogador (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{nova\+\_\+pos }\end{DoxyParamCaption})}
+
+
+
+Movimenta o jogador para uma determinada posição. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nova\+\_\+pos} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 68 of file jogador.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{69 \{}
+\DoxyCodeLine{70     \textcolor{keywordflow}{if} (\mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[nova\_pos.y][nova\_pos.x].podeAndar)}
+\DoxyCodeLine{71     \{}
+\DoxyCodeLine{72         \textcolor{keywordflow}{if} (\mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[nova\_pos.y][nova\_pos.x].imagem == \textcolor{charliteral}{'o'})}
+\DoxyCodeLine{73         \{}
+\DoxyCodeLine{74             \mbox{\hyperlink{jogador_8c_ad46d03acd26385aae122eeb8e5b853cd}{adicionaVida}}(nova\_pos,5);}
+\DoxyCodeLine{75         \}}
+\DoxyCodeLine{76         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[nova\_pos.y][nova\_pos.x].imagem == \textcolor{charliteral}{'\string^'})}
+\DoxyCodeLine{77         \{}
+\DoxyCodeLine{78             \mbox{\hyperlink{jogador_8c_ad604892951b57faa03343d7d1a7feefe}{pisouArmadilha}}(nova\_pos,10); }
+\DoxyCodeLine{79         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[nova\_pos.y][nova\_pos.x].imagem == \textcolor{charliteral}{'M'})}
+\DoxyCodeLine{80         \{}
+\DoxyCodeLine{81             \mbox{\hyperlink{monstro_8c_a3e6de6bc46832866923cc8bfbcad645e}{combate}}(nova\_pos);}
+\DoxyCodeLine{82             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{83         \}}
+\DoxyCodeLine{84         }
+\DoxyCodeLine{85         \mbox{\hyperlink{jogador_8h_a7d61cfb60ff3a71e009ae941b4fff3a4}{estadoNormalPeca}}(jogador);}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87         jogador-\/>pos.y = nova\_pos.y;}
+\DoxyCodeLine{88         jogador-\/>pos.x = nova\_pos.x;}
+\DoxyCodeLine{89         }
+\DoxyCodeLine{90         \mbox{\hyperlink{jogador_8h_a899ab96321fefcf4380e1d48f74fee59}{modificaEstadoPeca}}(jogador);}
+\DoxyCodeLine{91     \}}
+\DoxyCodeLine{92 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{jogador_8c_ad604892951b57faa03343d7d1a7feefe}\label{jogador_8c_ad604892951b57faa03343d7d1a7feefe}} 
+\index{jogador.c@{jogador.c}!pisouArmadilha@{pisouArmadilha}}
+\index{pisouArmadilha@{pisouArmadilha}!jogador.c@{jogador.c}}
+\doxysubsubsection{\texorpdfstring{pisouArmadilha()}{pisouArmadilha()}}
+{\footnotesize\ttfamily void pisou\+Armadilha (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{nova\+\_\+pos,  }\item[{int}]{valor }\end{DoxyParamCaption})}
+
+
+
+Verifica a vida do jogador quando o mesmo pisa numa armadilha. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nova\+\_\+pos} & \\
+\hline
+{\em valor} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 114 of file jogador.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{115 \{}
+\DoxyCodeLine{116     }
+\DoxyCodeLine{117     jogador-\/>vida = jogador-\/>vida -\/ valor;}
+\DoxyCodeLine{118     \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[nova\_pos.y][nova\_pos.x].imagem = \textcolor{charliteral}{'.'};}
+\DoxyCodeLine{119     }
+\DoxyCodeLine{120     \textcolor{keywordflow}{if}(jogador-\/>vida <= 0)}
+\DoxyCodeLine{121     \{}
+\DoxyCodeLine{122         \mbox{\hyperlink{biblioteca_8h_aff3d917524ded8d337823f6732b55319}{desenhaMenuFinal}}();}
+\DoxyCodeLine{123         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{124     \}}
+\DoxyCodeLine{125     }
+\DoxyCodeLine{126 \}}
+
+\end{DoxyCode}

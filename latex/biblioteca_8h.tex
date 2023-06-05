@@ -1,0 +1,211 @@
+\hypertarget{biblioteca_8h}{}\doxysection{biblioteca.\+h File Reference}
+\label{biblioteca_8h}\index{biblioteca.h@{biblioteca.h}}
+{\ttfamily \#include $<$ncurses.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structPosicao}{Posicao}}
+\begin{DoxyCompactList}\small\item\em Definição da estrutura da Posição. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structObjeto}{Objeto}}
+\begin{DoxyCompactList}\small\item\em Definição da estrutura do objeto. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structEntidade}{Entidade}}
+\begin{DoxyCompactList}\small\item\em Definição da estrutura da \mbox{\hyperlink{structEntidade}{Entidade}}. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structPeca}{Peca}}
+\begin{DoxyCompactList}\small\item\em Definiçãoda da estrutura da Peça. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structSala}{Sala}}
+\begin{DoxyCompactList}\small\item\em Definição da estrutura da \mbox{\hyperlink{structSala}{Sala}}. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structGameInfo}{Game\+Info}}
+\begin{DoxyCompactList}\small\item\em Definição da estrutura da \mbox{\hyperlink{structGameInfo}{Game\+Info}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{biblioteca_8h_aeb191dcb2b2ed8798db42dfff4b2b80d}\label{biblioteca_8h_aeb191dcb2b2ed8798db42dfff4b2b80d}} 
+\#define {\bfseries COR\+\_\+\+VISIVEL}~7
+\item 
+\mbox{\Hypertarget{biblioteca_8h_a06232730ef289b1318f03e4ad97e1809}\label{biblioteca_8h_a06232730ef289b1318f03e4ad97e1809}} 
+\#define {\bfseries COR\+\_\+\+VISTA}~3
+\item 
+\mbox{\Hypertarget{biblioteca_8h_a05c820684c90fd61e97779c209d5099c}\label{biblioteca_8h_a05c820684c90fd61e97779c209d5099c}} 
+\#define {\bfseries COR\+\_\+\+MONSTRO}~5
+\item 
+\mbox{\Hypertarget{biblioteca_8h_afed51f3745437de84ecbc910ed87966c}\label{biblioteca_8h_afed51f3745437de84ecbc910ed87966c}} 
+\#define {\bfseries COR\+\_\+\+COMIDA}~2
+\item 
+\mbox{\Hypertarget{biblioteca_8h_a4a7b0fcd3aca589e169a78721ca509d2}\label{biblioteca_8h_a4a7b0fcd3aca589e169a78721ca509d2}} 
+\#define {\bfseries COR\+\_\+\+ARMADILHA}~1
+\item 
+\mbox{\Hypertarget{biblioteca_8h_a7ce32c599b4b6e48647a9a52e23f7cde}\label{biblioteca_8h_a7ce32c599b4b6e48647a9a52e23f7cde}} 
+\#define {\bfseries COR\+\_\+\+JOGADOR}~6
+\item 
+\mbox{\Hypertarget{biblioteca_8h_a0e57abbb811521a0d7105c1895ec6de0}\label{biblioteca_8h_a0e57abbb811521a0d7105c1895ec6de0}} 
+\#define {\bfseries COR\+\_\+\+MORTO}~1
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}\label{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}} 
+typedef struct \mbox{\hyperlink{structPosicao}{Posicao}} \mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}
+\begin{DoxyCompactList}\small\item\em Definição da estrutura da Posição. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biblioteca_8h_ad405b55e6aa4a05dfbe1934661f077da}\label{biblioteca_8h_ad405b55e6aa4a05dfbe1934661f077da}} 
+typedef struct \mbox{\hyperlink{structObjeto}{Objeto}} \mbox{\hyperlink{biblioteca_8h_ad405b55e6aa4a05dfbe1934661f077da}{OBJETO}}
+\begin{DoxyCompactList}\small\item\em Definição da estrutura do objeto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}\label{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}} 
+typedef struct \mbox{\hyperlink{structEntidade}{Entidade}} \mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}}
+\begin{DoxyCompactList}\small\item\em Definição da estrutura da \mbox{\hyperlink{structEntidade}{Entidade}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biblioteca_8h_accbe5a3c3232b7a865f2922c8432ff43}\label{biblioteca_8h_accbe5a3c3232b7a865f2922c8432ff43}} 
+typedef struct \mbox{\hyperlink{structPeca}{Peca}} \mbox{\hyperlink{biblioteca_8h_accbe5a3c3232b7a865f2922c8432ff43}{PECA}}
+\begin{DoxyCompactList}\small\item\em Definiçãoda da estrutura da Peça. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biblioteca_8h_a012058e8bdb6a1122c4d10c862043ced}\label{biblioteca_8h_a012058e8bdb6a1122c4d10c862043ced}} 
+typedef struct \mbox{\hyperlink{structSala}{Sala}} \mbox{\hyperlink{biblioteca_8h_a012058e8bdb6a1122c4d10c862043ced}{SALA}}
+\begin{DoxyCompactList}\small\item\em Definição da estrutura da \mbox{\hyperlink{structSala}{Sala}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biblioteca_8h_ac1ba0d955fdee6183c0ae116e829954a}\label{biblioteca_8h_ac1ba0d955fdee6183c0ae116e829954a}} 
+typedef struct \mbox{\hyperlink{structGameInfo}{Game\+Info}} \mbox{\hyperlink{biblioteca_8h_ac1ba0d955fdee6183c0ae116e829954a}{GAMEINFO}}
+\begin{DoxyCompactList}\small\item\em Definição da estrutura da \mbox{\hyperlink{structGameInfo}{Game\+Info}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{biblioteca_8h_a4b0a2762a9a9f047fbc4db7b15bd0fe6}{cursor\+Setup}} ()
+\begin{DoxyCompactList}\small\item\em Definição dos protótipos do módulo \mbox{\hyperlink{engine_8c}{engine.\+c}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biblioteca_8h_ae0bb3401d32c7c88694fc09c5b1f829b}\label{biblioteca_8h_ae0bb3401d32c7c88694fc09c5b1f829b}} 
+void \mbox{\hyperlink{biblioteca_8h_ae0bb3401d32c7c88694fc09c5b1f829b}{ciclo\+Jogo}} ()
+\begin{DoxyCompactList}\small\item\em Ciclo do jogo. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biblioteca_8h_a0e5d6436f40e483e9ee36616f9aace28}\label{biblioteca_8h_a0e5d6436f40e483e9ee36616f9aace28}} 
+void \mbox{\hyperlink{biblioteca_8h_a0e5d6436f40e483e9ee36616f9aace28}{reinicia\+Jogo}} ()
+\begin{DoxyCompactList}\small\item\em Reinicia o jogo. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biblioteca_8h_a2466f26432f55c9e4d5da389588a3996}\label{biblioteca_8h_a2466f26432f55c9e4d5da389588a3996}} 
+void \mbox{\hyperlink{biblioteca_8h_a2466f26432f55c9e4d5da389588a3996}{fim\+Jogo}} ()
+\begin{DoxyCompactList}\small\item\em Finaliza o jogo com auxílio da biblioteca ncurses. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{biblioteca_8h_ad8ebb4f7c79f738a81d2f5881a4aff45}{desenha\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Definição dos protótipos do módulo \mbox{\hyperlink{desenha_8c}{desenha.\+c}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biblioteca_8h_a42c0b841cfb1b2903740b680536553be}\label{biblioteca_8h_a42c0b841cfb1b2903740b680536553be}} 
+void \mbox{\hyperlink{biblioteca_8h_a42c0b841cfb1b2903740b680536553be}{desenha\+Mapa}} ()
+\begin{DoxyCompactList}\small\item\em Desenha o mapa. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biblioteca_8h_a71e22f6733fb77410fbd909e5cf1e440}\label{biblioteca_8h_a71e22f6733fb77410fbd909e5cf1e440}} 
+void {\bfseries desenha\+Painel\+Informacoes} ()
+\item 
+\mbox{\Hypertarget{biblioteca_8h_aff3d917524ded8d337823f6732b55319}\label{biblioteca_8h_aff3d917524ded8d337823f6732b55319}} 
+void \mbox{\hyperlink{biblioteca_8h_aff3d917524ded8d337823f6732b55319}{desenha\+Menu\+Final}} ()
+\begin{DoxyCompactList}\small\item\em Desenha o Menu Final com as informações sobre o jogo e com a opção de reiniciar. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biblioteca_8h_a5451a0213e1720875f0e9e084db2d0ef}\label{biblioteca_8h_a5451a0213e1720875f0e9e084db2d0ef}} 
+void \mbox{\hyperlink{biblioteca_8h_a5451a0213e1720875f0e9e084db2d0ef}{desenha\+Jogador}} (\mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}} $\ast$jogador)
+\begin{DoxyCompactList}\small\item\em Desenha o jogador. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biblioteca_8h_a3ca174b38a9d61cdaafe126e67661ead}\label{biblioteca_8h_a3ca174b38a9d61cdaafe126e67661ead}} 
+void \mbox{\hyperlink{biblioteca_8h_a3ca174b38a9d61cdaafe126e67661ead}{desenha\+Jogo}} ()
+\begin{DoxyCompactList}\small\item\em Desenha o jogo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{biblioteca_8h_a172ffb38f672960e8390ef70664d967b}\label{biblioteca_8h_a172ffb38f672960e8390ef70664d967b}} 
+const int \mbox{\hyperlink{biblioteca_8h_a172ffb38f672960e8390ef70664d967b}{MAP\+\_\+\+HEIGHT}}
+\begin{DoxyCompactList}\small\item\em Declaração das variáveis globais e constantes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biblioteca_8h_a6764b1b85983649f116cecddaa62535a}\label{biblioteca_8h_a6764b1b85983649f116cecddaa62535a}} 
+const int {\bfseries MAP\+\_\+\+WIDTH}
+\item 
+\mbox{\Hypertarget{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}\label{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}} 
+\mbox{\hyperlink{biblioteca_8h_accbe5a3c3232b7a865f2922c8432ff43}{PECA}} $\ast$$\ast$ \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}
+\begin{DoxyCompactList}\small\item\em Declaração das variáveis globais. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{biblioteca_8h_a4097ad49504e26989996b0f9a8105cc7}\label{biblioteca_8h_a4097ad49504e26989996b0f9a8105cc7}} 
+\mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}} $\ast$ {\bfseries jogador}
+\item 
+\mbox{\Hypertarget{biblioteca_8h_a0cdb117536731013481a62956543967c}\label{biblioteca_8h_a0cdb117536731013481a62956543967c}} 
+\mbox{\hyperlink{biblioteca_8h_ac1ba0d955fdee6183c0ae116e829954a}{GAMEINFO}} {\bfseries game\+\_\+info}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Neste ficheiro estão contidos os protótipos do módulo biblioteca.\+c 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{biblioteca_8h_a4b0a2762a9a9f047fbc4db7b15bd0fe6}\label{biblioteca_8h_a4b0a2762a9a9f047fbc4db7b15bd0fe6}} 
+\index{biblioteca.h@{biblioteca.h}!cursorSetup@{cursorSetup}}
+\index{cursorSetup@{cursorSetup}!biblioteca.h@{biblioteca.h}}
+\doxysubsubsection{\texorpdfstring{cursorSetup()}{cursorSetup()}}
+{\footnotesize\ttfamily bool cursor\+Setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definição dos protótipos do módulo \mbox{\hyperlink{engine_8c}{engine.\+c}}. 
+
+Definição dos protótipos do módulo \mbox{\hyperlink{engine_8c}{engine.\+c}}. 
+
+Definition at line 15 of file engine.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     initscr();}
+\DoxyCodeLine{18     noecho();}
+\DoxyCodeLine{19     curs\_set(0);}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keywordflow}{if} (has\_colors())}
+\DoxyCodeLine{22     \{}
+\DoxyCodeLine{23         start\_color();}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25         init\_pair(COR\_VISIVEL,COLOR\_WHITE, COLOR\_BLACK);}
+\DoxyCodeLine{26         init\_pair(COR\_VISTA, COLOR\_YELLOW, COLOR\_BLACK);}
+\DoxyCodeLine{27         init\_pair(COR\_MONSTRO,COLOR\_RED, COLOR\_BLACK);}
+\DoxyCodeLine{28         init\_pair(COR\_COMIDA,COLOR\_GREEN, COLOR\_BLACK);}
+\DoxyCodeLine{29         init\_pair(COR\_ARMADILHA,COLOR\_RED, COLOR\_BLACK);}
+\DoxyCodeLine{30         init\_pair(COR\_JOGADOR,COLOR\_CYAN, COLOR\_BLACK);}
+\DoxyCodeLine{31         init\_pair(COR\_MORTO,COLOR\_MAGENTA, COLOR\_BLACK);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{34     \}}
+\DoxyCodeLine{35     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{36     \{}
+\DoxyCodeLine{37         mvprintw(20, 50, \textcolor{stringliteral}{"{}Your system doesn't support color. Can't start game!"{}});}
+\DoxyCodeLine{38         getch();}
+\DoxyCodeLine{39         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{40     \}}
+\DoxyCodeLine{41 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{biblioteca_8h_ad8ebb4f7c79f738a81d2f5881a4aff45}\label{biblioteca_8h_ad8ebb4f7c79f738a81d2f5881a4aff45}} 
+\index{biblioteca.h@{biblioteca.h}!desenhaMenu@{desenhaMenu}}
+\index{desenhaMenu@{desenhaMenu}!biblioteca.h@{biblioteca.h}}
+\doxysubsubsection{\texorpdfstring{desenhaMenu()}{desenhaMenu()}}
+{\footnotesize\ttfamily void desenha\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definição dos protótipos do módulo \mbox{\hyperlink{desenha_8c}{desenha.\+c}}. 
+
+Definição dos protótipos do módulo \mbox{\hyperlink{desenha_8c}{desenha.\+c}}. 
+
+Definition at line 97 of file desenha.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{98 \{}
+\DoxyCodeLine{99     clear(); }
+\DoxyCodeLine{100     refresh(); }
+\DoxyCodeLine{101     \textcolor{keywordtype}{int} altura = 18;}
+\DoxyCodeLine{102     \textcolor{keywordtype}{int} larg = 80;}
+\DoxyCodeLine{103     \textcolor{keywordtype}{int} inicioY = (LINES -\/ altura) / 2;}
+\DoxyCodeLine{104     \textcolor{keywordtype}{int} inicioX = (COLS -\/ larg) / 2;}
+\DoxyCodeLine{105     }
+\DoxyCodeLine{106     WINDOW *menuwin = newwin(altura, larg, inicioY, inicioX );}
+\DoxyCodeLine{107     box(menuwin, 0, 0);}
+\DoxyCodeLine{108     }
+\DoxyCodeLine{109     mvwprintw(menuwin, 1, larg/2 -\/6, \textcolor{stringliteral}{"{}Roguelite"{}}); }
+\DoxyCodeLine{110     mvwprintw(menuwin, 4, 2, \textcolor{stringliteral}{"{}-\/O objetivo do jogo é matar todos os monstros sem morrer primeiro."{}});}
+\DoxyCodeLine{111     mvwprintw(menuwin, 6, 2, \textcolor{stringliteral}{"{}Controles:"{}});}
+\DoxyCodeLine{112     mvwprintw(menuwin, 7, 4, \textcolor{stringliteral}{"{}8426/'wasd' -\/ Move e ataca."{}});}
+\DoxyCodeLine{113     mvwprintw(menuwin, 8, 4, \textcolor{stringliteral}{"{}'q' -\/ Sai do jogo."{}});}
+\DoxyCodeLine{114     mvwprintw(menuwin, 10, 2, \textcolor{stringliteral}{"{}Instruções:"{}});}
+\DoxyCodeLine{115     mvwprintw(menuwin, 11, 4, \textcolor{stringliteral}{"{}@ -\/ Jogador"{}});}
+\DoxyCodeLine{116     mvwprintw(menuwin, 12, 4, \textcolor{stringliteral}{"{}M -\/ Monstros"{}});}
+\DoxyCodeLine{117     mvwprintw(menuwin, 13, 4, \textcolor{stringliteral}{"{}O -\/ Comidas (Vida)"{}});}
+\DoxyCodeLine{118     mvwprintw(menuwin, altura-\/2, larg/2 -\/ 15, \textcolor{stringliteral}{"{}Pressione Enter para iniciar."{}});}
+\DoxyCodeLine{119     }
+\DoxyCodeLine{120     wrefresh(menuwin); }
+\DoxyCodeLine{121     \textcolor{keywordflow}{while} (getch() != \textcolor{charliteral}{'\(\backslash\)n'})\{\}}
+\DoxyCodeLine{122     delwin(menuwin);}
+\DoxyCodeLine{123 \}}
+
+\end{DoxyCode}

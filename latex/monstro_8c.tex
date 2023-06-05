@@ -1,0 +1,87 @@
+\hypertarget{monstro_8c}{}\doxysection{monstro.\+c File Reference}
+\label{monstro_8c}\index{monstro.c@{monstro.c}}
+{\ttfamily \#include \char`\"{}biblioteca.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}monstro.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}} \mbox{\hyperlink{monstro_8c_ab5fe82c4c427a707ed9c2f3acfc656c0}{cria\+Monstro}} (int y, int x, \mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}} monstro)
+\begin{DoxyCompactList}\small\item\em Cria a entidade monstro numa determinada posição. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{monstro_8c_a0f12bc5a96f54e5c0e4662ee3546592f}\label{monstro_8c_a0f12bc5a96f54e5c0e4662ee3546592f}} 
+void \mbox{\hyperlink{monstro_8c_a0f12bc5a96f54e5c0e4662ee3546592f}{adiciona\+Monstro\+Sala}} (\mbox{\hyperlink{biblioteca_8h_a012058e8bdb6a1122c4d10c862043ced}{SALA}} nova\+Sala)
+\begin{DoxyCompactList}\small\item\em Adiciona monstros numa sala. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{monstro_8c_a3e6de6bc46832866923cc8bfbcad645e}{combate}} (\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} nova\+\_\+pos)
+\begin{DoxyCompactList}\small\item\em Acontece o combate entre o jogador e o monstro. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Neste ficheiro estão as funções que tratam das funcionalidades do monstro e o combate. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{monstro_8c_a3e6de6bc46832866923cc8bfbcad645e}\label{monstro_8c_a3e6de6bc46832866923cc8bfbcad645e}} 
+\index{monstro.c@{monstro.c}!combate@{combate}}
+\index{combate@{combate}!monstro.c@{monstro.c}}
+\doxysubsubsection{\texorpdfstring{combate()}{combate()}}
+{\footnotesize\ttfamily void combate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{nova\+\_\+pos }\end{DoxyParamCaption})}
+
+
+
+Acontece o combate entre o jogador e o monstro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nova\+\_\+pos} & \\
+\hline
+{\em monstro} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 50 of file monstro.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{51 \{}
+\DoxyCodeLine{52     \textcolor{keywordflow}{if} (\mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[nova\_pos.y][nova\_pos.x].perigo.vida == 0)}
+\DoxyCodeLine{53     \{}
+\DoxyCodeLine{54         \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[nova\_pos.y][nova\_pos.x].imagem = \textcolor{charliteral}{'.'};}
+\DoxyCodeLine{55         jogador-\/>vitorias++;}
+\DoxyCodeLine{56     \}}
+\DoxyCodeLine{57     \textcolor{keywordflow}{else} }
+\DoxyCodeLine{58     \{}
+\DoxyCodeLine{59         \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[nova\_pos.y][nova\_pos.x].perigo.vida -\/= 10;}
+\DoxyCodeLine{60  }
+\DoxyCodeLine{61     \}}
+\DoxyCodeLine{62 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{monstro_8c_ab5fe82c4c427a707ed9c2f3acfc656c0}\label{monstro_8c_ab5fe82c4c427a707ed9c2f3acfc656c0}} 
+\index{monstro.c@{monstro.c}!criaMonstro@{criaMonstro}}
+\index{criaMonstro@{criaMonstro}!monstro.c@{monstro.c}}
+\doxysubsubsection{\texorpdfstring{criaMonstro()}{criaMonstro()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}} cria\+Monstro (\begin{DoxyParamCaption}\item[{int}]{y,  }\item[{int}]{x,  }\item[{\mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}}}]{monstro }\end{DoxyParamCaption})}
+
+
+
+Cria a entidade monstro numa determinada posição. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structEntidade}{Entidade}} monstro. 
+\end{DoxyReturn}
+
+
+Definition at line 14 of file monstro.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{15 \{   }
+\DoxyCodeLine{16     monstro.pos.y = y;}
+\DoxyCodeLine{17     monstro.pos.x = x;}
+\DoxyCodeLine{18     monstro.imagem = \textcolor{charliteral}{'M'};}
+\DoxyCodeLine{19     monstro.cor = COLOR\_PAIR(COR\_MONSTRO);}
+\DoxyCodeLine{20     monstro.vida = 20;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{keywordflow}{return} monstro;}
+\DoxyCodeLine{23 \}}
+
+\end{DoxyCode}

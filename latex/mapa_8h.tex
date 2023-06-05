@@ -1,0 +1,366 @@
+\hypertarget{mapa_8h}{}\doxysection{mapa.\+h File Reference}
+\label{mapa_8h}\index{mapa.h@{mapa.h}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{biblioteca_8h_accbe5a3c3232b7a865f2922c8432ff43}{PECA}} $\ast$$\ast$ \mbox{\hyperlink{mapa_8h_ada7e2d35c228039813e353a8836fbccc}{cria\+Mapa\+Pecas}} ()
+\begin{DoxyCompactList}\small\item\em Cria todas as peças do mapa alocando memória para cada peça. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} \mbox{\hyperlink{mapa_8h_ae31187a8c275171d8438ec6264d468ae}{constroi\+Salas\+Mapa}} ()
+\begin{DoxyCompactList}\small\item\em Constroi as salas do mapa. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{biblioteca_8h_a012058e8bdb6a1122c4d10c862043ced}{SALA}} \mbox{\hyperlink{mapa_8h_a68bfdc36762186d04b730457d359350e}{cria\+Sala}} (int y, int x, int altura, int largura, int numero\+\_\+monstros)
+\begin{DoxyCompactList}\small\item\em Cria e inicializada a estrututa de uma sala. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mapa_8h_a5c5500789058844dda5ab1d854e7cb01}{adiciona\+Sala\+Mapa}} (\mbox{\hyperlink{biblioteca_8h_a012058e8bdb6a1122c4d10c862043ced}{SALA}} nova\+Sala)
+\begin{DoxyCompactList}\small\item\em Adiciona uma sala no mapa com auxílio da posição da sala. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mapa_8h_af2c72f4d9b640e72fe7201efd7895cfd}{connecta\+Centro\+Salas}} (\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} centro1, \mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} centro2)
+\begin{DoxyCompactList}\small\item\em Cria corredores conectando o centro de duas salas do mapa. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mapa_8h_af646242b7d900c09663ab33058bdd982}\label{mapa_8h_af646242b7d900c09663ab33058bdd982}} 
+void \mbox{\hyperlink{mapa_8h_af646242b7d900c09663ab33058bdd982}{free\+Map}} ()
+\begin{DoxyCompactList}\small\item\em Liberta o espaço do mapa alocado na memória. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{biblioteca_8h_ad405b55e6aa4a05dfbe1934661f077da}{OBJETO}} $\ast$ \mbox{\hyperlink{mapa_8h_adeeb4c8f05ba57c816e68179fce5c089}{cria\+Comida}} (\mbox{\hyperlink{biblioteca_8h_a012058e8bdb6a1122c4d10c862043ced}{SALA}} nova\+Sala)
+\begin{DoxyCompactList}\small\item\em Função que cria comidas espalhadas pelo mapa. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{biblioteca_8h_ad405b55e6aa4a05dfbe1934661f077da}{OBJETO}} $\ast$ \mbox{\hyperlink{mapa_8h_a93f6a0b7fe568c301d352699c0ca7ad2}{cria\+Armadilha}} (\mbox{\hyperlink{biblioteca_8h_a012058e8bdb6a1122c4d10c862043ced}{SALA}} nova\+Sala)
+\begin{DoxyCompactList}\small\item\em Função que cria armadilhas espalhadas pelo mapa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Neste ficheiro estão contidos os protótipos do módulo \mbox{\hyperlink{mapa_8c}{mapa.\+c}} 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mapa_8h_a5c5500789058844dda5ab1d854e7cb01}\label{mapa_8h_a5c5500789058844dda5ab1d854e7cb01}} 
+\index{mapa.h@{mapa.h}!adicionaSalaMapa@{adicionaSalaMapa}}
+\index{adicionaSalaMapa@{adicionaSalaMapa}!mapa.h@{mapa.h}}
+\doxysubsubsection{\texorpdfstring{adicionaSalaMapa()}{adicionaSalaMapa()}}
+{\footnotesize\ttfamily void adiciona\+Sala\+Mapa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a012058e8bdb6a1122c4d10c862043ced}{SALA}}}]{nova\+Sala }\end{DoxyParamCaption})}
+
+
+
+Adiciona uma sala no mapa com auxílio da posição da sala. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nova\+Sala} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 42 of file salas.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{43 \{   }
+\DoxyCodeLine{44     }
+\DoxyCodeLine{45     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y = novaSala.pos.y; y < novaSala.pos.y + novaSala.altura; y++)}
+\DoxyCodeLine{46     \{}
+\DoxyCodeLine{47         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = novaSala.pos.x; x < novaSala.pos.x + novaSala.largura; x++)}
+\DoxyCodeLine{48         \{}
+\DoxyCodeLine{49             \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[y][x].imagem = \textcolor{charliteral}{'.'};}
+\DoxyCodeLine{50             \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[y][x].podeAndar = \textcolor{keyword}{true};}
+\DoxyCodeLine{51             \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[y][x].transparente = \textcolor{keyword}{true};}
+\DoxyCodeLine{52         \}}
+\DoxyCodeLine{53     \}}
+\DoxyCodeLine{54     }
+\DoxyCodeLine{55     \mbox{\hyperlink{structObjeto}{OBJETO}} *novaComida = \mbox{\hyperlink{salas_8c_adeeb4c8f05ba57c816e68179fce5c089}{criaComida}}(novaSala);}
+\DoxyCodeLine{56     \textcolor{keywordtype}{int} y = novaComida-\/>posicao.y, x = novaComida-\/>posicao.x; }
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[y][x].imagem = novaComida-\/>imagem;}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60     \mbox{\hyperlink{structObjeto}{OBJETO}} *novaArmadilha = \mbox{\hyperlink{salas_8c_a93f6a0b7fe568c301d352699c0ca7ad2}{criaArmadilha}}(novaSala); }
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     \textcolor{keywordflow}{if} (novaArmadilha != NULL) }
+\DoxyCodeLine{63     \{}
+\DoxyCodeLine{64         \textcolor{keywordtype}{int} y = novaArmadilha-\/>posicao.y, x = novaArmadilha-\/>posicao.x; }
+\DoxyCodeLine{65         \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[y][x].imagem = novaArmadilha-\/>imagem;}
+\DoxyCodeLine{66         \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[y][x].cor = novaArmadilha-\/>cor;  }
+\DoxyCodeLine{67     \}}
+\DoxyCodeLine{68 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mapa_8h_af2c72f4d9b640e72fe7201efd7895cfd}\label{mapa_8h_af2c72f4d9b640e72fe7201efd7895cfd}} 
+\index{mapa.h@{mapa.h}!connectaCentroSalas@{connectaCentroSalas}}
+\index{connectaCentroSalas@{connectaCentroSalas}!mapa.h@{mapa.h}}
+\doxysubsubsection{\texorpdfstring{connectaCentroSalas()}{connectaCentroSalas()}}
+{\footnotesize\ttfamily void connecta\+Centro\+Salas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{centro1,  }\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{centro2 }\end{DoxyParamCaption})}
+
+
+
+Cria corredores conectando o centro de duas salas do mapa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em centro1} & \\
+\hline
+{\em centro2} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 76 of file salas.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{77 \{}
+\DoxyCodeLine{78     \mbox{\hyperlink{structPosicao}{POSICAO}} novaPos;}
+\DoxyCodeLine{79     novaPos.x = centro1.x;}
+\DoxyCodeLine{80     novaPos.y = centro1.y;}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82     \textcolor{keywordflow}{while} (\textcolor{keyword}{true})}
+\DoxyCodeLine{83     \{}
+\DoxyCodeLine{84         \textcolor{keywordflow}{if} (abs((novaPos.x -\/ 1) -\/ centro2.x) < abs(novaPos.x -\/ centro2.x))}
+\DoxyCodeLine{85             novaPos.x-\/-\/;}
+\DoxyCodeLine{86         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (abs((novaPos.x + 1) -\/ centro2.x) < abs(novaPos.x -\/ centro2.x))}
+\DoxyCodeLine{87             novaPos.x++;}
+\DoxyCodeLine{88         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (abs((novaPos.y + 1) -\/ centro2.y) < abs(novaPos.y -\/ centro2.y))}
+\DoxyCodeLine{89             novaPos.y++;}
+\DoxyCodeLine{90         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (abs((novaPos.y -\/ 1) -\/ centro2.y) < abs(novaPos.y -\/ centro2.y))}
+\DoxyCodeLine{91             novaPos.y-\/-\/;}
+\DoxyCodeLine{92         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{93             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95         \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[novaPos.y][novaPos.x].imagem = \textcolor{charliteral}{'.'};}
+\DoxyCodeLine{96         \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[novaPos.y][novaPos.x].podeAndar = \textcolor{keyword}{true};}
+\DoxyCodeLine{97         \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[novaPos.y][novaPos.x].transparente = \textcolor{keyword}{true};}
+\DoxyCodeLine{98     \}}
+\DoxyCodeLine{99 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mapa_8h_ae31187a8c275171d8438ec6264d468ae}\label{mapa_8h_ae31187a8c275171d8438ec6264d468ae}} 
+\index{mapa.h@{mapa.h}!constroiSalasMapa@{constroiSalasMapa}}
+\index{constroiSalasMapa@{constroiSalasMapa}!mapa.h@{mapa.h}}
+\doxysubsubsection{\texorpdfstring{constroiSalasMapa()}{constroiSalasMapa()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} constroi\+Salas\+Mapa (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constroi as salas do mapa. 
+
+\begin{DoxyReturn}{Returns}
+Posição da primeira sala do mapa. 
+\end{DoxyReturn}
+
+
+Definition at line 41 of file mapa.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{42 \{}
+\DoxyCodeLine{43     \textcolor{keywordtype}{int} y, x, altura, largura, numero\_monstros;}
+\DoxyCodeLine{44     \textcolor{keywordtype}{int} numero\_salas = (rand() \% 16) + 5;}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \mbox{\hyperlink{structSala}{SALA}} *salas = calloc(numero\_salas, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structSala}{SALA}}));}
+\DoxyCodeLine{47     \mbox{\hyperlink{structPosicao}{POSICAO}} pos\_SalaInicial;}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < numero\_salas; i++)}
+\DoxyCodeLine{50     \{}
+\DoxyCodeLine{51         y = (rand() \% (\mbox{\hyperlink{biblioteca_8h_a172ffb38f672960e8390ef70664d967b}{MAP\_HEIGHT}} -\/ 15)) + 5; }
+\DoxyCodeLine{52         x = (rand() \% (MAP\_WIDTH -\/ 25)) + 5;}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54         altura = (rand() \% 7) + 3;}
+\DoxyCodeLine{55         largura = (rand() \% 15) + 5; }
+\DoxyCodeLine{56         }
+\DoxyCodeLine{57         numero\_monstros = (rand() \% 2) + 1; }
+\DoxyCodeLine{58         }
+\DoxyCodeLine{59         salas[i] = \mbox{\hyperlink{mapa_8h_a68bfdc36762186d04b730457d359350e}{criaSala}}(y, x, altura, largura, numero\_monstros);}
+\DoxyCodeLine{60         }
+\DoxyCodeLine{61         \mbox{\hyperlink{mapa_8h_a5c5500789058844dda5ab1d854e7cb01}{adicionaSalaMapa}}(salas[i]);}
+\DoxyCodeLine{62         \mbox{\hyperlink{monstro_8c_a0f12bc5a96f54e5c0e4662ee3546592f}{adicionaMonstroSala}} (salas[i]);}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64         \textcolor{keywordflow}{if} (i > 0)}
+\DoxyCodeLine{65         \{}
+\DoxyCodeLine{66             \mbox{\hyperlink{mapa_8h_af2c72f4d9b640e72fe7201efd7895cfd}{connectaCentroSalas}}(salas[i-\/1].centro, salas[i].centro);}
+\DoxyCodeLine{67         \}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69     \}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71     pos\_SalaInicial.y = salas[0].centro.y;}
+\DoxyCodeLine{72     pos\_SalaInicial.x = salas[0].centro.x;}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     free(salas);}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76     \textcolor{keywordflow}{return} pos\_SalaInicial;}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mapa_8h_a93f6a0b7fe568c301d352699c0ca7ad2}\label{mapa_8h_a93f6a0b7fe568c301d352699c0ca7ad2}} 
+\index{mapa.h@{mapa.h}!criaArmadilha@{criaArmadilha}}
+\index{criaArmadilha@{criaArmadilha}!mapa.h@{mapa.h}}
+\doxysubsubsection{\texorpdfstring{criaArmadilha()}{criaArmadilha()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{biblioteca_8h_ad405b55e6aa4a05dfbe1934661f077da}{OBJETO}}$\ast$ cria\+Armadilha (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a012058e8bdb6a1122c4d10c862043ced}{SALA}}}]{nova\+Sala }\end{DoxyParamCaption})}
+
+
+
+Função que cria armadilhas espalhadas pelo mapa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nova\+Sala} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Apontador para o objeto armadilha. 
+\end{DoxyReturn}
+
+
+Definition at line 132 of file salas.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{133 \{}
+\DoxyCodeLine{134     \textcolor{keywordtype}{int} chance = rand() \% 10; \textcolor{comment}{//60\% de chance de nascer de spawn}}
+\DoxyCodeLine{135     \mbox{\hyperlink{structObjeto}{OBJETO}}* armadilha = calloc(1,\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structObjeto}{OBJETO}}));}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137     armadilha-\/>imagem = \textcolor{charliteral}{'\string^'};}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139     \textcolor{keywordflow}{if} (chance <= 5)}
+\DoxyCodeLine{140     \{}
+\DoxyCodeLine{141         \textcolor{keywordtype}{int} posY, posX;}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143         \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{144             posY = (rand() \% (novaSala.altura)) + novaSala.pos.y;}
+\DoxyCodeLine{145             posX = (rand() \% (novaSala.largura)) + novaSala.pos.x;}
+\DoxyCodeLine{146         \} }
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148         \textcolor{keywordflow}{while} (!\mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[posY][posX].podeAndar);}
+\DoxyCodeLine{149         }
+\DoxyCodeLine{150         armadilha-\/>posicao.x = posX;}
+\DoxyCodeLine{151         armadilha-\/>posicao.y = posY;}
+\DoxyCodeLine{152         }
+\DoxyCodeLine{153         \textcolor{keywordflow}{return} armadilha;}
+\DoxyCodeLine{154     \}}
+\DoxyCodeLine{155     }
+\DoxyCodeLine{156     \textcolor{keywordflow}{else} \textcolor{keywordflow}{return} NULL;  }
+\DoxyCodeLine{157 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mapa_8h_adeeb4c8f05ba57c816e68179fce5c089}\label{mapa_8h_adeeb4c8f05ba57c816e68179fce5c089}} 
+\index{mapa.h@{mapa.h}!criaComida@{criaComida}}
+\index{criaComida@{criaComida}!mapa.h@{mapa.h}}
+\doxysubsubsection{\texorpdfstring{criaComida()}{criaComida()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{biblioteca_8h_ad405b55e6aa4a05dfbe1934661f077da}{OBJETO}}$\ast$ cria\+Comida (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a012058e8bdb6a1122c4d10c862043ced}{SALA}}}]{nova\+Sala }\end{DoxyParamCaption})}
+
+
+
+Função que cria comidas espalhadas pelo mapa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nova\+Sala} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Apontador para o objeto comida. 
+\end{DoxyReturn}
+
+
+Definition at line 107 of file salas.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{108 \{}
+\DoxyCodeLine{109     \textcolor{keywordtype}{int} posY, posX;}
+\DoxyCodeLine{110     \mbox{\hyperlink{structObjeto}{OBJETO}}* comida = calloc (1,\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structObjeto}{OBJETO}}));}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112     comida-\/>imagem = \textcolor{charliteral}{'o'};}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114     \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{115         posY = (rand() \% (novaSala.altura)) + novaSala.pos.y;}
+\DoxyCodeLine{116         posX = (rand() \% (novaSala.largura)) + novaSala.pos.x;}
+\DoxyCodeLine{117     \} }
+\DoxyCodeLine{118     \textcolor{keywordflow}{while} (!\mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[posY][posX].podeAndar);}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120     comida-\/>posicao.x = posX;}
+\DoxyCodeLine{121     comida-\/>posicao.y = posY;}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123     \textcolor{keywordflow}{return} comida;}
+\DoxyCodeLine{124 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mapa_8h_ada7e2d35c228039813e353a8836fbccc}\label{mapa_8h_ada7e2d35c228039813e353a8836fbccc}} 
+\index{mapa.h@{mapa.h}!criaMapaPecas@{criaMapaPecas}}
+\index{criaMapaPecas@{criaMapaPecas}!mapa.h@{mapa.h}}
+\doxysubsubsection{\texorpdfstring{criaMapaPecas()}{criaMapaPecas()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{biblioteca_8h_accbe5a3c3232b7a865f2922c8432ff43}{PECA}}$\ast$$\ast$ cria\+Mapa\+Pecas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Cria todas as peças do mapa alocando memória para cada peça. 
+
+\begin{DoxyReturn}{Returns}
+Matriz de peças. 
+\end{DoxyReturn}
+
+
+Definition at line 15 of file mapa.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \mbox{\hyperlink{structPeca}{PECA}} **pecas = calloc(\mbox{\hyperlink{biblioteca_8h_a172ffb38f672960e8390ef70664d967b}{MAP\_HEIGHT}}, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structPeca}{PECA}}*));}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y = 0; y < \mbox{\hyperlink{biblioteca_8h_a172ffb38f672960e8390ef70664d967b}{MAP\_HEIGHT}}; y++) }
+\DoxyCodeLine{20     \{}
+\DoxyCodeLine{21         pecas[y] = calloc(MAP\_WIDTH, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structPeca}{PECA}}));}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = 0; x < MAP\_WIDTH; x++) }
+\DoxyCodeLine{24         \{}
+\DoxyCodeLine{25             pecas[y][x].imagem = \textcolor{charliteral}{'\#'}; }
+\DoxyCodeLine{26             pecas[y][x].cor = COLOR\_PAIR(COR\_VISIVEL);}
+\DoxyCodeLine{27             pecas[y][x].podeAndar = \textcolor{keyword}{false};}
+\DoxyCodeLine{28             pecas[y][x].transparente = \textcolor{keyword}{false};}
+\DoxyCodeLine{29             pecas[y][x].visivel = \textcolor{keyword}{false};}
+\DoxyCodeLine{30             pecas[y][x].vista = \textcolor{keyword}{false};}
+\DoxyCodeLine{31         \}}
+\DoxyCodeLine{32     \}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keywordflow}{return} pecas;}
+\DoxyCodeLine{35 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mapa_8h_a68bfdc36762186d04b730457d359350e}\label{mapa_8h_a68bfdc36762186d04b730457d359350e}} 
+\index{mapa.h@{mapa.h}!criaSala@{criaSala}}
+\index{criaSala@{criaSala}!mapa.h@{mapa.h}}
+\doxysubsubsection{\texorpdfstring{criaSala()}{criaSala()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{biblioteca_8h_a012058e8bdb6a1122c4d10c862043ced}{SALA}} cria\+Sala (\begin{DoxyParamCaption}\item[{int}]{y,  }\item[{int}]{x,  }\item[{int}]{altura,  }\item[{int}]{largura,  }\item[{int}]{numero\+\_\+monstros }\end{DoxyParamCaption})}
+
+
+
+Cria e inicializada a estrututa de uma sala. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y} & \\
+\hline
+{\em x} & \\
+\hline
+{\em altura} & \\
+\hline
+{\em largura} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structSala}{Sala}} 
+\end{DoxyReturn}
+
+
+Definition at line 19 of file salas.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{20 \{}
+\DoxyCodeLine{21     \mbox{\hyperlink{structSala}{SALA}} novaSala;}
+\DoxyCodeLine{22     }
+\DoxyCodeLine{23     \mbox{\hyperlink{structEntidade}{ENTIDADE}} *monstro = calloc(numero\_monstros,\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structEntidade}{ENTIDADE}}));}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     novaSala.pos.y = y;}
+\DoxyCodeLine{26     novaSala.pos.x = x;}
+\DoxyCodeLine{27     novaSala.altura = altura;}
+\DoxyCodeLine{28     novaSala.largura = largura;}
+\DoxyCodeLine{29     novaSala.centro.y = y + (int)(altura / 2);}
+\DoxyCodeLine{30     novaSala.centro.x = x + (int)(largura / 2);}
+\DoxyCodeLine{31     novaSala.numero\_monstros = numero\_monstros;}
+\DoxyCodeLine{32     novaSala.monstro = monstro; }
+\DoxyCodeLine{33     }
+\DoxyCodeLine{34     \textcolor{keywordflow}{return} novaSala;}
+\DoxyCodeLine{35 \}}
+
+\end{DoxyCode}

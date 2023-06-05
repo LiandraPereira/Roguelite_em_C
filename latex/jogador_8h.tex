@@ -1,0 +1,518 @@
+\hypertarget{jogador_8h}{}\doxysection{jogador.\+h File Reference}
+\label{jogador_8h}\index{jogador.h@{jogador.h}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}} $\ast$ \mbox{\hyperlink{jogador_8h_a7ccbf6eb601abfe2b0896f5cfa0ebdc2}{cria\+Jogador}} (\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} pos\+\_\+inicial)
+\begin{DoxyCompactList}\small\item\em Cria a ENTIDADE Jogador numa determinada posição. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jogador_8h_ac665ac397529126e49ab625eb52b4850}{direcao}} (int tecla)
+\begin{DoxyCompactList}\small\item\em Altera a direção do Jogador usando as teclas numpad. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jogador_8h_ad46d03acd26385aae122eeb8e5b853cd}{adiciona\+Vida}} (\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} nova\+\_\+pos, int valor)
+\begin{DoxyCompactList}\small\item\em Adiciona um certo valor a vida do jogador e retira a comida do mapa. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jogador_8h_aed17a49f996b6fa73dbce719334c3e31}{pisou\+Armadilha}} (\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} nova\+\_\+pos, int dano)
+\begin{DoxyCompactList}\small\item\em Verifica a vida do jogador quando o mesmo pisa numa armadilha. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jogador_8h_a6a10003d74d30a03d8162ddef0fadf46}{movimenta\+Jogador}} (\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} nova\+Pos)
+\begin{DoxyCompactList}\small\item\em Movimenta o jogador para uma determinada posição. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jogador_8h_a899ab96321fefcf4380e1d48f74fee59}{modifica\+Estado\+Peca}} (\mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}} $\ast$jogador)
+\begin{DoxyCompactList}\small\item\em Modifica os estado das peças que estão a volta do jogador formando um pseudo-\/círculo (círculo não perfeito). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jogador_8h_a7d61cfb60ff3a71e009ae941b4fff3a4}{estado\+Normal\+Peca}} (\mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}} $\ast$jogador)
+\begin{DoxyCompactList}\small\item\em Altera o estado da peças que estão fora do campo de visão do jogador. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{jogador_8h_a81cdd7cbe03dba17bf81a1cee595a347}{posicao\+Dentro\+Mapa}} (int y, int x)
+\begin{DoxyCompactList}\small\item\em Verifica se as coordenadas estão dentro do mapa. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{jogador_8h_afccc3e2b81cc0289a94f1c13f9bb0cf9}{leva\+Distancia}} (\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} POSICAO1, \mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} POSICAO2)
+\begin{DoxyCompactList}\small\item\em Calcula a distãncia euclidiana entre dois pontos, nomeadamente, posições no mapa. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{jogador_8h_a103460b4470179dc54aa4ed9a6d6b630}{linha\+Visao}} (\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} origin, \mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} target)
+\begin{DoxyCompactList}\small\item\em Implementa uma variação do algoritmo de Bresenham para determinar se existe uma linha de visão directa entre duas posições no mapa. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{jogador_8h_ad4f618449c8f6b764886ab09e2250e46}{conhece\+Sinal}} (int a)
+\begin{DoxyCompactList}\small\item\em Verifica o sinal de um número. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Neste ficheiro estão contidos os protótipos do módulo \mbox{\hyperlink{jogador_8c}{jogador.\+c}} 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{jogador_8h_ad46d03acd26385aae122eeb8e5b853cd}\label{jogador_8h_ad46d03acd26385aae122eeb8e5b853cd}} 
+\index{jogador.h@{jogador.h}!adicionaVida@{adicionaVida}}
+\index{adicionaVida@{adicionaVida}!jogador.h@{jogador.h}}
+\doxysubsubsection{\texorpdfstring{adicionaVida()}{adicionaVida()}}
+{\footnotesize\ttfamily void adiciona\+Vida (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{nova\+\_\+pos,  }\item[{int}]{valor }\end{DoxyParamCaption})}
+
+
+
+Adiciona um certo valor a vida do jogador e retira a comida do mapa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nova\+\_\+pos} & \\
+\hline
+{\em valor} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 99 of file jogador.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{100 \{}
+\DoxyCodeLine{101     \textcolor{keywordflow}{if} (jogador-\/>vida == 40) \textcolor{keywordflow}{return}; \textcolor{comment}{// Não faz nada }}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103     \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[nova\_pos.y][nova\_pos.x].imagem = \textcolor{charliteral}{'.'};}
+\DoxyCodeLine{104     }
+\DoxyCodeLine{105     \textcolor{keywordflow}{if} (jogador-\/>vida + valor > 40) jogador-\/>vida = 40;}
+\DoxyCodeLine{106     \textcolor{keywordflow}{else} jogador-\/>vida += valor;}
+\DoxyCodeLine{107 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{jogador_8h_ad4f618449c8f6b764886ab09e2250e46}\label{jogador_8h_ad4f618449c8f6b764886ab09e2250e46}} 
+\index{jogador.h@{jogador.h}!conheceSinal@{conheceSinal}}
+\index{conheceSinal@{conheceSinal}!jogador.h@{jogador.h}}
+\doxysubsubsection{\texorpdfstring{conheceSinal()}{conheceSinal()}}
+{\footnotesize\ttfamily int conhece\+Sinal (\begin{DoxyParamCaption}\item[{int}]{numero }\end{DoxyParamCaption})}
+
+
+
+Verifica o sinal de um número. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em numero} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True ou False 
+\end{DoxyReturn}
+
+
+Definition at line 183 of file visao.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{184 \{}
+\DoxyCodeLine{185     \textcolor{keywordflow}{if} (numero < 0)\textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{186     \textcolor{keywordflow}{else} \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{187 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{jogador_8h_a7ccbf6eb601abfe2b0896f5cfa0ebdc2}\label{jogador_8h_a7ccbf6eb601abfe2b0896f5cfa0ebdc2}} 
+\index{jogador.h@{jogador.h}!criaJogador@{criaJogador}}
+\index{criaJogador@{criaJogador}!jogador.h@{jogador.h}}
+\doxysubsubsection{\texorpdfstring{criaJogador()}{criaJogador()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}}$\ast$ cria\+Jogador (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{start\+\_\+pos }\end{DoxyParamCaption})}
+
+
+
+Cria a ENTIDADE Jogador numa determinada posição. 
+
+\begin{DoxyReturn}{Returns}
+Apontador para a ENTIDADE Jogador. 
+\end{DoxyReturn}
+
+
+Definition at line 16 of file jogador.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18     \mbox{\hyperlink{structEntidade}{ENTIDADE}}* novoJogador = calloc(1, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structEntidade}{ENTIDADE}}));}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     novoJogador-\/>pos.y = start\_pos.y;}
+\DoxyCodeLine{21     novoJogador-\/>pos.x = start\_pos.x;}
+\DoxyCodeLine{22     novoJogador-\/>imagem = \textcolor{charliteral}{'@'};}
+\DoxyCodeLine{23     novoJogador-\/>cor = COLOR\_PAIR(COR\_JOGADOR);}
+\DoxyCodeLine{24     novoJogador-\/>vida = 40;}
+\DoxyCodeLine{25     novoJogador-\/>movimentos = 0;}
+\DoxyCodeLine{26     novoJogador-\/>raio = 8;}
+\DoxyCodeLine{27     novoJogador-\/>vitorias = 0;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{keywordflow}{return} novoJogador;}
+\DoxyCodeLine{30 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{jogador_8h_ac665ac397529126e49ab625eb52b4850}\label{jogador_8h_ac665ac397529126e49ab625eb52b4850}} 
+\index{jogador.h@{jogador.h}!direcao@{direcao}}
+\index{direcao@{direcao}!jogador.h@{jogador.h}}
+\doxysubsubsection{\texorpdfstring{direcao()}{direcao()}}
+{\footnotesize\ttfamily void direcao (\begin{DoxyParamCaption}\item[{int}]{tecla }\end{DoxyParamCaption})}
+
+
+
+Altera a direção do Jogador usando as teclas numpad. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tecla} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 36 of file jogador.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{37 \{}
+\DoxyCodeLine{38     \mbox{\hyperlink{structPosicao}{POSICAO}} nova\_pos = \{ jogador-\/>pos.y, jogador-\/>pos.x \};}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40      \textcolor{comment}{// Move para cima }}
+\DoxyCodeLine{41     \textcolor{keywordflow}{if} (tecla == \textcolor{charliteral}{'w'} || tecla == \textcolor{charliteral}{'W'} || tecla == \textcolor{charliteral}{'8'})\{}
+\DoxyCodeLine{42         nova\_pos.y-\/-\/;}
+\DoxyCodeLine{43         jogador-\/>movimentos++;}
+\DoxyCodeLine{44     \}    }
+\DoxyCodeLine{45     \textcolor{comment}{// Move para baixo}}
+\DoxyCodeLine{46     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (tecla == \textcolor{charliteral}{'s'} || tecla == \textcolor{charliteral}{'S'} ||tecla == \textcolor{charliteral}{'2'})\{}
+\DoxyCodeLine{47         nova\_pos.y++;}
+\DoxyCodeLine{48         jogador-\/>movimentos++;}
+\DoxyCodeLine{49     \}}
+\DoxyCodeLine{50     \textcolor{comment}{// Move para esquerda }}
+\DoxyCodeLine{51     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (tecla == \textcolor{charliteral}{'a'} || tecla == \textcolor{charliteral}{'A'} || tecla ==\textcolor{charliteral}{'4'})\{}
+\DoxyCodeLine{52         nova\_pos.x-\/-\/;}
+\DoxyCodeLine{53         jogador-\/>movimentos++;}
+\DoxyCodeLine{54     \}}
+\DoxyCodeLine{55     \textcolor{comment}{// Move para direita}}
+\DoxyCodeLine{56     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (tecla == \textcolor{charliteral}{'d'} || tecla == \textcolor{charliteral}{'D'} || tecla == \textcolor{charliteral}{'6'})\{}
+\DoxyCodeLine{57         nova\_pos.x++;}
+\DoxyCodeLine{58         jogador-\/>movimentos++;}
+\DoxyCodeLine{59     \}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61     \mbox{\hyperlink{jogador_8c_a0d129ceadd3bb8d6523d1f0707888300}{movimentaJogador}}(nova\_pos);}
+\DoxyCodeLine{62 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{jogador_8h_a7d61cfb60ff3a71e009ae941b4fff3a4}\label{jogador_8h_a7d61cfb60ff3a71e009ae941b4fff3a4}} 
+\index{jogador.h@{jogador.h}!estadoNormalPeca@{estadoNormalPeca}}
+\index{estadoNormalPeca@{estadoNormalPeca}!jogador.h@{jogador.h}}
+\doxysubsubsection{\texorpdfstring{estadoNormalPeca()}{estadoNormalPeca()}}
+{\footnotesize\ttfamily void estado\+Normal\+Peca (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}} $\ast$}]{jogador }\end{DoxyParamCaption})}
+
+
+
+Altera o estado da peças que estão fora do campo de visão do jogador. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em jogador} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 53 of file visao.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{54 \{}
+\DoxyCodeLine{55     \textcolor{keywordtype}{int} y, x;}
+\DoxyCodeLine{56     \textcolor{keywordtype}{int} RAIO = jogador-\/>raio;}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{keywordflow}{for} (y = jogador-\/>pos.y -\/ RAIO; y < jogador-\/>pos.y + RAIO; y++)}
+\DoxyCodeLine{59     \{}
+\DoxyCodeLine{60         \textcolor{keywordflow}{for} (x = jogador-\/>pos.x -\/ RAIO; x < jogador-\/>pos.x + RAIO; x++)}
+\DoxyCodeLine{61         \{}
+\DoxyCodeLine{62             \textcolor{keywordflow}{if} (\mbox{\hyperlink{visao_8c_a81cdd7cbe03dba17bf81a1cee595a347}{posicaoDentroMapa}}(y, x))}
+\DoxyCodeLine{63                 \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[y][x].visivel = \textcolor{keyword}{false};}
+\DoxyCodeLine{64         \}}
+\DoxyCodeLine{65     \}}
+\DoxyCodeLine{66 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{jogador_8h_afccc3e2b81cc0289a94f1c13f9bb0cf9}\label{jogador_8h_afccc3e2b81cc0289a94f1c13f9bb0cf9}} 
+\index{jogador.h@{jogador.h}!levaDistancia@{levaDistancia}}
+\index{levaDistancia@{levaDistancia}!jogador.h@{jogador.h}}
+\doxysubsubsection{\texorpdfstring{levaDistancia()}{levaDistancia()}}
+{\footnotesize\ttfamily int leva\+Distancia (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{origem,  }\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{destino }\end{DoxyParamCaption})}
+
+
+
+Calcula a distãncia euclidiana entre dois pontos, nomeadamente, posições no mapa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origem} & \\
+\hline
+{\em destino} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Distãncia entre dois pontos cartesianos. 
+\end{DoxyReturn}
+
+
+Definition at line 75 of file visao.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{76 \{}
+\DoxyCodeLine{77     \textcolor{keywordtype}{double} dy, dx;}
+\DoxyCodeLine{78     \textcolor{keywordtype}{int} distancia;}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80     dx = destino.x -\/ origem.x;}
+\DoxyCodeLine{81     dy = destino.y -\/ origem.y;}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83     distancia = floor(sqrt((dx * dx) + (dy * dy)));}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \textcolor{keywordflow}{return} distancia;}
+\DoxyCodeLine{86 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{jogador_8h_a103460b4470179dc54aa4ed9a6d6b630}\label{jogador_8h_a103460b4470179dc54aa4ed9a6d6b630}} 
+\index{jogador.h@{jogador.h}!linhaVisao@{linhaVisao}}
+\index{linhaVisao@{linhaVisao}!jogador.h@{jogador.h}}
+\doxysubsubsection{\texorpdfstring{linhaVisao()}{linhaVisao()}}
+{\footnotesize\ttfamily bool linha\+Visao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{origem,  }\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{destino }\end{DoxyParamCaption})}
+
+
+
+Implementa uma variação do algoritmo de Bresenham para determinar se existe uma linha de visão directa entre duas posições no mapa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origem} & \\
+\hline
+{\em destino} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True ou False 
+\end{DoxyReturn}
+
+
+Definition at line 111 of file visao.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{112 \{}
+\DoxyCodeLine{113     \textcolor{keywordtype}{int} avancoLinha, x, y, abs\_diferencaX, abs\_diferencaY, sinalX, sinalY, diferencaX, diferencaY;}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115     diferencaX = origem.x -\/ destino.x;}
+\DoxyCodeLine{116     diferencaY = origem.y -\/ destino.y;}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118     abs\_diferencaX = abs(diferencaX);}
+\DoxyCodeLine{119     abs\_diferencaY = abs(diferencaY);}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121     sinalX = \mbox{\hyperlink{visao_8c_a99a18d2e827571d91168267c2ebb75ec}{conheceSinal}}(diferencaX);}
+\DoxyCodeLine{122     sinalY = \mbox{\hyperlink{visao_8c_a99a18d2e827571d91168267c2ebb75ec}{conheceSinal}}(diferencaY);}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124     x = destino.x;}
+\DoxyCodeLine{125     y = destino.y;}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127     \textcolor{keywordflow}{if} (abs\_diferencaX > abs\_diferencaY)}
+\DoxyCodeLine{128     \{}
+\DoxyCodeLine{129         avancoLinha = abs\_diferencaY * 2 -\/ abs\_diferencaX;}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131         \textcolor{keywordflow}{do}}
+\DoxyCodeLine{132         \{}
+\DoxyCodeLine{133             \textcolor{keywordflow}{if} (avancoLinha >= 0)}
+\DoxyCodeLine{134             \{}
+\DoxyCodeLine{135                 y += sinalY;}
+\DoxyCodeLine{136                 avancoLinha -\/= abs\_diferencaX * 2;}
+\DoxyCodeLine{137             \}}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139             x += sinalX;}
+\DoxyCodeLine{140             avancoLinha += abs\_diferencaY * 2;}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142             \textcolor{keywordflow}{if} (x == origem.x \&\& y == origem.y)}
+\DoxyCodeLine{143             \{}
+\DoxyCodeLine{144                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{145             \}}
+\DoxyCodeLine{146         \}}
+\DoxyCodeLine{147         \textcolor{keywordflow}{while} (\mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[y][x].transparente);}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{150     \}}
+\DoxyCodeLine{151     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{152     \{}
+\DoxyCodeLine{153         avancoLinha = abs\_diferencaX * 2 -\/ abs\_diferencaY;}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155         \textcolor{keywordflow}{do}}
+\DoxyCodeLine{156         \{}
+\DoxyCodeLine{157             \textcolor{keywordflow}{if} (avancoLinha >= 0)}
+\DoxyCodeLine{158             \{}
+\DoxyCodeLine{159                 x += sinalX;}
+\DoxyCodeLine{160                 avancoLinha -\/= abs\_diferencaY * 2;}
+\DoxyCodeLine{161             \}}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163             y += sinalY;}
+\DoxyCodeLine{164             avancoLinha += abs\_diferencaX * 2;}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{166             \textcolor{keywordflow}{if} (x == origem.x \&\& y == origem.y)}
+\DoxyCodeLine{167             \{}
+\DoxyCodeLine{168                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{169             \}}
+\DoxyCodeLine{170         \}}
+\DoxyCodeLine{171         \textcolor{keywordflow}{while} (\mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[y][x].transparente);}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{173         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{174     \}}
+\DoxyCodeLine{175 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{jogador_8h_a899ab96321fefcf4380e1d48f74fee59}\label{jogador_8h_a899ab96321fefcf4380e1d48f74fee59}} 
+\index{jogador.h@{jogador.h}!modificaEstadoPeca@{modificaEstadoPeca}}
+\index{modificaEstadoPeca@{modificaEstadoPeca}!jogador.h@{jogador.h}}
+\doxysubsubsection{\texorpdfstring{modificaEstadoPeca()}{modificaEstadoPeca()}}
+{\footnotesize\ttfamily void modifica\+Estado\+Peca (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}} $\ast$}]{jogador }\end{DoxyParamCaption})}
+
+
+
+Modifica os estado das peças que estão a volta do jogador formando um pseudo-\/círculo (círculo não perfeito). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em jogador} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 17 of file visao.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19     \textcolor{keywordtype}{int} y, x, distancia;}
+\DoxyCodeLine{20     \textcolor{keywordtype}{int} RAIO = jogador-\/>raio;}
+\DoxyCodeLine{21     \mbox{\hyperlink{structPosicao}{POSICAO}} destino;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[jogador-\/>pos.y][jogador-\/>pos.x].visivel = \textcolor{keyword}{true};}
+\DoxyCodeLine{24     \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[jogador-\/>pos.y][jogador-\/>pos.x].vista = \textcolor{keyword}{true};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \textcolor{keywordflow}{for} (y = jogador-\/>pos.y -\/ RAIO; y < jogador-\/>pos.y + RAIO; y++)}
+\DoxyCodeLine{27     \{}
+\DoxyCodeLine{28         \textcolor{keywordflow}{for} (x = jogador-\/>pos.x -\/ RAIO; x < jogador-\/>pos.x + RAIO; x++)}
+\DoxyCodeLine{29         \{}
+\DoxyCodeLine{30             destino.y = y;}
+\DoxyCodeLine{31             destino.x = x;}
+\DoxyCodeLine{32             distancia}
+\DoxyCodeLine{33      = \mbox{\hyperlink{visao_8c_aa23a8b23f945e1ae9c6db5ca14965f4f}{levaDistancia}}(jogador-\/>pos, destino);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35             \textcolor{keywordflow}{if} (distancia}
+\DoxyCodeLine{36      < RAIO)}
+\DoxyCodeLine{37             \{}
+\DoxyCodeLine{38                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{visao_8c_a81cdd7cbe03dba17bf81a1cee595a347}{posicaoDentroMapa}}(y, x) \&\& \mbox{\hyperlink{visao_8c_ae2680725edb561f654b268034845d351}{linhaVisao}}(jogador-\/>pos, destino))}
+\DoxyCodeLine{39                 \{}
+\DoxyCodeLine{40                     \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[y][x].visivel = \textcolor{keyword}{true};}
+\DoxyCodeLine{41                     \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[y][x].vista = \textcolor{keyword}{true};}
+\DoxyCodeLine{42                 \}}
+\DoxyCodeLine{43             \}}
+\DoxyCodeLine{44         \}}
+\DoxyCodeLine{45     \}}
+\DoxyCodeLine{46 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{jogador_8h_a6a10003d74d30a03d8162ddef0fadf46}\label{jogador_8h_a6a10003d74d30a03d8162ddef0fadf46}} 
+\index{jogador.h@{jogador.h}!movimentaJogador@{movimentaJogador}}
+\index{movimentaJogador@{movimentaJogador}!jogador.h@{jogador.h}}
+\doxysubsubsection{\texorpdfstring{movimentaJogador()}{movimentaJogador()}}
+{\footnotesize\ttfamily void movimenta\+Jogador (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{nova\+\_\+pos }\end{DoxyParamCaption})}
+
+
+
+Movimenta o jogador para uma determinada posição. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nova\+\_\+pos} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 68 of file jogador.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{69 \{}
+\DoxyCodeLine{70     \textcolor{keywordflow}{if} (\mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[nova\_pos.y][nova\_pos.x].podeAndar)}
+\DoxyCodeLine{71     \{}
+\DoxyCodeLine{72         \textcolor{keywordflow}{if} (\mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[nova\_pos.y][nova\_pos.x].imagem == \textcolor{charliteral}{'o'})}
+\DoxyCodeLine{73         \{}
+\DoxyCodeLine{74             \mbox{\hyperlink{jogador_8c_ad46d03acd26385aae122eeb8e5b853cd}{adicionaVida}}(nova\_pos,5);}
+\DoxyCodeLine{75         \}}
+\DoxyCodeLine{76         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[nova\_pos.y][nova\_pos.x].imagem == \textcolor{charliteral}{'\string^'})}
+\DoxyCodeLine{77         \{}
+\DoxyCodeLine{78             \mbox{\hyperlink{jogador_8c_ad604892951b57faa03343d7d1a7feefe}{pisouArmadilha}}(nova\_pos,10); }
+\DoxyCodeLine{79         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[nova\_pos.y][nova\_pos.x].imagem == \textcolor{charliteral}{'M'})}
+\DoxyCodeLine{80         \{}
+\DoxyCodeLine{81             \mbox{\hyperlink{monstro_8c_a3e6de6bc46832866923cc8bfbcad645e}{combate}}(nova\_pos);}
+\DoxyCodeLine{82             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{83         \}}
+\DoxyCodeLine{84         }
+\DoxyCodeLine{85         \mbox{\hyperlink{jogador_8h_a7d61cfb60ff3a71e009ae941b4fff3a4}{estadoNormalPeca}}(jogador);}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87         jogador-\/>pos.y = nova\_pos.y;}
+\DoxyCodeLine{88         jogador-\/>pos.x = nova\_pos.x;}
+\DoxyCodeLine{89         }
+\DoxyCodeLine{90         \mbox{\hyperlink{jogador_8h_a899ab96321fefcf4380e1d48f74fee59}{modificaEstadoPeca}}(jogador);}
+\DoxyCodeLine{91     \}}
+\DoxyCodeLine{92 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{jogador_8h_aed17a49f996b6fa73dbce719334c3e31}\label{jogador_8h_aed17a49f996b6fa73dbce719334c3e31}} 
+\index{jogador.h@{jogador.h}!pisouArmadilha@{pisouArmadilha}}
+\index{pisouArmadilha@{pisouArmadilha}!jogador.h@{jogador.h}}
+\doxysubsubsection{\texorpdfstring{pisouArmadilha()}{pisouArmadilha()}}
+{\footnotesize\ttfamily void pisou\+Armadilha (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{nova\+\_\+pos,  }\item[{int}]{valor }\end{DoxyParamCaption})}
+
+
+
+Verifica a vida do jogador quando o mesmo pisa numa armadilha. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nova\+\_\+pos} & \\
+\hline
+{\em valor} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 114 of file jogador.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{115 \{}
+\DoxyCodeLine{116     }
+\DoxyCodeLine{117     jogador-\/>vida = jogador-\/>vida -\/ valor;}
+\DoxyCodeLine{118     \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[nova\_pos.y][nova\_pos.x].imagem = \textcolor{charliteral}{'.'};}
+\DoxyCodeLine{119     }
+\DoxyCodeLine{120     \textcolor{keywordflow}{if}(jogador-\/>vida <= 0)}
+\DoxyCodeLine{121     \{}
+\DoxyCodeLine{122         \mbox{\hyperlink{biblioteca_8h_aff3d917524ded8d337823f6732b55319}{desenhaMenuFinal}}();}
+\DoxyCodeLine{123         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{124     \}}
+\DoxyCodeLine{125     }
+\DoxyCodeLine{126 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{jogador_8h_a81cdd7cbe03dba17bf81a1cee595a347}\label{jogador_8h_a81cdd7cbe03dba17bf81a1cee595a347}} 
+\index{jogador.h@{jogador.h}!posicaoDentroMapa@{posicaoDentroMapa}}
+\index{posicaoDentroMapa@{posicaoDentroMapa}!jogador.h@{jogador.h}}
+\doxysubsubsection{\texorpdfstring{posicaoDentroMapa()}{posicaoDentroMapa()}}
+{\footnotesize\ttfamily bool posicao\+Dentro\+Mapa (\begin{DoxyParamCaption}\item[{int}]{y,  }\item[{int}]{x }\end{DoxyParamCaption})}
+
+
+
+Verifica se as coordenadas estão dentro do mapa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y} & \\
+\hline
+{\em x} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True ou False 
+\end{DoxyReturn}
+
+
+Definition at line 95 of file visao.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{96 \{}
+\DoxyCodeLine{97     \textcolor{keywordflow}{if} ((0 < y \&\& y < \mbox{\hyperlink{biblioteca_8h_a172ffb38f672960e8390ef70664d967b}{MAP\_HEIGHT}} -\/ 1) \&\& (0 < x \&\& x < MAP\_WIDTH -\/ 1))}
+\DoxyCodeLine{98     \{}
+\DoxyCodeLine{99         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{100     \}}
+\DoxyCodeLine{101     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{102 \}}
+
+\end{DoxyCode}

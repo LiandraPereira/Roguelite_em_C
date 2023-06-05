@@ -1,0 +1,73 @@
+\hypertarget{desenha_8c}{}\doxysection{desenha.\+c File Reference}
+\label{desenha_8c}\index{desenha.c@{desenha.c}}
+{\ttfamily \#include \char`\"{}biblioteca.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{desenha_8c_a42c0b841cfb1b2903740b680536553be}\label{desenha_8c_a42c0b841cfb1b2903740b680536553be}} 
+void \mbox{\hyperlink{desenha_8c_a42c0b841cfb1b2903740b680536553be}{desenha\+Mapa}} ()
+\begin{DoxyCompactList}\small\item\em Desenha o mapa. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{desenha_8c_a074715d677445f781163cbe99a1c78af}\label{desenha_8c_a074715d677445f781163cbe99a1c78af}} 
+void \mbox{\hyperlink{desenha_8c_a074715d677445f781163cbe99a1c78af}{desenha\+Jogador}} (\mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}} $\ast$jog)
+\begin{DoxyCompactList}\small\item\em Desenha o jogador. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{desenha_8c_a3ca174b38a9d61cdaafe126e67661ead}\label{desenha_8c_a3ca174b38a9d61cdaafe126e67661ead}} 
+void \mbox{\hyperlink{desenha_8c_a3ca174b38a9d61cdaafe126e67661ead}{desenha\+Jogo}} ()
+\begin{DoxyCompactList}\small\item\em Desenha o jogo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{desenha_8c_ad8ebb4f7c79f738a81d2f5881a4aff45}{desenha\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Desenha o Menu Inicial quando o jogo é iniciado. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{desenha_8c_a71e22f6733fb77410fbd909e5cf1e440}\label{desenha_8c_a71e22f6733fb77410fbd909e5cf1e440}} 
+void {\bfseries desenha\+Painel\+Informacoes} ()
+\item 
+\mbox{\Hypertarget{desenha_8c_aff3d917524ded8d337823f6732b55319}\label{desenha_8c_aff3d917524ded8d337823f6732b55319}} 
+void \mbox{\hyperlink{desenha_8c_aff3d917524ded8d337823f6732b55319}{desenha\+Menu\+Final}} ()
+\begin{DoxyCompactList}\small\item\em Desenha o Menu Final com as informações sobre o jogo e com a opção de reiniciar. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Neste ficheiro estão as funções que tratam da apresentação de cada componente do jogo no terminal com auxílio da biblioteca ncurses.
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{desenha_8c_ad8ebb4f7c79f738a81d2f5881a4aff45}\label{desenha_8c_ad8ebb4f7c79f738a81d2f5881a4aff45}} 
+\index{desenha.c@{desenha.c}!desenhaMenu@{desenhaMenu}}
+\index{desenhaMenu@{desenhaMenu}!desenha.c@{desenha.c}}
+\doxysubsubsection{\texorpdfstring{desenhaMenu()}{desenhaMenu()}}
+{\footnotesize\ttfamily void desenha\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Desenha o Menu Inicial quando o jogo é iniciado. 
+
+Definição dos protótipos do módulo \mbox{\hyperlink{desenha_8c}{desenha.\+c}}. 
+
+Definition at line 97 of file desenha.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{98 \{}
+\DoxyCodeLine{99     clear(); }
+\DoxyCodeLine{100     refresh(); }
+\DoxyCodeLine{101     \textcolor{keywordtype}{int} altura = 18;}
+\DoxyCodeLine{102     \textcolor{keywordtype}{int} larg = 80;}
+\DoxyCodeLine{103     \textcolor{keywordtype}{int} inicioY = (LINES -\/ altura) / 2;}
+\DoxyCodeLine{104     \textcolor{keywordtype}{int} inicioX = (COLS -\/ larg) / 2;}
+\DoxyCodeLine{105     }
+\DoxyCodeLine{106     WINDOW *menuwin = newwin(altura, larg, inicioY, inicioX );}
+\DoxyCodeLine{107     box(menuwin, 0, 0);}
+\DoxyCodeLine{108     }
+\DoxyCodeLine{109     mvwprintw(menuwin, 1, larg/2 -\/6, \textcolor{stringliteral}{"{}Roguelite"{}}); }
+\DoxyCodeLine{110     mvwprintw(menuwin, 4, 2, \textcolor{stringliteral}{"{}-\/O objetivo do jogo é matar todos os monstros sem morrer primeiro."{}});}
+\DoxyCodeLine{111     mvwprintw(menuwin, 6, 2, \textcolor{stringliteral}{"{}Controles:"{}});}
+\DoxyCodeLine{112     mvwprintw(menuwin, 7, 4, \textcolor{stringliteral}{"{}8426/'wasd' -\/ Move e ataca."{}});}
+\DoxyCodeLine{113     mvwprintw(menuwin, 8, 4, \textcolor{stringliteral}{"{}'q' -\/ Sai do jogo."{}});}
+\DoxyCodeLine{114     mvwprintw(menuwin, 10, 2, \textcolor{stringliteral}{"{}Instruções:"{}});}
+\DoxyCodeLine{115     mvwprintw(menuwin, 11, 4, \textcolor{stringliteral}{"{}@ -\/ Jogador"{}});}
+\DoxyCodeLine{116     mvwprintw(menuwin, 12, 4, \textcolor{stringliteral}{"{}M -\/ Monstros"{}});}
+\DoxyCodeLine{117     mvwprintw(menuwin, 13, 4, \textcolor{stringliteral}{"{}O -\/ Comidas (Vida)"{}});}
+\DoxyCodeLine{118     mvwprintw(menuwin, altura-\/2, larg/2 -\/ 15, \textcolor{stringliteral}{"{}Pressione Enter para iniciar."{}});}
+\DoxyCodeLine{119     }
+\DoxyCodeLine{120     wrefresh(menuwin); }
+\DoxyCodeLine{121     \textcolor{keywordflow}{while} (getch() != \textcolor{charliteral}{'\(\backslash\)n'})\{\}}
+\DoxyCodeLine{122     delwin(menuwin);}
+\DoxyCodeLine{123 \}}
+
+\end{DoxyCode}

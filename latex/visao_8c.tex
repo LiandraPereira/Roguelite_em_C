@@ -1,0 +1,311 @@
+\hypertarget{visao_8c}{}\doxysection{visao.\+c File Reference}
+\label{visao_8c}\index{visao.c@{visao.c}}
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}biblioteca.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mapa.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}jogador.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{visao_8c_a899ab96321fefcf4380e1d48f74fee59}{modifica\+Estado\+Peca}} (\mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}} $\ast$jogador)
+\begin{DoxyCompactList}\small\item\em Modifica os estado das peças que estão a volta do jogador formando um pseudo-\/círculo (círculo não perfeito). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{visao_8c_a7d61cfb60ff3a71e009ae941b4fff3a4}{estado\+Normal\+Peca}} (\mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}} $\ast$jogador)
+\begin{DoxyCompactList}\small\item\em Altera o estado da peças que estão fora do campo de visão do jogador. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{visao_8c_aa23a8b23f945e1ae9c6db5ca14965f4f}{leva\+Distancia}} (\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} origem, \mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} destino)
+\begin{DoxyCompactList}\small\item\em Calcula a distãncia euclidiana entre dois pontos, nomeadamente, posições no mapa. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{visao_8c_a81cdd7cbe03dba17bf81a1cee595a347}{posicao\+Dentro\+Mapa}} (int y, int x)
+\begin{DoxyCompactList}\small\item\em Verifica se as coordenadas estão dentro do mapa. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{visao_8c_ae2680725edb561f654b268034845d351}{linha\+Visao}} (\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} origem, \mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}} destino)
+\begin{DoxyCompactList}\small\item\em Implementa uma variação do algoritmo de Bresenham para determinar se existe uma linha de visão directa entre duas posições no mapa. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{visao_8c_a99a18d2e827571d91168267c2ebb75ec}{conhece\+Sinal}} (int numero)
+\begin{DoxyCompactList}\small\item\em Verifica o sinal de um número. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Neste ficheiro estão as funções que tratam da visão e iluminação do jogador. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{visao_8c_a99a18d2e827571d91168267c2ebb75ec}\label{visao_8c_a99a18d2e827571d91168267c2ebb75ec}} 
+\index{visao.c@{visao.c}!conheceSinal@{conheceSinal}}
+\index{conheceSinal@{conheceSinal}!visao.c@{visao.c}}
+\doxysubsubsection{\texorpdfstring{conheceSinal()}{conheceSinal()}}
+{\footnotesize\ttfamily int conhece\+Sinal (\begin{DoxyParamCaption}\item[{int}]{numero }\end{DoxyParamCaption})}
+
+
+
+Verifica o sinal de um número. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em numero} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True ou False 
+\end{DoxyReturn}
+
+
+Definition at line 183 of file visao.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{184 \{}
+\DoxyCodeLine{185     \textcolor{keywordflow}{if} (numero < 0)\textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{186     \textcolor{keywordflow}{else} \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{187 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{visao_8c_a7d61cfb60ff3a71e009ae941b4fff3a4}\label{visao_8c_a7d61cfb60ff3a71e009ae941b4fff3a4}} 
+\index{visao.c@{visao.c}!estadoNormalPeca@{estadoNormalPeca}}
+\index{estadoNormalPeca@{estadoNormalPeca}!visao.c@{visao.c}}
+\doxysubsubsection{\texorpdfstring{estadoNormalPeca()}{estadoNormalPeca()}}
+{\footnotesize\ttfamily void estado\+Normal\+Peca (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}} $\ast$}]{jogador }\end{DoxyParamCaption})}
+
+
+
+Altera o estado da peças que estão fora do campo de visão do jogador. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em jogador} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 53 of file visao.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{54 \{}
+\DoxyCodeLine{55     \textcolor{keywordtype}{int} y, x;}
+\DoxyCodeLine{56     \textcolor{keywordtype}{int} RAIO = jogador-\/>raio;}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{keywordflow}{for} (y = jogador-\/>pos.y -\/ RAIO; y < jogador-\/>pos.y + RAIO; y++)}
+\DoxyCodeLine{59     \{}
+\DoxyCodeLine{60         \textcolor{keywordflow}{for} (x = jogador-\/>pos.x -\/ RAIO; x < jogador-\/>pos.x + RAIO; x++)}
+\DoxyCodeLine{61         \{}
+\DoxyCodeLine{62             \textcolor{keywordflow}{if} (\mbox{\hyperlink{visao_8c_a81cdd7cbe03dba17bf81a1cee595a347}{posicaoDentroMapa}}(y, x))}
+\DoxyCodeLine{63                 \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[y][x].visivel = \textcolor{keyword}{false};}
+\DoxyCodeLine{64         \}}
+\DoxyCodeLine{65     \}}
+\DoxyCodeLine{66 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{visao_8c_aa23a8b23f945e1ae9c6db5ca14965f4f}\label{visao_8c_aa23a8b23f945e1ae9c6db5ca14965f4f}} 
+\index{visao.c@{visao.c}!levaDistancia@{levaDistancia}}
+\index{levaDistancia@{levaDistancia}!visao.c@{visao.c}}
+\doxysubsubsection{\texorpdfstring{levaDistancia()}{levaDistancia()}}
+{\footnotesize\ttfamily int leva\+Distancia (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{origem,  }\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{destino }\end{DoxyParamCaption})}
+
+
+
+Calcula a distãncia euclidiana entre dois pontos, nomeadamente, posições no mapa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origem} & \\
+\hline
+{\em destino} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Distãncia entre dois pontos cartesianos. 
+\end{DoxyReturn}
+
+
+Definition at line 75 of file visao.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{76 \{}
+\DoxyCodeLine{77     \textcolor{keywordtype}{double} dy, dx;}
+\DoxyCodeLine{78     \textcolor{keywordtype}{int} distancia;}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80     dx = destino.x -\/ origem.x;}
+\DoxyCodeLine{81     dy = destino.y -\/ origem.y;}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83     distancia = floor(sqrt((dx * dx) + (dy * dy)));}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \textcolor{keywordflow}{return} distancia;}
+\DoxyCodeLine{86 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{visao_8c_ae2680725edb561f654b268034845d351}\label{visao_8c_ae2680725edb561f654b268034845d351}} 
+\index{visao.c@{visao.c}!linhaVisao@{linhaVisao}}
+\index{linhaVisao@{linhaVisao}!visao.c@{visao.c}}
+\doxysubsubsection{\texorpdfstring{linhaVisao()}{linhaVisao()}}
+{\footnotesize\ttfamily bool linha\+Visao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{origem,  }\item[{\mbox{\hyperlink{biblioteca_8h_a55bbbf5a6d3ba8b72df21bc8fe8dfbb0}{POSICAO}}}]{destino }\end{DoxyParamCaption})}
+
+
+
+Implementa uma variação do algoritmo de Bresenham para determinar se existe uma linha de visão directa entre duas posições no mapa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origem} & \\
+\hline
+{\em destino} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True ou False 
+\end{DoxyReturn}
+
+
+Definition at line 111 of file visao.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{112 \{}
+\DoxyCodeLine{113     \textcolor{keywordtype}{int} avancoLinha, x, y, abs\_diferencaX, abs\_diferencaY, sinalX, sinalY, diferencaX, diferencaY;}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115     diferencaX = origem.x -\/ destino.x;}
+\DoxyCodeLine{116     diferencaY = origem.y -\/ destino.y;}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118     abs\_diferencaX = abs(diferencaX);}
+\DoxyCodeLine{119     abs\_diferencaY = abs(diferencaY);}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121     sinalX = \mbox{\hyperlink{visao_8c_a99a18d2e827571d91168267c2ebb75ec}{conheceSinal}}(diferencaX);}
+\DoxyCodeLine{122     sinalY = \mbox{\hyperlink{visao_8c_a99a18d2e827571d91168267c2ebb75ec}{conheceSinal}}(diferencaY);}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124     x = destino.x;}
+\DoxyCodeLine{125     y = destino.y;}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127     \textcolor{keywordflow}{if} (abs\_diferencaX > abs\_diferencaY)}
+\DoxyCodeLine{128     \{}
+\DoxyCodeLine{129         avancoLinha = abs\_diferencaY * 2 -\/ abs\_diferencaX;}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131         \textcolor{keywordflow}{do}}
+\DoxyCodeLine{132         \{}
+\DoxyCodeLine{133             \textcolor{keywordflow}{if} (avancoLinha >= 0)}
+\DoxyCodeLine{134             \{}
+\DoxyCodeLine{135                 y += sinalY;}
+\DoxyCodeLine{136                 avancoLinha -\/= abs\_diferencaX * 2;}
+\DoxyCodeLine{137             \}}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139             x += sinalX;}
+\DoxyCodeLine{140             avancoLinha += abs\_diferencaY * 2;}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142             \textcolor{keywordflow}{if} (x == origem.x \&\& y == origem.y)}
+\DoxyCodeLine{143             \{}
+\DoxyCodeLine{144                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{145             \}}
+\DoxyCodeLine{146         \}}
+\DoxyCodeLine{147         \textcolor{keywordflow}{while} (\mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[y][x].transparente);}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{150     \}}
+\DoxyCodeLine{151     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{152     \{}
+\DoxyCodeLine{153         avancoLinha = abs\_diferencaX * 2 -\/ abs\_diferencaY;}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155         \textcolor{keywordflow}{do}}
+\DoxyCodeLine{156         \{}
+\DoxyCodeLine{157             \textcolor{keywordflow}{if} (avancoLinha >= 0)}
+\DoxyCodeLine{158             \{}
+\DoxyCodeLine{159                 x += sinalX;}
+\DoxyCodeLine{160                 avancoLinha -\/= abs\_diferencaY * 2;}
+\DoxyCodeLine{161             \}}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163             y += sinalY;}
+\DoxyCodeLine{164             avancoLinha += abs\_diferencaX * 2;}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{166             \textcolor{keywordflow}{if} (x == origem.x \&\& y == origem.y)}
+\DoxyCodeLine{167             \{}
+\DoxyCodeLine{168                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{169             \}}
+\DoxyCodeLine{170         \}}
+\DoxyCodeLine{171         \textcolor{keywordflow}{while} (\mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[y][x].transparente);}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{173         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{174     \}}
+\DoxyCodeLine{175 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{visao_8c_a899ab96321fefcf4380e1d48f74fee59}\label{visao_8c_a899ab96321fefcf4380e1d48f74fee59}} 
+\index{visao.c@{visao.c}!modificaEstadoPeca@{modificaEstadoPeca}}
+\index{modificaEstadoPeca@{modificaEstadoPeca}!visao.c@{visao.c}}
+\doxysubsubsection{\texorpdfstring{modificaEstadoPeca()}{modificaEstadoPeca()}}
+{\footnotesize\ttfamily void modifica\+Estado\+Peca (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{biblioteca_8h_a7d75fcc595a0e669b31c93cf1316381d}{ENTIDADE}} $\ast$}]{jogador }\end{DoxyParamCaption})}
+
+
+
+Modifica os estado das peças que estão a volta do jogador formando um pseudo-\/círculo (círculo não perfeito). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em jogador} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 17 of file visao.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19     \textcolor{keywordtype}{int} y, x, distancia;}
+\DoxyCodeLine{20     \textcolor{keywordtype}{int} RAIO = jogador-\/>raio;}
+\DoxyCodeLine{21     \mbox{\hyperlink{structPosicao}{POSICAO}} destino;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[jogador-\/>pos.y][jogador-\/>pos.x].visivel = \textcolor{keyword}{true};}
+\DoxyCodeLine{24     \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[jogador-\/>pos.y][jogador-\/>pos.x].vista = \textcolor{keyword}{true};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \textcolor{keywordflow}{for} (y = jogador-\/>pos.y -\/ RAIO; y < jogador-\/>pos.y + RAIO; y++)}
+\DoxyCodeLine{27     \{}
+\DoxyCodeLine{28         \textcolor{keywordflow}{for} (x = jogador-\/>pos.x -\/ RAIO; x < jogador-\/>pos.x + RAIO; x++)}
+\DoxyCodeLine{29         \{}
+\DoxyCodeLine{30             destino.y = y;}
+\DoxyCodeLine{31             destino.x = x;}
+\DoxyCodeLine{32             distancia}
+\DoxyCodeLine{33      = \mbox{\hyperlink{visao_8c_aa23a8b23f945e1ae9c6db5ca14965f4f}{levaDistancia}}(jogador-\/>pos, destino);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35             \textcolor{keywordflow}{if} (distancia}
+\DoxyCodeLine{36      < RAIO)}
+\DoxyCodeLine{37             \{}
+\DoxyCodeLine{38                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{visao_8c_a81cdd7cbe03dba17bf81a1cee595a347}{posicaoDentroMapa}}(y, x) \&\& \mbox{\hyperlink{visao_8c_ae2680725edb561f654b268034845d351}{linhaVisao}}(jogador-\/>pos, destino))}
+\DoxyCodeLine{39                 \{}
+\DoxyCodeLine{40                     \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[y][x].visivel = \textcolor{keyword}{true};}
+\DoxyCodeLine{41                     \mbox{\hyperlink{biblioteca_8h_a9b5e8a64024841be5acf04b10a93234e}{mapa}}[y][x].vista = \textcolor{keyword}{true};}
+\DoxyCodeLine{42                 \}}
+\DoxyCodeLine{43             \}}
+\DoxyCodeLine{44         \}}
+\DoxyCodeLine{45     \}}
+\DoxyCodeLine{46 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{visao_8c_a81cdd7cbe03dba17bf81a1cee595a347}\label{visao_8c_a81cdd7cbe03dba17bf81a1cee595a347}} 
+\index{visao.c@{visao.c}!posicaoDentroMapa@{posicaoDentroMapa}}
+\index{posicaoDentroMapa@{posicaoDentroMapa}!visao.c@{visao.c}}
+\doxysubsubsection{\texorpdfstring{posicaoDentroMapa()}{posicaoDentroMapa()}}
+{\footnotesize\ttfamily bool posicao\+Dentro\+Mapa (\begin{DoxyParamCaption}\item[{int}]{y,  }\item[{int}]{x }\end{DoxyParamCaption})}
+
+
+
+Verifica se as coordenadas estão dentro do mapa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y} & \\
+\hline
+{\em x} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True ou False 
+\end{DoxyReturn}
+
+
+Definition at line 95 of file visao.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{96 \{}
+\DoxyCodeLine{97     \textcolor{keywordflow}{if} ((0 < y \&\& y < \mbox{\hyperlink{biblioteca_8h_a172ffb38f672960e8390ef70664d967b}{MAP\_HEIGHT}} -\/ 1) \&\& (0 < x \&\& x < MAP\_WIDTH -\/ 1))}
+\DoxyCodeLine{98     \{}
+\DoxyCodeLine{99         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{100     \}}
+\DoxyCodeLine{101     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{102 \}}
+
+\end{DoxyCode}

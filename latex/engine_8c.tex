@@ -1,0 +1,69 @@
+\hypertarget{engine_8c}{}\doxysection{engine.\+c File Reference}
+\label{engine_8c}\index{engine.c@{engine.c}}
+{\ttfamily \#include \char`\"{}biblioteca.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mapa.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}jogador.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{engine_8c_a4b0a2762a9a9f047fbc4db7b15bd0fe6}{cursor\+Setup}} ()
+\begin{DoxyCompactList}\small\item\em Configura o terminal com auxílio da biblioteca ncurses. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{engine_8c_ae0bb3401d32c7c88694fc09c5b1f829b}\label{engine_8c_ae0bb3401d32c7c88694fc09c5b1f829b}} 
+void \mbox{\hyperlink{engine_8c_ae0bb3401d32c7c88694fc09c5b1f829b}{ciclo\+Jogo}} ()
+\begin{DoxyCompactList}\small\item\em Ciclo do jogo. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{engine_8c_a0e5d6436f40e483e9ee36616f9aace28}\label{engine_8c_a0e5d6436f40e483e9ee36616f9aace28}} 
+void \mbox{\hyperlink{engine_8c_a0e5d6436f40e483e9ee36616f9aace28}{reinicia\+Jogo}} ()
+\begin{DoxyCompactList}\small\item\em Reinicia o jogo. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{engine_8c_a2466f26432f55c9e4d5da389588a3996}\label{engine_8c_a2466f26432f55c9e4d5da389588a3996}} 
+void \mbox{\hyperlink{engine_8c_a2466f26432f55c9e4d5da389588a3996}{fim\+Jogo}} ()
+\begin{DoxyCompactList}\small\item\em Finaliza o jogo com auxílio da biblioteca ncurses. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Neste ficheiro estão as funções que tratam de todas as configurações do jogo no terminal. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{engine_8c_a4b0a2762a9a9f047fbc4db7b15bd0fe6}\label{engine_8c_a4b0a2762a9a9f047fbc4db7b15bd0fe6}} 
+\index{engine.c@{engine.c}!cursorSetup@{cursorSetup}}
+\index{cursorSetup@{cursorSetup}!engine.c@{engine.c}}
+\doxysubsubsection{\texorpdfstring{cursorSetup()}{cursorSetup()}}
+{\footnotesize\ttfamily bool cursor\+Setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Configura o terminal com auxílio da biblioteca ncurses. 
+
+Definição dos protótipos do módulo \mbox{\hyperlink{engine_8c}{engine.\+c}}. 
+
+Definition at line 15 of file engine.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     initscr();}
+\DoxyCodeLine{18     noecho();}
+\DoxyCodeLine{19     curs\_set(0);}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keywordflow}{if} (has\_colors())}
+\DoxyCodeLine{22     \{}
+\DoxyCodeLine{23         start\_color();}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25         init\_pair(COR\_VISIVEL,COLOR\_WHITE, COLOR\_BLACK);}
+\DoxyCodeLine{26         init\_pair(COR\_VISTA, COLOR\_YELLOW, COLOR\_BLACK);}
+\DoxyCodeLine{27         init\_pair(COR\_MONSTRO,COLOR\_RED, COLOR\_BLACK);}
+\DoxyCodeLine{28         init\_pair(COR\_COMIDA,COLOR\_GREEN, COLOR\_BLACK);}
+\DoxyCodeLine{29         init\_pair(COR\_ARMADILHA,COLOR\_RED, COLOR\_BLACK);}
+\DoxyCodeLine{30         init\_pair(COR\_JOGADOR,COLOR\_CYAN, COLOR\_BLACK);}
+\DoxyCodeLine{31         init\_pair(COR\_MORTO,COLOR\_MAGENTA, COLOR\_BLACK);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{34     \}}
+\DoxyCodeLine{35     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{36     \{}
+\DoxyCodeLine{37         mvprintw(20, 50, \textcolor{stringliteral}{"{}Your system doesn't support color. Can't start game!"{}});}
+\DoxyCodeLine{38         getch();}
+\DoxyCodeLine{39         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{40     \}}
+\DoxyCodeLine{41 \}}
+
+\end{DoxyCode}
