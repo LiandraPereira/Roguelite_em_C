@@ -20,7 +20,7 @@ SALA criaSala (int y, int x, int altura, int largura, int numero_monstros)
     novaSala.largura = largura;
     novaSala.centro.y = y + (int)(altura / 2);
     novaSala.centro.x = x + (int)(largura / 2);
-    novaSala.monstros = numero_monstros;
+    novaSala.numero_monstros = numero_monstros;
     novaSala.monstro = monstro; 
     
     return novaSala;

@@ -23,7 +23,7 @@ ENTIDADE criaMonstro (int y, int x, ENTIDADE monstro)
  */
 void adicionaMonstroSala (SALA novaSala)
 {  
-    for (int i = 0; i < novaSala.monstros; i++) 
+    for (int i = 0; i < novaSala.numero_monstros; i++) 
     {   
         int y = rand() % (novaSala.altura  - 1) + novaSala.pos.y  + 1; // Verificar a posição dos monstros
         int x = rand() % (novaSala.largura - 1) + novaSala.pos.x + 1;
