@@ -10,15 +10,11 @@
 #include <string.h>
 
 /* CORES */
-#define COR_VISIVEL 7
-#define COR_VISTA 3
-#define COR_MONSTRO 1
-#define COR_COMIDA 2 
-#define COR_ARMADILHA 4
-
-/* Velocidades */
-#define V_MONSTRO 1 // velocidade do monstro
-#define V_JOGADOR 2
+#define COR_VISIVEL 7    //
+#define COR_VISTA 3      //
+#define COR_MONSTRO 1    //
+#define COR_COMIDA 2     //
+#define COR_ARMADILHA 4  //
 
 /* Estrutura das coordenadas do jogador */
 typedef struct Posicao
@@ -28,25 +24,7 @@ typedef struct Posicao
 
 } POSICAO;
 
-/*Estrutura para as comidas*/
-typedef struct comida
-{
-    char imagem;
-    int cor;
-    
-    POSICAO posicao;
-
-} COMIDA;
-
-typedef struct armadilha
-{
-    char imagem;
-    int cor;
-    
-    POSICAO posicao;
-
-} ARMADILHA;
-
+/* Estrutura do objeto */
 typedef struct objeto
 {
     char imagem;
@@ -123,29 +101,7 @@ void desenhaJogador (ENTIDADE* jogador);
 
 void desenhaJogo();
 
-POSICAO constroiSalasMapa();
-
-SALA criaSala (int y, int x, int altura, int largura, int numero_monstros);
-
-void adicionaSalaMapa (SALA novaSala);
-
-void connectaCentroSalas (POSICAO centro1, POSICAO centro2);
-
-void freeMap();
-
-COMIDA* criaComida(SALA novaSala);
-
-ARMADILHA* criaArmadilha (SALA novaSala);
-
-/* Funcionalidades do Monstro */
-
-ENTIDADE criaMonstro (int y, int x, ENTIDADE monstro);
-
-void adicionaMonstroSala (SALA novaSala);
-
-void combate (POSICAO nova_pos);
-
-/*Variáveis globais e constantes*/
+/* Variáveis globais e constantes*/
 extern const int MAP_HEIGHT;
 
 extern const int MAP_WIDTH;

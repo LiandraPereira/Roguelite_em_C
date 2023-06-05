@@ -4,18 +4,6 @@
 
 PECA** criaMapaPecas();
 
-/*void desenhaMapa();
-
-void desenhaPainelInformacoes();
-
-void desenhaMenuFinal();
-
-void desenhaJogador (ENTIDADE* jogador);
-
-void desenhaMonstro (ENTIDADE* monstro);
-
-void desenhaJogo();*/
-
 POSICAO constroiSalasMapa();
 
 SALA criaSala (int y, int x, int altura, int largura, int numero_monstros);
@@ -26,8 +14,8 @@ void connectaCentroSalas (POSICAO centro1, POSICAO centro2);
 
 void freeMap();
 
-COMIDA* criaComida(SALA novaSala);
+OBJETO *criaComida(SALA novaSala);
 
-ARMADILHA* criaArmadilha (SALA novaSala);
+OBJETO *criaArmadilha (SALA novaSala);
 
 #endif //ROQUELITE_EM_C_MAPA_H
