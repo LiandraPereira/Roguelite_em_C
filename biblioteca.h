@@ -56,7 +56,7 @@ typedef struct Peca
     bool podeAndar;
     bool transparente;
     bool visivel;
-    bool visto;
+    bool vista;
 
 
     ENTIDADE perigo;

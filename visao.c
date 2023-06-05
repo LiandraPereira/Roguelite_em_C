@@ -14,7 +14,7 @@ void modificaEstadoPeca (ENTIDADE * jogador)
     POSICAO destino;
 
     mapa[jogador->pos.y][jogador->pos.x].visivel = true;
-    mapa[jogador->pos.y][jogador->pos.x].visto = true;
+    mapa[jogador->pos.y][jogador->pos.x].vista = true;
 
     for (y = jogador->pos.y - RAIO; y < jogador->pos.y + RAIO; y++)
     {
@@ -29,7 +29,7 @@ void modificaEstadoPeca (ENTIDADE * jogador)
                 if (posicaoDentroMapa(y, x) && linhaVisao(jogador->pos, destino))
                 {
                     mapa[y][x].visivel = true;
-                    mapa[y][x].visto = true;
+                    mapa[y][x].vista = true;
                 }
             }
         }

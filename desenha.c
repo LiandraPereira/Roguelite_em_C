@@ -29,7 +29,7 @@ void desenhaMapa()
                     mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_VISIVEL));
                 }
             }
-            else if (mapa[y][x].visto)
+            else if (mapa[y][x].vista)
             {
                 mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_VISTA));
             }

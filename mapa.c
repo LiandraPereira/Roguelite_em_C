@@ -21,7 +21,7 @@ PECA** criaMapaPecas()
             pecas[y][x].podeAndar = false;
             pecas[y][x].transparente = false;
             pecas[y][x].visivel = false;
-            pecas[y][x].visto = false;
+            pecas[y][x].vista = false;
         }
     }
 
