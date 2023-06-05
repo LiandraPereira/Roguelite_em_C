@@ -55,5 +55,6 @@ void combate (POSICAO nova_pos)
     else 
     {
         mapa[nova_pos.y][nova_pos.x].perigo.vida -= 10;
+ 
     }
 }

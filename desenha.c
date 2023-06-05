@@ -25,9 +25,21 @@ void desenhaMapa()
                 }
                 else if (mapa[y][x].imagem == 'M') //Monstro
                 {
-                    attron(COLOR_PAIR(COR_MONSTRO));
-                    mvaddch(y, x, mapa[y][x].imagem);
-                    attroff(COLOR_PAIR(COR_MONSTRO));
+                    if (mapa[y][x].perigo.vida == 10){
+                        attron(COLOR_PAIR(COR_VISTA));
+                        mvaddch(y, x, mapa[y][x].imagem);
+                        attroff(COLOR_PAIR(COR_VISTA));
+                    } else if (mapa[y][x].perigo.vida <= 10){
+                        attron(COLOR_PAIR(COR_MONSTRO));
+                        mvaddch(y, x, mapa[y][x].imagem);
+                        attroff(COLOR_PAIR(COR_MONSTRO));
+                    } else {
+                        attron(COLOR_PAIR(COR_MORTO));
+                        mvaddch(y, x, mapa[y][x].imagem);
+                        attroff(COLOR_PAIR(COR_MORTO));
+
+                    }
+
                 } 
                 else
                 {

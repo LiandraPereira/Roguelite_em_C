@@ -12,9 +12,11 @@
 /* CORES */
 #define COR_VISIVEL 7    // Branco
 #define COR_VISTA 3      // Amarelo
-#define COR_MONSTRO 1    // Vermelho
+#define COR_MONSTRO 5    // Vermelho
 #define COR_COMIDA 2     // Verde
 #define COR_ARMADILHA 1 
+#define COR_JOGADOR 6    // Azul 
+#define COR_MORTO 1 
 
 /* Estrutura das coordenadas do jogador */
 typedef struct Posicao

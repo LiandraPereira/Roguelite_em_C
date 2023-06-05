@@ -21,6 +21,8 @@ bool cursorSetup ()
         init_pair(COR_MONSTRO,COLOR_RED, COLOR_BLACK);
         init_pair(COR_COMIDA,COLOR_GREEN, COLOR_BLACK);
         init_pair(COR_ARMADILHA,COLOR_RED, COLOR_BLACK);
+        init_pair(COR_JOGADOR,COLOR_CYAN, COLOR_BLACK);
+        init_pair(COR_MORTO,COLOR_MAGENTA, COLOR_BLACK);
 
         return true;
     }

@@ -14,7 +14,7 @@ ENTIDADE* criaJogador (POSICAO start_pos)
     novoJogador->pos.y = start_pos.y;
     novoJogador->pos.x = start_pos.x;
     novoJogador->imagem = '@';
-    novoJogador->cor = COLOR_PAIR(COR_VISTA);
+    novoJogador->cor = COLOR_PAIR(COR_JOGADOR);
     novoJogador->vida = 40;
     novoJogador->movimentos = 0;
     novoJogador->raio = 8;
