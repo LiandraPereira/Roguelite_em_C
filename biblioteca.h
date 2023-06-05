@@ -10,11 +10,11 @@
 #include <string.h>
 
 /* CORES */
-#define COR_VISIVEL 7    //
-#define COR_VISTA 3      //
-#define COR_MONSTRO 1    //
-#define COR_COMIDA 2     //
-#define COR_ARMADILHA 4  //
+#define COR_VISIVEL 7    // Branco
+#define COR_VISTA 3      // Amarelo
+#define COR_MONSTRO 1    // Vermelho
+#define COR_COMIDA 2     // Verde
+#define COR_ARMADILHA 1 
 
 /* Estrutura das coordenadas do jogador */
 typedef struct Posicao

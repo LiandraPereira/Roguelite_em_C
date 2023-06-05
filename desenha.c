@@ -1,6 +1,5 @@
 #include "biblioteca.h"
 
-
 /**
  * \brief Desenha o mapa.
 */
@@ -13,25 +12,35 @@ void desenhaMapa()
             if (mapa[y][x].visivel)
             {
                 if (mapa[y][x].imagem == 'o') //Comida
-                {
-                    mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_COMIDA));
+                {   
+                    attron(COLOR_PAIR(COR_COMIDA));
+                    mvaddch(y, x, mapa[y][x].imagem);
+                    attroff(COLOR_PAIR(COR_COMIDA));
                 }
                 else if (mapa[y][x].imagem == '^') //Armadilha
                 {
-                    mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_ARMADILHA));
+                    attron(COLOR_PAIR(COR_ARMADILHA));
+                    mvaddch(y, x, mapa[y][x].imagem);
+                    attroff(COLOR_PAIR(COR_ARMADILHA));
                 }
                 else if (mapa[y][x].imagem == 'M') //Monstro
                 {
-                    mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_MONSTRO));
+                    attron(COLOR_PAIR(COR_MONSTRO));
+                    mvaddch(y, x, mapa[y][x].imagem);
+                    attroff(COLOR_PAIR(COR_MONSTRO));
                 } 
                 else
                 {
-                    mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_VISIVEL));
+                    attron(COLOR_PAIR(COR_VISIVEL));
+                    mvaddch(y, x, mapa[y][x].imagem);
+                    attroff(COLOR_PAIR(COR_VISIVEL));
                 }
             }
             else if (mapa[y][x].vista)
             {
-                mvaddch(y, x, mapa[y][x].imagem | COLOR_PAIR(COR_VISTA));
+                attron(COLOR_PAIR(COR_VISTA));
+                mvaddch(y, x, mapa[y][x].imagem);
+                attroff(COLOR_PAIR(COR_VISTA));
             }
             else
             {
@@ -45,8 +54,10 @@ void desenhaMapa()
  * \brief Desenha o jogador.
 */
 void desenhaJogador(ENTIDADE* jog)
-{
-    mvaddch(jog->pos.y, jog->pos.x, jog->imagem | jog->cor);
+{   
+    attron(jog->cor);
+    mvaddch(jog->pos.y, jog->pos.x, jog->imagem);
+    attroff(jog->cor);
 }
 
 /**
@@ -96,12 +107,8 @@ void desenhaPainelInformacoes(){
         mvaddch(y, COLS - 32, '|');
     }
 
-    time_t tempo_atual = time(NULL);
-    double tempo_passado = difftime(tempo_atual, game_info.tempoInicial);
-
     attron(A_BOLD);
-    mvprintw(LINES/2 - 1, COLS - 26, "Vida do Jogador: %d", jogador->vida);
-    mvprintw(LINES/2 + 1, COLS - 26, "Tempo de Jogo: %.f s", tempo_passado);
+    mvprintw(LINES/2 - 2, COLS - 26, "Vida do Jogador: %d", jogador->vida);
     attroff(A_BOLD);  
     refresh();  
 }

@@ -94,7 +94,7 @@ void connectaCentroSalas (POSICAO centro1, POSICAO centro2)
  * \brief Função que cria comidas espalhadas pelo mapa
  * \param novaSala 
 */
-OBJETO *criaComida(SALA novaSala) //Muda o nome para adicionaComida 
+OBJETO *criaComida(SALA novaSala)
 {
     int posY, posX;
     OBJETO* comida = calloc (1,sizeof(OBJETO));
@@ -113,7 +113,7 @@ OBJETO *criaComida(SALA novaSala) //Muda o nome para adicionaComida
     return comida;
 }
 
-OBJETO *criaArmadilha (SALA novaSala) //Aqui também 
+OBJETO *criaArmadilha (SALA novaSala)  
 {
     int chance = rand() % 10; //60% de chance de nascer de spawn
     OBJETO* armadilha = calloc(1,sizeof(OBJETO));
