@@ -1,4 +1,6 @@
 #include "biblioteca.h"
+#include "mapa.h"
+
 
 /**
  * \brief Cria e inicializada a estrututa de uma sala. 

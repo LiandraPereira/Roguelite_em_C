@@ -1,4 +1,7 @@
 #include "biblioteca.h"
+#include "mapa.h"
+#include "jogador.h"
+
 
 /**
  * \brief 
@@ -56,7 +59,9 @@ void cicloJogo ()
     desenhaMenuFinal();    
 }
 
-
+/**
+ * \brief 
+*/
 void reiniciaJogo()
 {   
     freeMap();

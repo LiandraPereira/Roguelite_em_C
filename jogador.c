@@ -1,10 +1,6 @@
 #include "biblioteca.h"
-
-/**
- * @file Jogador.c 
- * 
- * Jogador 
-*/
+#include "jogador.h" 
+#include "monstro.h"
 
 /**
  * \brief Cria a ENTIDADE Jogador numa determinada posição.
@@ -21,6 +17,8 @@ ENTIDADE* criaJogador (POSICAO start_pos)
     novoJogador->cor = COLOR_PAIR(COR_VISTA);
     novoJogador->vida = 40;
     novoJogador->movimentos = 0;
+    novoJogador->raio = 8;
+    novoJogador->vitorias = 0;
 
     return novoJogador;
 }

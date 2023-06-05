@@ -1,5 +1,7 @@
 #include <math.h>
 #include "biblioteca.h"
+#include "mapa.h"
+#include "jogador.h"
 
 /**
  * \brief  DE VISAO
@@ -8,7 +10,7 @@
 void modificaEstadoPeca (ENTIDADE * jogador)
 {
     int y, x, distance;
-    int RAIO = 8;
+    int RAIO = jogador->raio;
     POSICAO destino;
 
     mapa[jogador->pos.y][jogador->pos.x].visivel = true;
@@ -40,7 +42,7 @@ void modificaEstadoPeca (ENTIDADE * jogador)
 void estadoNormalPeca(ENTIDADE * jogador)
 {
     int y, x;
-    int RAIO = 8;
+    int RAIO = jogador->raio;
 
     for (y = jogador->pos.y - RAIO; y < jogador->pos.y + RAIO; y++)
     {

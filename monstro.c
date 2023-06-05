@@ -1,4 +1,5 @@
-#include "biblioteca.h" 
+#include "biblioteca.h"
+#include "monstro.h"
 
 // Feito por (...)
 
@@ -49,6 +50,7 @@ void combate (POSICAO nova_pos)
     if (mapa[nova_pos.y][nova_pos.x].perigo.vida == 0)
     {
         mapa[nova_pos.y][nova_pos.x].imagem = '.';
+        jogador->vitorias++;
     }
     else 
     {

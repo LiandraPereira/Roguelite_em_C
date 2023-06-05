@@ -50,14 +50,6 @@ void desenhaJogador(ENTIDADE* jog)
 }
 
 /**
- * \brief Desenha o monstro. 
-*
-void desenhaMonstro (ENTIDADE* monstro)
-{   
-    mvaddch(monstro->pos.y, monstro->pos.x, monstro->imagem | monstro->cor);
-}*/
-
-/**
  * \brief Desenha o jogo.
 */
 void desenhaJogo()
@@ -106,8 +98,6 @@ void desenhaPainelInformacoes(){
 
     attron(A_BOLD);
     mvprintw(LINES/2 - 2, COLS - 26, "Vida do Jogador: %d", jogador->vida);
-    mvprintw(LINES/2, COLS - 26, "Inimigos Restantes: ");
-    mvprintw(LINES/2 + 2, COLS - 26, "Dano: %d", jogador->combate);
     attroff(A_BOLD);  
     refresh();  
 }
@@ -130,7 +120,7 @@ void desenhaMenuFinal()
 
     mvwprintw(menuwin, 1, largura / 2 - 6, "Fim do Jogo!");
     mvwprintw(menuwin, 3, 2, "-Terminou o jogo com %d de Vida.", jogador->vida);
-    mvwprintw(menuwin, 5, 2, "-Matou x Monstros.");
+    mvwprintw(menuwin, 5, 2, "-Matou %d Monstros.", jogador->vitorias);
     mvwprintw(menuwin, 7, 2, "-Fez %d Movimentos.", jogador->movimentos);
     mvwprintw(menuwin, altura - 6, largura / 2 - 15, "Pressione Enter para reiniciar");
     mvwprintw(menuwin, altura - 4, largura / 2 - 1, "Ou");
@@ -152,21 +142,3 @@ void desenhaMenuFinal()
         
     }
 }
-
-//TODO usar funcao usleep para apagar msg
-/*
-void desenhaMensagemTemporaria(char *mensagem, int duracao)
-{
-    int altura = 3;
-    int largura = strlen(mensagem) + 2;
-    int inicioY = 1;
-    int inicioX = COLS - 26;
-    WINDOW *win = newwin(altura, largura, inicioY, inicioX);
-    attron(A_BOLD);
-    mvwprintw(win, 1, 1, mensagem);
-    attroff(A_BOLD);
-    wrefresh(win);
-    napms(duracao); //use usleep instead
-    delwin(win);
-}
-*/

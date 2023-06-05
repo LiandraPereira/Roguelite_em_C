@@ -1,4 +1,8 @@
 #include "biblioteca.h"
+#include "mapa.h"
+#include "jogador.h"
+#include "monstro.h"
+
 
 const int MAP_HEIGHT = 45; //50
 const int MAP_WIDTH = 120; // 150

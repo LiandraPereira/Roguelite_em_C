@@ -53,9 +53,9 @@ typedef struct Entidade
     char imagem;
     int cor;
     int vida;
-    int combate;
-    int defende;
     int movimentos;
+    int vitorias;
+    int raio;
 
     POSICAO pos;
 
@@ -71,6 +71,7 @@ typedef struct Peca
     bool transparente;
     bool visivel;
     bool visto;
+
 
     ENTIDADE perigo;
 
@@ -104,37 +105,6 @@ void fimJogo ();
 
 void desenhaMenu();
 
-void desenhaMensagemTemporaria(char *mensagem, int duracao);
-
-/* Funcionalidades do Jogador */
-
-ENTIDADE* criaJogador (POSICAO pos_inicial);
-
-void direcao (int tecla);
-
-void adicionaVida(POSICAO nova_pos, int valor);
-
-void pisouArmadilha(POSICAO nova_pos, int dano);
-
-void movimentaJogador (POSICAO novaPos);
-
-void modificaEstadoPeca (ENTIDADE* jogador);
-
-void estadoNormalPeca (ENTIDADE* jogador);
-
-bool posicaoDentroMapa (int y, int x);
-
-int levaDistancia (POSICAO POSICAO1, POSICAO POSICAO2);
-
-bool linhaVisao (POSICAO origin, POSICAO target);
-
-int conheceSinal (int a);
-
-
-/* Funcionalidades do Mapa */
-
-PECA** criaMapaPecas();
-
 void desenhaMapa();
 
 void desenhaPainelInformacoes();
@@ -143,41 +113,16 @@ void desenhaMenuFinal();
 
 void desenhaJogador (ENTIDADE* jogador);
 
-void desenhaMonstro (ENTIDADE* monstro);
-
 void desenhaJogo();
 
-POSICAO constroiSalasMapa();
-
-SALA criaSala (int y, int x, int altura, int largura, int numero_monstros);
-
-void adicionaSalaMapa (SALA novaSala);
-
-void connectaCentroSalas (POSICAO centro1, POSICAO centro2);
-
-void freeMap();
-
-COMIDA* criaComida(SALA novaSala);
-
-ARMADILHA* criaArmadilha (SALA novaSala);
-
-/* Funcionalidades do Monstro */
-
-ENTIDADE criaMonstro (int y, int x, ENTIDADE monstro);
-
-void adicionaMonstroSala (SALA novaSala);
-
-void combate (POSICAO nova_pos);
-
-/*Variáveis globais e constantes*/
+/* Variáveis globais e constantes*/
 extern const int MAP_HEIGHT;
 
 extern const int MAP_WIDTH;
 
-/*Variável global*/
+/*Variáveis globais*/
 extern PECA** mapa;
 
-/* Declarei esta varável usando o 'extern' porque é uma variável global e e vai ser usada em diversos ficheiros.*/
 extern ENTIDADE *jogador;
 
 #endif //DEBUG_BIBLIOTECA_H
