@@ -1,11 +1,15 @@
+/**
+ * @file monstro.c
+ *
+ * Neste ficheiro estão as funções que tratam das funcionalidades do monstro e o combate.
+ */
+
 #include "biblioteca.h"
 #include "monstro.h"
 
-// Feito por (...)
-
 /**
  * @brief Cria a entidade monstro numa determinada posição.
- * @return Entidade monstro. 
+ * @returns Entidade monstro. 
 */
 ENTIDADE criaMonstro (int y, int x, ENTIDADE monstro)
 {   
@@ -19,8 +23,7 @@ ENTIDADE criaMonstro (int y, int x, ENTIDADE monstro)
 }
 
 /**
- * @brief Adiciona monstros numa sala. 
- * @return novaSala 
+ * @brief Adiciona monstros numa sala.
  */
 void adicionaMonstroSala (SALA novaSala)
 {  
@@ -42,8 +45,7 @@ void adicionaMonstroSala (SALA novaSala)
 /**
  * \brief Acontece o combate entre o jogador e o monstro. 
  * @param nova_pos
- * @param monstro
- * @return 
+ * @param monstro 
  */
 void combate (POSICAO nova_pos)
 {

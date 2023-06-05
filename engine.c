@@ -1,10 +1,16 @@
+/**
+ * @file engine.c
+ *
+ * Neste ficheiro estão as funções que tratam de todas as configurações do jogo no terminal.
+ */
+
 #include "biblioteca.h"
 #include "mapa.h"
 #include "jogador.h"
 
 
 /**
- * \brief 
+ * \brief Configura o terminal com auxílio da biblioteca ncurses.
 */
 bool cursorSetup ()
 {
@@ -35,7 +41,7 @@ bool cursorSetup ()
 }
 
 /**
- * \brief
+ * \brief Ciclo do jogo.
 */
 void cicloJogo ()
 {
@@ -62,7 +68,7 @@ void cicloJogo ()
 }
 
 /**
- * \brief 
+ * \brief Reinicia o jogo.
 */
 void reiniciaJogo()
 {   
@@ -79,7 +85,7 @@ void reiniciaJogo()
 }
 
 /**
- * \brief 
+ * \brief Finaliza o jogo com auxílio da biblioteca ncurses.
 */
 void fimJogo ()
 { 

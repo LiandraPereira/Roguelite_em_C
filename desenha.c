@@ -1,3 +1,11 @@
+/**
+ * @file engine.c
+ *
+ * Neste ficheiro estão as funções que tratam da apresentação de cada componente do jogo no terminal 
+ * com auxílio da biblioteca ncurses.
+ * .
+ */
+
 #include "biblioteca.h"
 
 /**

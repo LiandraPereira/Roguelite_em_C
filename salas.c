@@ -1,14 +1,20 @@
+/**
+ * @file salas.c
+ *
+ * Neste ficheiro estão as funções que tratam da criação das salas e corredores do mapa.
+ */
+
 #include "biblioteca.h"
 #include "mapa.h"
 
-
 /**
  * \brief Cria e inicializada a estrututa de uma sala. 
- * \param y 
- * \param x
- * \param altura
- * \param largura 
- * \return Sala 
+ * 
+ * @param y 
+ * @param x
+ * @param altura
+ * @param largura 
+ * @returns Sala 
 */
 SALA criaSala (int y, int x, int altura, int largura, int numero_monstros)
 {
@@ -30,6 +36,7 @@ SALA criaSala (int y, int x, int altura, int largura, int numero_monstros)
 
 /**
  * \brief Adiciona uma sala no mapa com auxílio da posição da sala. 
+ * 
  * \param novaSala 
 */
 void adicionaSalaMapa (SALA novaSala)
@@ -62,8 +69,9 @@ void adicionaSalaMapa (SALA novaSala)
 
 /**
  * \brief Cria corredores conectando o centro de duas salas do mapa.
- * \param centro1
- * \param centro2 
+ * 
+ * @param centro1
+ * @param centro2 
 */
 void connectaCentroSalas (POSICAO centro1, POSICAO centro2)
 {
@@ -92,7 +100,9 @@ void connectaCentroSalas (POSICAO centro1, POSICAO centro2)
 
 /**
  * \brief Função que cria comidas espalhadas pelo mapa
- * \param novaSala 
+ * 
+ * @param novaSala 
+ * @returns Apontador para o objeto comida.
 */
 OBJETO *criaComida(SALA novaSala)
 {
@@ -113,6 +123,12 @@ OBJETO *criaComida(SALA novaSala)
     return comida;
 }
 
+/**
+ * \brief Função que cria armadilhas espalhadas pelo mapa
+ * 
+ * @param novaSala
+ * @returns Apontador para o objeto armadilha.
+*/
 OBJETO *criaArmadilha (SALA novaSala)  
 {
     int chance = rand() % 10; //60% de chance de nascer de spawn
