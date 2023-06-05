@@ -1,8 +1,10 @@
 #include "biblioteca.h" 
 
+// Feito por (...)
+
 /**
- * @brief Cria a entidade Monstro numa determinada posição.
- * @return Apontador para a entidade Monstro. 
+ * @brief Cria a entidade monstro numa determinada posição.
+ * @return Entidade monstro. 
 */
 ENTIDADE criaMonstro (int y, int x, ENTIDADE monstro)
 {   
@@ -29,26 +31,27 @@ void adicionaMonstroSala (SALA novaSala)
         if (mapa[y][x].podeAndar)
         {
             novaSala.monstro[i] = criaMonstro(y,x,novaSala.monstro[i]);
-            mapa[novaSala.monstro[i].pos.y][novaSala.monstro[i].pos.x].imagem = 'M';
+            mapa[y][x].perigo = novaSala.monstro[i];
+            mapa[novaSala.monstro[i].pos.y][novaSala.monstro[i].pos.x].imagem = novaSala.monstro[i].imagem;
+            
         }
     }
 }
 
-void combate (SALA sala, POSICAO posicao)
+/**
+ * \brief Acontece o combate entre o jogador e o monstro. 
+ * @param nova_pos
+ * @param monstro
+ * @return 
+ */
+void combate (POSICAO nova_pos)
 {
-    for (int m = 0; m < sala.monstros; m++){
-        if (sala.monstro[m].pos.y == posicao.y &&
-            sala.monstro[m].pos.x == posicao.x)
-        {
-            if (sala.monstro[m].vida <= 0)
-            {
-                mapa[sala.monstro[m].pos.y][sala.monstro[m].pos.x].imagem = '.';
-                movimentaJogador(posicao);
-            } 
-            else 
-            {
-                sala.monstro[m].vida -= 10;
-            }
-        } 
+    if (mapa[nova_pos.y][nova_pos.x].perigo.vida == 0)
+    {
+        mapa[nova_pos.y][nova_pos.x].imagem = '.';
+    }
+    else 
+    {
+        mapa[nova_pos.y][nova_pos.x].perigo.vida -= 10;
     }
 }

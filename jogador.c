@@ -73,6 +73,10 @@ void movimentaJogador(POSICAO nova_pos)
         else if (mapa[nova_pos.y][nova_pos.x].imagem == '^')
         {
             pisouArmadilha(nova_pos,10); 
+        } else if (mapa[nova_pos.y][nova_pos.x].imagem == 'M')
+        {
+            combate(nova_pos);
+            return;
         }
         
         estadoNormalPeca(jogador);

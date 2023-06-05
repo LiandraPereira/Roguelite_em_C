@@ -64,16 +64,6 @@ typedef struct Entidade
 
 } ENTIDADE;
 
-typedef struct Monstro
-{   
-    int numero_monstros;
-
-    ENTIDADE *lista;
-
-} MONSTRO;
-
-
-
 /*Estrutura das peças do mapa. */
 typedef struct Peca
 {
@@ -84,6 +74,8 @@ typedef struct Peca
     bool transparente;
     bool visivel;
     bool visto;
+
+    ENTIDADE perigo;
 
 } PECA;
 
@@ -178,7 +170,7 @@ ENTIDADE criaMonstro (int y, int x, ENTIDADE monstro);
 
 void adicionaMonstroSala (SALA novaSala);
 
-void combate (SALA sala, POSICAO posicao);
+void combate (POSICAO nova_pos);
 
 /*Variáveis globais e constantes*/
 extern const int MAP_HEIGHT;
