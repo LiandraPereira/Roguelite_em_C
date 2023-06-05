@@ -48,18 +48,18 @@ POSICAO constroiSalasMapa(){
         altura = (rand() % 7) + 3; // Altura máxima é 9 - Entre 3 e 9
         largura = (rand() % 15) + 5; // Largura máxima é 19 - Entre 5 e 19
 
-        numero_monstros = 1; // Na verdade quero criar um número aleatório para cada sala
+        //numero_monstros = 2; // Na verdade quero criar um número aleatório para cada sala
         
-        //numero_monstros = (rand() % 2) + 1; // [1,2]
+        numero_monstros = (rand() % 2) + 1; // [1,2]
         
         salas[i] = criaSala(y, x, altura, largura, numero_monstros);
         
         adicionaSalaMapa(salas[i]);
+        adicionaMonstroSala (salas[i]);
 
         if (i > 0)
         {
             connectaCentroSalas(salas[i-1].centro, salas[i].centro);
-            adicionaMonstroSala(salas[i]);
         }
 
     }
