@@ -47,6 +47,14 @@ typedef struct armadilha
 
 } ARMADILHA;
 
+typedef struct objeto
+{
+    char imagem;
+    int cor;
+    
+    POSICAO posicao;
+} OBJETO;
+
 /* Estrutura do Jogador */
 typedef struct Entidade 
 {
@@ -115,7 +123,29 @@ void desenhaJogador (ENTIDADE* jogador);
 
 void desenhaJogo();
 
-/* Variáveis globais e constantes*/
+POSICAO constroiSalasMapa();
+
+SALA criaSala (int y, int x, int altura, int largura, int numero_monstros);
+
+void adicionaSalaMapa (SALA novaSala);
+
+void connectaCentroSalas (POSICAO centro1, POSICAO centro2);
+
+void freeMap();
+
+COMIDA* criaComida(SALA novaSala);
+
+ARMADILHA* criaArmadilha (SALA novaSala);
+
+/* Funcionalidades do Monstro */
+
+ENTIDADE criaMonstro (int y, int x, ENTIDADE monstro);
+
+void adicionaMonstroSala (SALA novaSala);
+
+void combate (POSICAO nova_pos);
+
+/*Variáveis globais e constantes*/
 extern const int MAP_HEIGHT;
 
 extern const int MAP_WIDTH;

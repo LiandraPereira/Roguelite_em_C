@@ -45,12 +45,12 @@ void adicionaSalaMapa (SALA novaSala)
         }
     }
     
-    COMIDA *novaComida = criaComida(novaSala);
+    OBJETO *novaComida = criaComida(novaSala);
     int y = novaComida->posicao.y, x = novaComida->posicao.x; 
 
     mapa[y][x].imagem = novaComida->imagem;
 
-    ARMADILHA *novaArmadilha = criaArmadilha(novaSala); 
+    OBJETO *novaArmadilha = criaArmadilha(novaSala); 
 
     if (novaArmadilha != NULL) 
     {
@@ -94,10 +94,10 @@ void connectaCentroSalas (POSICAO centro1, POSICAO centro2)
  * \brief Função que cria comidas espalhadas pelo mapa
  * \param novaSala 
 */
-COMIDA *criaComida(SALA novaSala) //Muda o nome para adicionaComida 
+OBJETO *criaComida(SALA novaSala) //Muda o nome para adicionaComida 
 {
     int posY, posX;
-    COMIDA* comida = calloc (1,sizeof(COMIDA));
+    OBJETO* comida = calloc (1,sizeof(OBJETO));
 
     comida->imagem = 'o';
 
@@ -113,10 +113,10 @@ COMIDA *criaComida(SALA novaSala) //Muda o nome para adicionaComida
     return comida;
 }
 
-ARMADILHA *criaArmadilha (SALA novaSala) //Aqui também 
+OBJETO *criaArmadilha (SALA novaSala) //Aqui também 
 {
     int chance = rand() % 10; //60% de chance de nascer de spawn
-    ARMADILHA* armadilha = calloc(1,sizeof(ARMADILHA));
+    OBJETO* armadilha = calloc(1,sizeof(OBJETO));
 
     armadilha->imagem = '^';
 
